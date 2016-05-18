@@ -1,0 +1,24 @@
+{
+  "name": "rds_harness",
+  "version": "1.0.0",
+  "description": "functional regression test harness",
+  "author": "Marco A. Rodriguez Cote",
+  "license": "BlueAcorn",
+  "main": "harness",
+  "dependencies": {
+    "async": "^2.0.0-rc.2",
+    "git-promise": "*",
+    "jasmine": "*",
+    "jasmine-reporters": "^2.1.1",
+    "nightmare": "^2.3.0",
+    "path": "*",
+    "randomstring": "^1.1.4",
+    "request": "^2.70.0",
+    "x-ray": "^2.2.0",
+    "xvfb": "^0.2.3"
+  },
+  "scripts": {
+    "debug": "DEBUG=* npm start",
+    "start": "node runner"
+  }
+}

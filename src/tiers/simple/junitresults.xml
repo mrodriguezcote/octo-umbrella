@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+ <testsuite name="No 200 whitescreen" timestamp="2016-05-18T16:51:43" hostname="localhost" time="2" errors="0" tests="5" skipped="0" disabled="0" failures="0">
+  <testcase classname="No 200 whitescreen" name="on homepage" time="0.181" />
+  <testcase classname="No 200 whitescreen" name="on admin" time="0.335" />
+  <testcase classname="No 200 whitescreen" name="on login page" time="0.498" />
+  <testcase classname="No 200 whitescreen" name="on category page" time="0.85" />
+  <testcase classname="No 200 whitescreen" name="on product page" time="0.135" />
+ </testsuite>
+ <testsuite name="No 500 whitescreen" timestamp="2016-05-18T16:51:45" hostname="localhost" time="1.83" errors="0" tests="5" skipped="0" disabled="0" failures="1">
+  <testcase classname="No 500 whitescreen" name="on homepage" time="0.1" />
+  <testcase classname="No 500 whitescreen" name="on admin" time="0.379" />
+  <testcase classname="No 500 whitescreen" name="on login page" time="0.563" />
+  <testcase classname="No 500 whitescreen" name="on category page" time="0.67">
+   <failure type="exception" message="Failed: whitescreen on category page"><![CDATA[Error: Failed: whitescreen on category page
+    at stack (/www/RDS/harness/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1577:17)
+    at buildExpectationResult (/www/RDS/harness/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1547:14)
+    at Spec.Env.expectationResultFactory (/www/RDS/harness/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:638:18)
+    at Spec.addExpectationResult (/www/RDS/harness/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:330:34)
+    at Env.fail (/www/RDS/harness/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:987:25)
+    at jasmineInterface.fail (/www/RDS/harness/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:3423:23)
+    at Request._callback (/www/RDS/harness/src/tests/smoke/whiteScreen/check_500.js:56:17)
+    at Request.self.callback (/www/RDS/harness/src/node_modules/request/request.js:200:22)
+    at emitTwo (events.js:100:13)
+    at Request.emit (events.js:185:7)]]>
+   </failure>
+  </testcase>
+  <testcase classname="No 500 whitescreen" name="on product page" time="0.117" />
+ </testsuite>
+</testsuites>

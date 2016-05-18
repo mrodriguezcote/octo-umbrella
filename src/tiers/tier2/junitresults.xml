@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+ <testsuite name="Mega Menu" timestamp="2016-05-17T18:50:34" hostname="localhost" time="5.393" errors="0" tests="3" skipped="0" disabled="0" failures="0">
+  <testcase classname="Mega Menu" name="maximum height and width maintained" time="2.382" />
+  <testcase classname="Mega Menu" name="10 items displaying and no 404s from any" time="1.638" />
+  <testcase classname="Mega Menu" name="all image resources available" time="1.371" />
+ </testsuite>
+</testsuites>
