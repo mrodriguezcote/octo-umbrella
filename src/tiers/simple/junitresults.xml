@@ -1,49 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
- <testsuite name="Loading" timestamp="2016-05-18T18:16:02" hostname="localhost" time="2.294" errors="0" tests="6" skipped="0" disabled="0" failures="3">
-  <testcase classname="Loading" name="homepage" time="0.132" />
-  <testcase classname="Loading" name="admin" time="0.322" />
-  <testcase classname="Loading" name="login page" time="0.638" />
-  <testcase classname="Loading" name="category page" time="0.598">
-   <failure type="exception" message="Failed: whitescreen on category page: Class Magento\CatalogRule\Model\ResourceModel\RuleFactory does not exist"><![CDATA[Error: Failed: whitescreen on category page: Class Magento\CatalogRule\Model\ResourceModel\RuleFactory does not exist
-    at stack (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1577:17)
-    at buildExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1547:14)
-    at Spec.Env.expectationResultFactory (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:638:18)
-    at Spec.addExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:330:34)
-    at Env.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:987:25)
-    at jasmineInterface.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:3423:23)
-    at Request._callback (/www/octo-umbrella/src/tests/smoke/access/check_access.js:109:17)
-    at Request.self.callback (/www/octo-umbrella/src/node_modules/request/request.js:200:22)
-    at emitTwo (events.js:100:13)
-    at Request.emit (events.js:185:7)]]>
-   </failure>
-  </testcase>
-  <testcase classname="Loading" name="product page" time="0.13">
-   <failure type="exception" message="Failed: 404 on product page"><![CDATA[Error: Failed: 404 on product page
-    at stack (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1577:17)
-    at buildExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1547:14)
-    at Spec.Env.expectationResultFactory (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:638:18)
-    at Spec.addExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:330:34)
-    at Env.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:987:25)
-    at jasmineInterface.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:3423:23)
-    at Request._callback (/www/octo-umbrella/src/tests/smoke/access/check_access.js:135:17)
-    at Request.self.callback (/www/octo-umbrella/src/node_modules/request/request.js:200:22)
-    at emitTwo (events.js:100:13)
-    at Request.emit (events.js:185:7)]]>
-   </failure>
-  </testcase>
-  <testcase classname="Loading" name="cart page" time="0.472">
-   <failure type="exception" message="Failed: whitescreen on cart page: Invalid block type: Magento\Checkout\Block\Cart"><![CDATA[Error: Failed: whitescreen on cart page: Invalid block type: Magento\Checkout\Block\Cart
-    at stack (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1577:17)
-    at buildExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1547:14)
-    at Spec.Env.expectationResultFactory (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:638:18)
-    at Spec.addExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:330:34)
-    at Env.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:987:25)
-    at jasmineInterface.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:3423:23)
-    at Request._callback (/www/octo-umbrella/src/tests/smoke/access/check_access.js:170:17)
-    at Request.self.callback (/www/octo-umbrella/src/node_modules/request/request.js:200:22)
-    at emitTwo (events.js:100:13)
-    at Request.emit (events.js:185:7)]]>
+ <testsuite name="Adding" timestamp="2016-05-18T18:25:02" hostname="localhost" time="15.02" errors="0" tests="1" skipped="0" disabled="0" failures="1">
+  <testcase classname="Adding" name="simple product to cart" time="15.018">
+   <failure type="exception" message="Error: Timeout - Async callback was not invoked within timeout specified by jasmine.DEFAULT_TIMEOUT_INTERVAL."><![CDATA[Error: Timeout - Async callback was not invoked within timeout specified by jasmine.DEFAULT_TIMEOUT_INTERVAL.
+    at null._onTimeout (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1909:23)
+    at Timer.listOnTimeout (timers.js:92:15)]]>
    </failure>
   </testcase>
  </testsuite>
