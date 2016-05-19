@@ -7,13 +7,11 @@ describe("Product Badges", function() {
    
     beforeAll(function() { 
         xvfb.start(); 
-    });
-
-    beforeEach(function() { 
         browser = nightmare(site.electronOptions); 
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
 
@@ -52,7 +50,6 @@ describe("Product Badges", function() {
                     .goto(site.adminCache)
                     .click(site.cacheFlush)
                     .wait(site.cacheFlushConfirm)
-                    .end()
                     .then(function() {
                         done();
                     })
@@ -66,8 +63,7 @@ describe("Product Badges", function() {
             .goto(site.productUrl)
             .evaluate(function(badgeSelector) {
                 return jQuery(badgeSelector).length;
-            },aux.badgeSelector)     
-            .end()
+            },aux.badgeSelector)
             .then(function (badges) {
                 expect(badges).toBeGreaterThan(0);
                 done();
@@ -81,8 +77,7 @@ describe("Product Badges", function() {
             .goto(site.categoryUrl)
             .evaluate(function(badgeSelector) {
                 return jQuery(badgeSelector).length;
-            },aux.badgeSelector)     
-            .end()
+            },aux.badgeSelector)
             .then(function (badges) {
                 expect(badges).toBeGreaterThan(0);
                 done();
@@ -100,8 +95,7 @@ describe("Product Badges", function() {
             .goto(site.cartUrl)
             .evaluate(function(badgeSelector) {
                 return jQuery(badgeSelector).length;
-            },aux.badgeSelector)     
-            .end()
+            },aux.badgeSelector)
             .then(function (badges) {
                 expect(badges).toBeGreaterThan(0);
                 done();

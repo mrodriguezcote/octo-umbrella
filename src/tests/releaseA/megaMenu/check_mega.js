@@ -9,13 +9,11 @@ describe("Mega Menu", function() {
    
     beforeAll(function() { 
         xvfb.start(); 
-    });
-
-    beforeEach(function() { 
         browser = nightmare(site.electronOptions); 
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
 
@@ -31,7 +29,6 @@ describe("Mega Menu", function() {
                 dims.push(jQuery(megaSelector).width()); 
                 return dims;
             },aux.megaSelector)
-            .end()
             .then(function (dimensions) {
                 expect(dimensions[0]).toBe(aux.megaHeight);
                 expect(dimensions[1]).toBe(aux.megaWidth);
@@ -45,7 +42,6 @@ describe("Mega Menu", function() {
     it("10 items displaying and no 404s from any", function(done) {
         
         browser
-            .goto(site.homeUrl)
             .evaluate(function(topMenu) {
                 hrefs = [];
                 jQuery(topMenu).each(function() {
@@ -53,7 +49,6 @@ describe("Mega Menu", function() {
                 })
                 return hrefs;
             },aux.topMenu)
-            .end()
             .then(function (hrefs) {
                 var badLinks = [];
                 var goodLinks = [];
@@ -87,7 +82,6 @@ describe("Mega Menu", function() {
     it("all image resources available", function(done) {
         
         browser
-            .goto(site.homeUrl)
             .evaluate(function(imageSelector) {
                 images = [];
                 jQuery(imageSelector).each(function() {
@@ -95,7 +89,6 @@ describe("Mega Menu", function() {
                 })
                 return images;
             },aux.imageSelector)
-            .end()
             .then(function (images) {
                 var badLinks = [];
                 var goodLinks = [];

@@ -8,14 +8,12 @@ var settings = {};
 describe("Enabled short URLs", function() {
 
     beforeAll(function() { 
-        xvfb.start(); 
-    });
-
-    beforeEach(function() { 
-        browser = nightmare(site.electronOptions); 
+        xvfb.start();
+        browser = nightmare(site.electronOptions);  
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
 
@@ -54,7 +52,6 @@ describe("Enabled short URLs", function() {
                     .goto(site.adminCache)
                     .click(site.cacheFlush)
                     .wait(site.cacheFlushConfirm)
-                    .end()
                     .then(function() {
                         done();
                     })                
@@ -76,7 +73,6 @@ describe("Enabled short URLs", function() {
                 browser
                     .goto(site.homeUrl+settings.prodNamespace+aux.shortDisabledProduct.sku)
                     .title()
-                    .end()
                     .then(function(pageTitle) {
                         expect(pageTitle).toBe(aux.fallback.title);
                         done();
@@ -91,7 +87,6 @@ describe("Enabled short URLs", function() {
         browser
             .goto(site.homeUrl+settings.catNamespace+aux.shortCategory.id)
             .title()
-            .end()
             .then(function(pageTitle) {
                 expect(pageTitle).toBe(aux.shortCategory.title);
                 done();
@@ -107,8 +102,6 @@ describe("Enabled short URLs", function() {
     it("feature enabled with disabled fallback and cache cleared", function(done) {
 
         browser
-            .goto(site.adminUrl)
-            .cookies.set(site.adminCookie.name, site.adminCookie.value)
             .goto(aux.adminShortUrls)
             .select(aux.config.enabled, 1)
             .select(aux.config.fallback, aux.disabledFallback.key)
@@ -134,7 +127,6 @@ describe("Enabled short URLs", function() {
                     .goto(site.adminCache)
                     .click(site.cacheFlush)
                     .wait(site.cacheFlushConfirm)
-                    .end()
                     .then(function() {
                         done();
                     })  
@@ -148,7 +140,6 @@ describe("Enabled short URLs", function() {
         browser
             .goto(site.homeUrl+settings.prodNamespace+aux.shortDisabledProduct.sku)
             .title()
-            .end()
             .then(function(pageTitle) {
                 expect(pageTitle).toBe('404 Not Found');
                 done();

@@ -7,13 +7,11 @@ describe("Mobile carousel", function() {
    
     beforeAll(function() { 
         xvfb.start(); 
-    });
-
-    beforeEach(function() { 
-        browser = nightmare(site.electronMobileOptions); 
+        browser = nightmare(site.electronMobileOptions);
     });
     
-    afterAll(function() { 
+    afterAll(function() {
+        browser.end().then(); 
         xvfb.stop(); 
     });
 
@@ -28,7 +26,6 @@ describe("Mobile carousel", function() {
                 vis.push(jQuery(brandsBlock).find(activeBrands).length);
                 return vis;
             },aux.brandsBlock,aux.activeBrands)
-            .end()
             .then(function (visible) { 
                 if(visible[0] == 1) {
                     expect(visible[1]).toBe(1);

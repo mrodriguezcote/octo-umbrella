@@ -9,13 +9,11 @@ describe("Disabled short URLs", function() {
 
     beforeAll(function() { 
         xvfb.start(); 
-    });
-
-    beforeEach(function() { 
         browser = nightmare(site.electronOptions); 
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
 
@@ -54,7 +52,6 @@ describe("Disabled short URLs", function() {
                     .goto(site.adminCache)
                     .click(site.cacheFlush)
                     .wait(site.cacheFlushConfirm)
-                    .end()
                     .then(function() {
                         done();
                     })               
@@ -68,7 +65,6 @@ describe("Disabled short URLs", function() {
         browser
             .goto(site.homeUrl+settings.prodNamespace+aux.shortProduct.sku)
             .title()
-            .end()
             .then(function(pageTitle) {
                 expect(pageTitle).toBe(aux.fallback.title);
                 done();
@@ -82,7 +78,6 @@ describe("Disabled short URLs", function() {
         browser
             .goto(site.homeUrl+settings.catNamespace+aux.shortCategory.id)
             .title()
-            .end()
             .then(function(pageTitle) {
                 expect(pageTitle).toBe(aux.fallback.title);
                 done();
@@ -98,8 +93,6 @@ describe("Disabled short URLs", function() {
     it("feature disabled with disabled fallback and cache cleared", function(done) {
 
         browser
-            .goto(site.adminUrl)
-            .cookies.set(site.adminCookie.name, site.adminCookie.value)
             .goto(aux.adminShortUrls)
             .select(aux.config.enabled, 0)
             .select(aux.config.fallback, aux.disabledFallback.key)
@@ -125,7 +118,6 @@ describe("Disabled short URLs", function() {
                     .goto(site.adminCache)
                     .click(site.cacheFlush)
                     .wait(site.cacheFlushConfirm)
-                    .end()
                     .then(function() {
                         done();
                     })
@@ -146,7 +138,6 @@ describe("Disabled short URLs", function() {
                 browser
                     .goto(site.homeUrl+settings.catNamespace+aux.shortCategory.id)
                     .title()
-                    .end()
                     .then(function(pageTitle) {
                         expect(pageTitle).toBe('404 Not Found');
                         done();

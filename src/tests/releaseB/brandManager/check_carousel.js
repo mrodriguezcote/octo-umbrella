@@ -11,13 +11,11 @@ describe("Brand Manager", function() {
 
     beforeAll(function() { 
         xvfb.start(); 
-    });
-
-    beforeEach(function() { 
         browser = nightmare(site.electronOptions); 
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
 
@@ -44,7 +42,6 @@ describe("Brand Manager", function() {
                     .goto(site.adminCache)
                     .click(site.cacheFlush)
                     .wait(site.cacheFlushConfirm)
-                    .end()
                     .then(function() {
                         done();
                     })
@@ -60,7 +57,6 @@ describe("Brand Manager", function() {
             .evaluate(function(brandsWidget) {
                 return jQuery(brandsWidget).siblings().length;
             },aux.brandsWidget)
-            .end()
             .then(function (visible) {
                 expect(visible).toBe(0);
                 done();
@@ -73,8 +69,6 @@ describe("Brand Manager", function() {
     it("enabled and cache cleared", function(done) {
 
         browser
-            .goto(site.adminUrl)
-            .cookies.set(site.adminCookie.name, site.adminCookie.value)
             .goto(aux.adminFooter)
             .select(aux.adminBrandsEnabled, 1)
             .wait(1000)
@@ -91,7 +85,6 @@ describe("Brand Manager", function() {
                     .goto(site.adminCache)
                     .click(site.cacheFlush)
                     .wait(site.cacheFlushConfirm)
-                    .end()
                     .then(function() {
                         done();
                     })                
@@ -110,7 +103,6 @@ describe("Brand Manager", function() {
                 vis.push(jQuery(brandsBlock).find(activeBrands).length);
                 return vis;
             },aux.brandsBlock,aux.activeBrands)
-            .end()
             .then(function (visible) {
                 expect(visible[0]).toBe(1); 
                 expect(visible[1]).toBe(aux.minBrands); 
@@ -124,7 +116,6 @@ describe("Brand Manager", function() {
     it("image resources available", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .evaluate(function(brandImage) {
                 imgSrcs = [];
                 jQuery(brandImage).each(function() {
@@ -133,7 +124,6 @@ describe("Brand Manager", function() {
                 })
                 return imgSrcs;
             },aux.brandImage)
-            .end()
             .then(function (imgSrcs) {
                 var badImages = [];
                 var goodImages = [];
@@ -166,14 +156,12 @@ describe("Brand Manager", function() {
     it("carousel dimensions maintained", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .evaluate(function(brandsBlock) {
                 dim = [];
                 dim.push(jQuery(brandsBlock).height());
                 dim.push(jQuery(brandsBlock).width());
                 return dim;
             },aux.brandsBlock)
-            .end()
             .then(function (dimensions) {
                 expect(dimensions[0]).toBe(aux.brandsHeight); 
                 expect(dimensions[1]).toBe(aux.brandsWidth);

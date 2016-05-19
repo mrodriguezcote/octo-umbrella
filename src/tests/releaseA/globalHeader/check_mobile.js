@@ -7,13 +7,11 @@ describe("Mobile", function() {
    
     beforeAll(function() { 
         xvfb.start(); 
-    });
-
-    beforeEach(function() { 
         browser = nightmare(site.electronMobileOptions); 
     });
     
-    afterAll(function() { 
+    afterAll(function() {
+        browser.end().then(); 
         xvfb.stop(); 
     });
 
@@ -29,7 +27,6 @@ describe("Mobile", function() {
                 vis.push(jQuery(logo.mobile).is(':visible'));
                 return vis;
             },aux.logo)
-            .end()
             .then(function (visible) { 
                 expect(visible[0]).toBe(false); 
                 expect(visible[1]).toBe(true);
@@ -42,11 +39,9 @@ describe("Mobile", function() {
     it("hamburger menu displays", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .evaluate(function(hamburger) {
                 return jQuery(hamburger).is(':visible');
             },aux.hamburger)
-            .end()
             .then(function (visible) { 
                 expect(visible).toBe(true);
                 done();

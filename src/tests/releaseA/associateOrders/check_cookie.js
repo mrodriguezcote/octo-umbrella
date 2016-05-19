@@ -12,13 +12,11 @@ describe("Associate Orders cookie", function() {
    
     beforeAll(function() { 
         xvfb.start(); 
-    });
-
-    beforeEach(function() { 
         browser = nightmare(site.electronOptions); 
     });
     
-    afterAll(function() { 
+    afterAll(function() {
+        browser.end().then(); 
         xvfb.stop(); 
     });
 
@@ -33,7 +31,6 @@ describe("Associate Orders cookie", function() {
             .evaluate(function(adminCookieName) {
                 return jQuery(adminCookieName).val();
             },aux.adminCookieName)
-            .end()
             .then(function (config) {
                 cookieName = config;
                 expect(config).toBeDefined();
@@ -53,7 +50,6 @@ describe("Associate Orders cookie", function() {
             .click(aux.storeIdSubmit)
             .wait(1000)
             .cookies.get(cookieName)
-            .end()
             .then(function (cookie) {
                 expect(cookie.value).toEqual(testStoreNum);
                 done();

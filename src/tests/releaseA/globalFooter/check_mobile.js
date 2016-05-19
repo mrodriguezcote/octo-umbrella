@@ -6,14 +6,12 @@ var aux = require('./aux.js');
 describe("Mobile", function() {
    
     beforeAll(function() { 
-        xvfb.start(); 
-    });
-
-    beforeEach(function() { 
+        xvfb.start();
         browser = nightmare(site.electronMobileOptions); 
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
 
@@ -31,7 +29,6 @@ describe("Mobile", function() {
                 })
                 return vis;
             },aux.socialBlock)
-            .end()
             .then(function (visible) { 
                 expect(visible).toBeLessThan(aux.socialLinks+1);
                 done();
@@ -44,14 +41,12 @@ describe("Mobile", function() {
     it("footer accordion displays six collapsed tabs", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .evaluate(function(footerLinksColumn, footerLinksExpanded) {
                 tabs = [];
                 tabs.push(jQuery(footerLinksColumn).length);
                 tabs.push(jQuery(footerLinksExpanded).length);
                 return tabs;
             },aux.footerLinksColumn,aux.footerLinksExpanded)
-            .end()
             .then(function (tabs) { 
                 expect(tabs[0]).toBe(aux.columns);
                 expect(tabs[1]).toBe(0);
@@ -64,12 +59,10 @@ describe("Mobile", function() {
     it("accordion tab expands on click", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .click(aux.lastColumn)
             .evaluate(function(footerLinksExpanded) {
                 return jQuery(footerLinksExpanded).length;
             },aux.footerLinksExpanded)
-            .end()
             .then(function (expanded) { 
                 expect(expanded).toBe(1);
                 done();
@@ -81,11 +74,9 @@ describe("Mobile", function() {
     it("Copyright block displays", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .evaluate(function(copyrightBlock) {
                 return jQuery(copyrightBlock).is(':visible');
             },aux.copyrightBlock)
-            .end()
             .then(function (visible) { 
                 expect(visible).toBe(true);
                 done();

@@ -7,14 +7,12 @@ var aux = require('./aux.js');
 describe("Global Footer dimensions...", function() {
 
     beforeAll(function() { 
-        xvfb.start(); 
-    });
-
-    beforeEach(function() { 
+        xvfb.start();
         browser = nightmare(site.electronOptions); 
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
 
@@ -30,7 +28,6 @@ describe("Global Footer dimensions...", function() {
                 dim.push(jQuery(newsletterField).width());
                 return dim;
             },aux.newsletterField)
-            .end()
             .then(function (dimensions) { 
                 expect(dimensions[0]).toBe(aux.newsletterHeight); 
                 expect(dimensions[1]).toBe(aux.newsletterWidth);
@@ -44,14 +41,12 @@ describe("Global Footer dimensions...", function() {
     it("zip code field dimensions maintained", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .evaluate(function(zipField) {
                 dim = [];
                 dim.push(jQuery(zipField).height());
                 dim.push(jQuery(zipField).width());
                 return dim;
             },aux.zipField)
-            .end()
             .then(function (dimensions) { 
                 expect(dimensions[0]).toBe(aux.footerZipHeight); 
                 expect(dimensions[1]).toBe(aux.footerZipWidth);
