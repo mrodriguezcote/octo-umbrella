@@ -1,7 +1,5 @@
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
-var async = require("async");
-var request = require('request');
 var site = require('../../website.js');
 var aux = require('./aux.js');
 
