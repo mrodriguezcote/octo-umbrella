@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+ <testsuite name="Loading" timestamp="2016-05-19T18:11:19" hostname="localhost" time="1.975" errors="0" tests="6" skipped="0" disabled="0" failures="0">
+  <testcase classname="Loading" name="homepage" time="0.126" />
+  <testcase classname="Loading" name="admin" time="0.304" />
+  <testcase classname="Loading" name="login page" time="0.563" />
+  <testcase classname="Loading" name="category page" time="0.127" />
+  <testcase classname="Loading" name="product page" time="0.119" />
+  <testcase classname="Loading" name="cart page" time="0.736" />
+ </testsuite>
+ <testsuite name="Loading" timestamp="2016-05-19T18:11:21" hostname="localhost" time="0.229" errors="0" tests="2" skipped="0" disabled="0" failures="2">
+  <testcase classname="Loading" name="staging homepage" time="0.119">
+   <failure type="exception" message="Failed: whitescreen on homepage: Unable to proceed: the maintenance mode is enabled."><![CDATA[Error: Failed: whitescreen on homepage: Unable to proceed: the maintenance mode is enabled. 
+    at stack (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1577:17)
+    at buildExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1547:14)
+    at Spec.Env.expectationResultFactory (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:638:18)
+    at Spec.addExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:330:34)
+    at Env.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:987:25)
+    at jasmineInterface.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:3423:23)
+    at Request._callback (/www/octo-umbrella/src/tests/smoke/access/check_staging.js:19:17)
+    at Request.self.callback (/www/octo-umbrella/src/node_modules/request/request.js:200:22)
+    at emitTwo (events.js:100:13)
+    at Request.emit (events.js:185:7)]]>
+   </failure>
+  </testcase>
+  <testcase classname="Loading" name="staging admin" time="0.11">
+   <failure type="exception" message="Failed: whitescreen on admin: Unable to proceed: the maintenance mode is enabled."><![CDATA[Error: Failed: whitescreen on admin: Unable to proceed: the maintenance mode is enabled. 
+    at stack (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1577:17)
+    at buildExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1547:14)
+    at Spec.Env.expectationResultFactory (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:638:18)
+    at Spec.addExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:330:34)
+    at Env.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:987:25)
+    at jasmineInterface.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:3423:23)
+    at Request._callback (/www/octo-umbrella/src/tests/smoke/access/check_staging.js:49:17)
+    at Request.self.callback (/www/octo-umbrella/src/node_modules/request/request.js:200:22)
+    at emitTwo (events.js:100:13)
+    at Request.emit (events.js:185:7)]]>
+   </failure>
+  </testcase>
+ </testsuite>
+</testsuites>

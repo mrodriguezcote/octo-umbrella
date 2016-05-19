@@ -1,7 +1,7 @@
 /* Preliminary configuration file for sitewide variables */
 
 //Electron configuration options
-var electronShow = false;
+var electronShow = true;
 var electronPartition = 'nopersist';
 var electronOptions = {
   show: electronShow,
@@ -20,12 +20,14 @@ var electronMobileOptions = {
   }
 }
 
-//General URLs:
+//Staging
+var stageHomeUrl = 'http://staging.reeds.com/';
+var stageAdminUrl = 'http://staging.reeds.com/admin/admin/';
 var styleGuide = 'http://staging.reeds.com/styleguide';
+
+//General URLs:
 var homeUrl = 'http://rds.qa-1.blueacorn.net/';
-//var homeUrl = 'http://staging.reeds.com/';
 var adminUrl = 'http://rds.qa-1.blueacorn.net/admin/admin/';
-//var adminUrl = 'http://staging.reeds.com/admin/admin/'
 var adminCache = adminUrl+'cache/'
 var checkoutUrl = homeUrl+'checkout/';
 var cartUrl = homeUrl+'checkout/cart/';
@@ -58,6 +60,8 @@ var addToCartConfirm = '.message-success';
 //Exporting
 exports.electronOptions = electronOptions;
 exports.electronMobileOptions = electronMobileOptions;
+exports.stageHomeUrl = stageHomeUrl;
+exports.stageAdminUrl = stageAdminUrl;
 exports.styleGuide = styleGuide;
 exports.homeUrl = homeUrl;
 exports.adminUrl = adminUrl;
