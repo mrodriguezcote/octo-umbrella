@@ -1,7 +1,7 @@
 /* Preliminary configuration file for sitewide variables */
 
 //Electron configuration options
-var electronShow = true;
+var electronShow = false;
 var electronPartition = 'nopersist';
 var electronOptions = {
   show: electronShow,

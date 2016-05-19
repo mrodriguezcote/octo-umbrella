@@ -1,27 +1,22 @@
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
-var request = require('request');
 var site = require('../../website.js');
 var aux = require('./aux.js');
 
-describe("Adding", function() {
+describe("Adding product to cart", function() {
 
     beforeAll(function() { 
         xvfb.start(); 
-    });
-
-    beforeEach(function() { 
         browser = nightmare(site.electronOptions); 
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
 
-    /* Add a simple product to cart and ensure the cart page loads correctly
-    TODO: Add a check for then status is 200 but "exception" or "warning"
-    is in the body */
-    it("simple product to cart", function(done) {
+    /* Ensure the cart page display */
+    it("page loads", function(done) {
 
         browser
             .goto(site.productUrl)
@@ -30,21 +25,39 @@ describe("Adding", function() {
             .wait(site.addToCartConfirm)
             .goto(site.cartUrl)
             .title()
-            .end()
-            .then(function (response) {
-                if(response.code === 404) {
-                    fail('404 on cart page with simple');
-                    done();
-                }                
-                else if(response.code === 500) {
-                    fail('whitescreen on cart page with simple');
-                    done();
-                }
-                else if(response.code === 200) {
-                    done();
-                }
+            .then(function (title) {
+                expect(title).toBe('Shopping Cart');
+                done();
             })          
 
-    }, aux.specTime);;
+    }, aux.specTime);
+
+    /* Ensure the item url is in the cart */
+    it("item is in cart", function(done) {
+
+        browser
+            .evaluate(function(itemInfo) {
+                return jQuery(itemInfo).children()[0].children[0].href+'/';
+            },aux.itemInfo)
+            .then(function (info) {
+                expect(info).toBe(site.productUrl);
+                done();
+            })          
+
+    }, aux.specTime);
+
+    /* Ensure the mini cart badge count updates */
+    it("mini cart count updates", function(done) {
+
+        browser
+            .evaluate(function(counterLabel) {
+                return parseInt(jQuery(counterLabel).text().trim().charAt(0));
+            },aux.counterLabel)
+            .then(function (count) {
+                expect(count).toBe(1);
+                done();
+            })          
+
+    }, aux.specTime);
 
 });
