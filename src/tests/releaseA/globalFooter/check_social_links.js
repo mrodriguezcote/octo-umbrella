@@ -8,14 +8,12 @@ page remmains the RDS homepage URL */
 describe("Social Links", function() {
 
     beforeAll(function() { 
-        xvfb.start(); 
-    });
-
-    beforeEach(function() { 
-        browser = nightmare(site.electronOptions); 
+        xvfb.start();
+        browser = nightmare(site.electronOptions);  
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
 
@@ -25,7 +23,6 @@ describe("Social Links", function() {
             .goto(site.homeUrl)
             .click(aux.facebookSelector)
             .url()
-            .end()
             .then(function(url) {
                 expect(url).toBe(site.homeUrl);
                 done();
@@ -36,10 +33,8 @@ describe("Social Links", function() {
     it("Pinterest link opens in different tab", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .click(aux.pinterestSelector)
             .url()
-            .end()
             .then(function(url) {
                 expect(url).toBe(site.homeUrl);
                 done();
@@ -50,10 +45,8 @@ describe("Social Links", function() {
     it("Twitter link opens in different tab", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .click(aux.twitterSelector)
             .url()
-            .end()
             .then(function(url) {
                 expect(url).toBe(site.homeUrl);
                 done();
@@ -64,10 +57,8 @@ describe("Social Links", function() {
     it("Youtube link opens in different tab", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .click(aux.youtubeSelector)
             .url()
-            .end()
             .then(function(url) {
                 expect(url).toBe(site.homeUrl);
                 done();
@@ -78,10 +69,8 @@ describe("Social Links", function() {
     it("Instagram link opens in different tab", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .click(aux.instagramSelector)
             .url()
-            .end()
             .then(function(url) {
                 expect(url).toBe(site.homeUrl);
                 done();
@@ -92,10 +81,8 @@ describe("Social Links", function() {
     it("Google Plus link opens in different tab", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .click(aux.googleplusSelector)
             .url()
-            .end()
             .then(function(url) {
                 expect(url).toBe(site.homeUrl);
                 done();
@@ -106,10 +93,8 @@ describe("Social Links", function() {
     it("Wanelo link opens in different tab", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .click(aux.waneloSelector)
             .url()
-            .end()
             .then(function(url) {
                 expect(url).toBe(site.homeUrl);
                 done();

@@ -8,13 +8,11 @@ describe("Main logo", function() {
 
     beforeAll(function() { 
         xvfb.start(); 
-    });
-
-    beforeEach(function() { 
         browser = nightmare(site.electronOptions); 
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
 
@@ -27,7 +25,6 @@ describe("Main logo", function() {
             .evaluate(function(logo) {
                 return jQuery(logo.desktop).attr('src');
             },aux.logo)
-            .end()
             .then(function (imageSrc) {
                 expect(imageSrc.length).toBeGreaterThan(0);
                 request(imageSrc, function (error, response, body) {
@@ -48,14 +45,12 @@ describe("Main logo", function() {
     it("displays desktop version", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .evaluate(function(logo) {
                 vis = [];
                 vis.push(jQuery(logo.desktop).is(':visible'));
                 vis.push(jQuery(logo.mobile).is(':visible'));
                 return vis;
             },aux.logo)
-            .end()
             .then(function (visible) { 
                 expect(visible[0]).toBe(true); 
                 expect(visible[1]).toBe(false);
@@ -73,7 +68,6 @@ describe("Main logo", function() {
             .evaluate(function(logo) {
                 return jQuery(logo.main).attr('href');
             },aux.logo)
-            .end()
             .then(function (link) { 
                 expect(link).toBe(site.homeUrl) 
                 done();

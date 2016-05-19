@@ -9,13 +9,11 @@ describe("Homepage", function() {
    
     beforeAll(function() { 
         xvfb.start(); 
-    });
-
-    beforeEach(function() { 
         browser = nightmare(site.electronOptions); 
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
 
@@ -26,7 +24,6 @@ describe("Homepage", function() {
             .evaluate(function(owlSelector) {
                 return jQuery(owlSelector).length;
             },aux.owlSelector)
-            .end()  
             .then(function (owls) {
                 expect(owls).toBe(aux.carousels);
                 done();
@@ -37,12 +34,10 @@ describe("Homepage", function() {
     it("sliders contain enough active items", function(done) {
         
         browser
-            .goto(site.homeUrl)
             .wait(4000)
             .evaluate(function(activeOwlItem) {
                 return jQuery(activeOwlItem).length
             },aux.activeOwlItem)
-            .end()  
             .then(function (owlItems) {
                 expect(owlItems).toBe((aux.carousels*5)-4);
                 done();
@@ -53,7 +48,6 @@ describe("Homepage", function() {
     it("all image resources available", function(done) {
         
         browser
-            .goto(site.homeUrl)
             .evaluate(function(imagesSelector) {
                 imgs = [];
                 jQuery(imagesSelector).each(function() {
@@ -61,7 +55,6 @@ describe("Homepage", function() {
                 })
                 return imgs;
             },aux.imagesSelector)
-            .end()  
             .then(function (images) {
                 var badImages = [];
                 var goodImages = [];
@@ -92,11 +85,9 @@ describe("Homepage", function() {
     it("all callout blocks display", function(done) {
         
         browser
-            .goto(site.homeUrl)
             .evaluate(function(calloutSelector) {
                 return jQuery(calloutSelector).length;
             },aux.calloutSelector)
-            .end()  
             .then(function (callouts) {
                 expect(callouts).toBe(aux.callouts);
                 done();

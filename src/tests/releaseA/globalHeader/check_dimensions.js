@@ -8,13 +8,11 @@ describe("Global Header dimensions", function() {
 
     beforeAll(function() { 
         xvfb.start(); 
-    });
-
-    beforeEach(function() { 
         browser = nightmare(site.electronOptions); 
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
 
@@ -26,7 +24,6 @@ describe("Global Header dimensions", function() {
             .evaluate(function(headerBlock) {
                 return jQuery(headerBlock).width();
             },aux.headerBlock)
-            .end()
             .then(function (width) { 
                 expect(width).toBe(aux.headerWidth); 
                 done();
@@ -38,14 +35,12 @@ describe("Global Header dimensions", function() {
     it("main logo dimensions maintained", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .evaluate(function(logo) {
                 dim = [];
                 dim.push(jQuery(logo.main).height());
                 dim.push(jQuery(logo.main).width());
                 return dim;
             },aux.logo)
-            .end()
             .then(function (dimensions) { 
                 expect(dimensions[0]).toBe(aux.logoHeight); 
                 expect(dimensions[1]).toBe(aux.logoWidth);
@@ -58,14 +53,12 @@ describe("Global Header dimensions", function() {
     it("search bar dimensions maintained", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .evaluate(function(searchField) {
                 dim = [];
                 dim.push(jQuery(searchField).height());
                 dim.push(jQuery(searchField).width());
                 return dim;
             },aux.searchField)
-            .end()
             .then(function (dimensions) { 
                 expect(dimensions[0]).toBe(aux.searchHeight); 
                 expect(dimensions[1]).toBe(aux.searchWidth);

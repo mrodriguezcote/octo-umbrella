@@ -11,13 +11,11 @@ describe("Global Footer", function() {
 
     beforeAll(function() { 
         xvfb.start(); 
-    });
-
-    beforeEach(function() { 
         browser = nightmare(site.electronOptions); 
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
 
@@ -41,7 +39,6 @@ describe("Global Footer", function() {
                 set.push(jQuery(adminSocialUrls.wanelo).val());
                 return set; 
             },aux.adminSocialEnabled,aux.adminSocialUrls)
-            .end()
             .then(function (set) {
                 settings = {
                     socialEnabled: set[0],
@@ -67,7 +64,6 @@ describe("Global Footer", function() {
             .evaluate(function(socialBlock) {
                 return jQuery(socialBlock).length;
             },aux.socialBlock)
-            .end()
             .then(function (visible) {
                 if(settings.socialEnabled) { 
                     expect(visible).toBe(1); 
@@ -88,11 +84,9 @@ describe("Global Footer", function() {
     it("newsletter field contains correct placeholder", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .evaluate(function(newsletterField) {
                 return jQuery(newsletterField).attr('placeholder');
             },aux.newsletterField)
-            .end()
             .then(function (text) { 
                 expect(text).toBe(aux.newsletterText);
                 done();
@@ -104,11 +98,9 @@ describe("Global Footer", function() {
     it("footer links display in six columns", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .evaluate(function(footerLinksBlock) {
                 return jQuery(footerLinksBlock).children().length;
             },aux.footerLinksBlock)
-            .end()
             .then(function (cols) { 
                 expect(cols).toBe(aux.columns);
                 done();
@@ -120,11 +112,9 @@ describe("Global Footer", function() {
     it("zip code field contains correct placeholder", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .evaluate(function(zipField) {
                 return jQuery(jQuery(zipField).children()[0]).attr('placeholder');
             },aux.zipField)
-            .end()
             .then(function (text) { 
                 expect(text).toBe(aux.footerZipText);
                 done();

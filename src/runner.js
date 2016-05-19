@@ -2,7 +2,7 @@ if(!process.argv[2]) {
 	var Jasmine = require('jasmine'), jasmine = new Jasmine;
 	var reporters = require('jasmine-reporters');
 	var junitReporter = new reporters.JUnitXmlReporter({
-	    savePath: 'tiers/simple/',
+	    savePath: '.',
 	    consolidateAll: true
 	});
 	jasmine.loadConfigFile('tiers/simple/jasmine.json');
@@ -20,7 +20,7 @@ else if(process.argv[2] == '1') {
 	var Jasmine = require('jasmine'), jasmine = new Jasmine;
 	var reporters = require('jasmine-reporters');
 	var junitReporter = new reporters.JUnitXmlReporter({
-	    savePath: './tiers/tier1/',
+	    savePath: '.',
 	    consolidateAll: true
 	});
 	jasmine.loadConfigFile('./tiers/tier1/jasmine.json');
@@ -38,7 +38,7 @@ else if(process.argv[2] == '2') {
 	var Jasmine = require('jasmine'), jasmine = new Jasmine;
 	var reporters = require('jasmine-reporters');
 	var junitReporter = new reporters.JUnitXmlReporter({
-	    savePath: './tiers/tier1/',
+	    savePath: '.',
 	    consolidateAll: true
 	});
 	jasmine.loadConfigFile('./tiers/tier1/jasmine.json');
@@ -49,7 +49,7 @@ else if(process.argv[2] == '2') {
 	    	var Jasmine = require('jasmine'), jasmine = new Jasmine;
 	    	var reporters = require('jasmine-reporters');
 			var junitReporter2 = new reporters.JUnitXmlReporter({
-			    savePath: './tiers/tier2/',
+			    savePath: '.',
 			    consolidateAll: true
 			});
 	    	jasmine.loadConfigFile('./tiers/tier2/jasmine.json');
@@ -72,7 +72,7 @@ else if(process.argv[2] == '3') {
 	var Jasmine = require('jasmine'), jasmine = new Jasmine;
 	var reporters = require('jasmine-reporters');
 	var junitReporter = new reporters.JUnitXmlReporter({
-	    savePath: './tiers/tier1/',
+	    savePath: '.',
 	    consolidateAll: true
 	});
 	jasmine.loadConfigFile('./tiers/tier1/jasmine.json');
@@ -83,7 +83,7 @@ else if(process.argv[2] == '3') {
 	    	var Jasmine = require('jasmine'), jasmine = new Jasmine;
 	    	var reporters = require('jasmine-reporters');
 			var junitReporter2 = new reporters.JUnitXmlReporter({
-			    savePath: './tiers/tier2/',
+			    savePath: '.',
 			    consolidateAll: true
 			});
 	    	jasmine.loadConfigFile('tiers/tier2/jasmine.json');
@@ -94,7 +94,7 @@ else if(process.argv[2] == '3') {
 			    	var Jasmine = require('jasmine'), jasmine = new Jasmine;
 			    	var reporters = require('jasmine-reporters');
 					var junitReporter3 = new reporters.JUnitXmlReporter({
-					    savePath: './tiers/tier3/',
+					    savePath: '.',
 					    consolidateAll: true
 					});
 			    	jasmine.loadConfigFile('./tiers/tier3/jasmine.json');

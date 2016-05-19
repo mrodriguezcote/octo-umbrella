@@ -10,13 +10,11 @@ describe("Global Header", function() {
 
     beforeAll(function() { 
         xvfb.start(); 
-    });
-
-    beforeEach(function() { 
         browser = nightmare(site.electronOptions); 
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
 
@@ -41,7 +39,6 @@ describe("Global Header", function() {
                 set.push(jQuery(adminReedsCard.page).text());
                 return set; 
             },aux.adminChatEnabled,aux.adminPhone,aux.adminStoreLocator,aux.adminReedsCard)
-            .end()
             .then(function (set) {
                 settings = {
                     chatEnabled: set[0],
@@ -75,7 +72,6 @@ describe("Global Header", function() {
                         state.push(jQuery(headerLinks.reedsCard).length);
                         return state;
                     },aux.headerLinks)
-                    .end()
                     .then(function (linksVisible) {
                         callback(null, linksVisible);
                     })
@@ -103,15 +99,16 @@ describe("Global Header", function() {
     it("phone link directs to correct page", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .click(aux.phoneLink)
             .wait()
             .title()
-            .end()
             .then(function (title) {
                 if(settings.phoneEnabled) { 
                     expect(title).toBe(settings.phonePage); 
                 }
+            })
+            .then(function() {
+                browser.back();
                 done();
             })
 
@@ -122,11 +119,9 @@ describe("Global Header", function() {
     it("locator dropdown contains correct title", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .evaluate(function(headerLinks) {
                 return jQuery(jQuery(headerLinks.storeLocator).children()[1].children[1]).text();
             },aux.headerLinks)
-            .end()
             .then(function (title) {
                 if(settings.locatorEnabled) { 
                     expect(title).toBe(settings.locatorTitle); 
@@ -140,15 +135,16 @@ describe("Global Header", function() {
     it("card link directs to correct page", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .click(aux.cardLink)
             .wait()
             .title()
-            .end()
             .then(function (title) {
                 if(settings.cardEnabled) { 
                     expect(title).toBe(settings.cardPage); 
                 }
+            })
+            .then(function() {
+                browser.back();
                 done();
             })
 
@@ -159,11 +155,9 @@ describe("Global Header", function() {
     it("card dropdown contains correct title", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .evaluate(function(headerLinks) {
                 return jQuery(jQuery(headerLinks.reedsCard).children()[1].children[1]).text();
             },aux.headerLinks)
-            .end()
             .then(function (title) {
                 if(settings.cardEnabled) { 
                     expect(title).toBe(settings.cardTitle);
@@ -177,11 +171,9 @@ describe("Global Header", function() {
     it("search field contains correct placehoder", function(done) {
 
         browser
-            .goto(site.homeUrl)
             .evaluate(function(searchField) {
                 return jQuery(jQuery(searchField).children()[0].children[1].children[0]).attr('placeholder');
             },aux.searchField)
-            .end()
             .then(function (text) {
                 expect(text).toBe(aux.searchText);
                 done();

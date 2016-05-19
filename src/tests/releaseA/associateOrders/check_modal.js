@@ -11,41 +11,13 @@ describe("Associate Orders modal", function() {
    
     beforeAll(function() { 
         xvfb.start(); 
-    });
-
-    beforeEach(function() { 
         browser = nightmare(site.electronOptions); 
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
-
-    /* Configure browser with store ID, sdd a product to cart, proceed to checkout 
-    and ensure that the modal displays */
-    it("displays before checkout if cookie is set", function(done) {
-
-        browser
-            .goto(aux.storeConfig)
-            .type(aux.storeIdField, testStoreNum)
-            .click(aux.storeIdSubmit)
-            .wait(3000)
-            .goto(site.productUrl)
-            .wait(1000)
-            .click(site.addToCart)
-            .wait(site.addToCartConfirm)
-            .goto(site.checkoutUrl)
-            .wait(1000)
-            .evaluate(function(modalTitle) {
-                return jQuery(modalTitle).text()
-            },aux.modalTitle)
-            .end()
-            .then(function (title) {
-                expect(title).toBe("Store # "+testStoreNum);
-                done();
-            })
-
-    }, aux.specTime);
 
     /* Add a product to cart, proceed to checkout and ensure that the modal does
     not display since there is no cookie set */
@@ -61,7 +33,6 @@ describe("Associate Orders modal", function() {
             .evaluate(function(modalTitle) {
                 return jQuery(modalTitle).is(':visible');
             },aux.modalTitle)
-            .end()
             .then(function (modalVisible) {
                 expect(modalVisible).toBe(false);
                 done();
@@ -69,5 +40,25 @@ describe("Associate Orders modal", function() {
 
     }, aux.specTime);
 
+    /* Configure browser with store ID, sdd a product to cart, proceed to checkout 
+    and ensure that the modal displays */
+    it("displays before checkout if cookie is set", function(done) {
+
+        browser
+            .goto(aux.storeConfig)
+            .type(aux.storeIdField, testStoreNum)
+            .click(aux.storeIdSubmit)
+            .wait(3000)
+            .goto(site.checkoutUrl)
+            .wait(1000)
+            .evaluate(function(modalTitle) {
+                return jQuery(modalTitle).text()
+            },aux.modalTitle)
+            .then(function (title) {
+                expect(title).toBe("Store # "+testStoreNum);
+                done();
+            })
+
+    }, aux.specTime);
 
 });
