@@ -1,7 +1,7 @@
 /* Preliminary configuration file for sitewide variables */
 
 //Electron configuration options
-var electronShow = true;
+var electronShow = false;
 var electronPartition = 'nopersist';
 var electronOptions = {
   show: electronShow,
@@ -39,7 +39,7 @@ var productUrl = homeUrl+'batest.html/';
 //For logging in admin on page load:
 var adminCookie = {
   name: 'admin',
-  value: 'e3e84cd0c721d0b3c9f8b911033513bb'
+  value: 'cf8e8d9de5faecb247ba20e45a0785ac'
 }
 
 //Test Catalog Pages:
