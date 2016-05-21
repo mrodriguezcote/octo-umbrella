@@ -1,4 +1,4 @@
-// var site = require('../../website.js');
+// var site = require('../../../testData/site/website.js');
 // var aux = require('./aux.js');
 // var nightmare = require('nightmare'), browser;
 

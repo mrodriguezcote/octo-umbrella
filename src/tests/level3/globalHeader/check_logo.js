@@ -1,7 +1,7 @@
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
 var request = require('request');
-var site = require('../../../website.js');
+var site = require('../../../testData/site/website.js');
 var aux = require('./aux.js');
 
 describe("Main logo", function() {

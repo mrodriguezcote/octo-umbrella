@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
- <testsuite name="Chache" timestamp="2016-05-21T03:13:50" hostname="localhost" time="11.263" errors="0" tests="1" skipped="0" disabled="0" failures="0">
-  <testcase classname="Chache" name="can be cleared in admin" time="11.252" />
+ <testsuite name="Loading" timestamp="2016-05-21T04:43:36" hostname="localhost" time="9.791" errors="0" tests="6" skipped="0" disabled="0" failures="0">
+  <testcase classname="Loading" name="homepage" time="3.119" />
+  <testcase classname="Loading" name="admin" time="0.978" />
+  <testcase classname="Loading" name="login page" time="1" />
+  <testcase classname="Loading" name="category page" time="1.614" />
+  <testcase classname="Loading" name="product page" time="1.916" />
+  <testcase classname="Loading" name="cart page" time="1.162" />
+ </testsuite>
+ <testsuite name="Loading" timestamp="2016-05-21T04:43:45" hostname="localhost" time="8.011" errors="0" tests="2" skipped="0" disabled="0" failures="2">
+  <testcase classname="Loading" name="staging homepage" time="4.009">
+   <failure type="exception" message="Error: Timeout - Async callback was not invoked within timeout specified by jasmine.DEFAULT_TIMEOUT_INTERVAL."><![CDATA[Error: Timeout - Async callback was not invoked within timeout specified by jasmine.DEFAULT_TIMEOUT_INTERVAL.
+    at null._onTimeout (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1909:23)
+    at Timer.listOnTimeout (timers.js:92:15)]]>
+   </failure>
+  </testcase>
+  <testcase classname="Loading" name="staging admin" time="4.002">
+   <failure type="exception" message="Error: Timeout - Async callback was not invoked within timeout specified by jasmine.DEFAULT_TIMEOUT_INTERVAL."><![CDATA[Error: Timeout - Async callback was not invoked within timeout specified by jasmine.DEFAULT_TIMEOUT_INTERVAL.
+    at null._onTimeout (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1909:23)
+    at Timer.listOnTimeout (timers.js:92:15)]]>
+   </failure>
+  </testcase>
  </testsuite>
 </testsuites>

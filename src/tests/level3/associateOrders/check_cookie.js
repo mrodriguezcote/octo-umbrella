@@ -1,7 +1,7 @@
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
 var randomstring = require("randomstring");
-var site = require('../../../website.js');
+var site = require('../../../testData/site/website.js');
 var aux = require('./aux.js');
 
 var testStoreNum = randomstring.generate( {length: 5, charset: 'alphanumeric'} );
