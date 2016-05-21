@@ -1,6 +1,6 @@
 # octo-umbrella
 
-This project is a work-in-progress implementation of a test harness for the RDS client site. Running on node, it executes any combination of functional regression tests, reports on the test results, and integrates into the site deployment workflow. 
+This project is a work-in-progress implementation of a test harness for the RDS client site. Running on node, it executes a number of functional regression tests, reports on the test results, and integrates into the site deployment workflow. 
 
 The harness runs on OS X and Linux environments, as well as in Docker containers, therefore it can run on a local instance of the client site or on test environments.
 
