@@ -1,36 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
- <testsuite name="Brand Manager" timestamp="2016-05-20T16:41:51" hostname="localhost" time="36.715" errors="0" tests="6" skipped="0" disabled="0" failures="0">
-  <testcase classname="Brand Manager" name="disabled and cache cleared" time="12.326" />
-  <testcase classname="Brand Manager" name="carousel does not display when disabled" time="3.596" />
-  <testcase classname="Brand Manager" name="enabled and cache cleared" time="10.834" />
-  <testcase classname="Brand Manager" name="carousel displays with at least 5 brands" time="9.898" />
-  <testcase classname="Brand Manager" name="image resources available" time="0.047" />
-  <testcase classname="Brand Manager" name="carousel dimensions maintained" time="0.003" />
- </testsuite>
- <testsuite name="Mobile carousel" timestamp="2016-05-20T16:42:28" hostname="localhost" time="1.528" errors="0" tests="1" skipped="0" disabled="0" failures="0">
-  <testcase classname="Mobile carousel" name="single brand displays in brand manager if enabled" time="1.524" />
- </testsuite>
- <testsuite name="Homepage" timestamp="2016-05-20T16:42:29" hostname="localhost" time="5.522" errors="0" tests="4" skipped="0" disabled="0" failures="0">
-  <testcase classname="Homepage" name="all carousels display" time="1.391" />
-  <testcase classname="Homepage" name="sliders contain enough active items" time="4.003" />
-  <testcase classname="Homepage" name="all image resources available" time="0.122" />
-  <testcase classname="Homepage" name="all callout blocks display" time="0.002" />
- </testsuite>
- <testsuite name="Mobile homepage" timestamp="2016-05-20T16:42:35" hostname="localhost" time="1.504" errors="0" tests="2" skipped="0" disabled="0" failures="0">
-  <testcase classname="Mobile homepage" name="one owl item displays per slider" time="1.499" />
-  <testcase classname="Mobile homepage" name="all callout blocks display" time="0.002" />
- </testsuite>
- <testsuite name="Product Badges" timestamp="2016-05-20T16:42:36" hostname="localhost" time="23.434" errors="0" tests="4" skipped="0" disabled="0" failures="0">
-  <testcase classname="Product Badges" name="disabled and cache cleared" time="13.129" />
-  <testcase classname="Product Badges" name="do not display in product page" time="2.786" />
-  <testcase classname="Product Badges" name="do not display in category page" time="1.842" />
-  <testcase classname="Product Badges" name="do not display in cart" time="5.675" />
- </testsuite>
- <testsuite name="Product Badges" timestamp="2016-05-20T16:43:00" hostname="localhost" time="25.069" errors="0" tests="4" skipped="0" disabled="0" failures="0">
-  <testcase classname="Product Badges" name="enabled and cache cleared" time="14.057" />
-  <testcase classname="Product Badges" name="display in product page" time="2.962" />
-  <testcase classname="Product Badges" name="display in category page" time="1.91" />
-  <testcase classname="Product Badges" name="display in cart" time="6.136" />
+ <testsuite name="Chache" timestamp="2016-05-21T03:13:50" hostname="localhost" time="11.263" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="Chache" name="can be cleared in admin" time="11.252" />
  </testsuite>
 </testsuites>
