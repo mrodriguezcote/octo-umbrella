@@ -6,16 +6,6 @@ The harness runs on OS X and Linux environments, as well as in Docker containers
 
 The two main modules leveraged by the harness are [Jasmine](http://jasmine.github.io/) and [Nightmare] (https://github.com/segmentio/nightmare). Jasmine to organize and run the tests, and Nightmare to drive the browser interaction necessary to retrieve information that can be subject to tests. Nightmare itself is a browser automation library, running on top of a headless version of [Electron](https://github.com/electron/electron), a web framework developed by GitHub.
 
-##### Project Structure
-
-* src
-  * node_modules (all modules needed to run the harness)
-  * tests (all of the jasmine tests)
-  * testData (the results and the setup/teardown logic)
-  * testOrg (the test runner execution logic and configuration)
-  * package.json (dependency management)
-  * runner.js (the app executable)
-
 ### Test Design
 
 Tests can be of varying complexity, when running on a continuous integration server the most simple tests run first and the more complex tests only run if the previous ones pass. The following is an example of a simple test:
@@ -87,6 +77,22 @@ describe("Associate Orders", function() {
 });
 ```
 
-The `xvfb` module allows us to start and stop a virtual display framebuffer, needed for Nightmare to execute on Docker/Linux environments. The `browser` object is a Nightmare instance that navigates to the admin login page, places a session cookie, loads the feature configuration page, and retrieves the value of the configuraiton field, the test then checks the configuration field is populated
+The `xvfb` module allows us to start and stop a virtual display [framebuffer](https://www.npmjs.com/package/xvfb), needed for Nightmare to execute on Docker/Linux environments. The `browser` object is a Nightmare instance that navigates to the admin login page, places a session cookie, loads the feature configuration page, and retrieves the value of the configuraiton field, the test then checks the configuration field is populated
 
 Most of the time a test suite (`describe`) will contain more than one test (`it`). The tests within a test suite can be daisy-chained, with each test picking up the state of the site as the previous test left it. Since tests are always executed sequentially within their suites, it is possible to represent complex user interactions with a series of small tests.
+
+##### Project Structure
+
+* src
+  * node_modules (modules needed to run the harness)
+  * tests
+     * level1 - Simpler tests
+     * level2 - ..
+     * level3 - More complex tests
+  * testData
+     * reporter - results and reporting 
+     * website - global website variables (root URLs, admin creds, ..)
+  * testOrg
+     * levelConfig - jasmine spec loading files for each level 
+  * package.json (module dependency management)
+  * runner.js (app executable, execution logic)
