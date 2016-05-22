@@ -92,7 +92,7 @@ Most of the time a test suite (`describe`) will contain more than one test (`it`
   * testData
      * reporter - results and reporting 
      * website - global website variables (root URLs, admin creds, ..)
-  * testOrg
+  * testExec
      * levelConfig - jasmine spec loading files for each level 
   * package.json (module dependency management)
   * runner.js (app executable, execution logic)
