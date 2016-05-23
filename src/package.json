@@ -14,12 +14,14 @@
     "nightmare": "^2.3.0",
     "path": "*",
     "randomstring": "^1.1.4",
+    "replace": "^0.3.0",
     "request": "^2.70.0",
     "x-ray": "^2.2.0",
     "xvfb": "^0.2.3"
   },
   "scripts": {
-    "debug": "DEBUG=* npm start",
-    "start": "node runner"
+    "prestart": "node setup/scripts/*",
+    "start": "node runner",
+    "poststart": "node teardown/scripts/*"
   }
 }

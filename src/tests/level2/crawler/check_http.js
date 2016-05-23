@@ -1,4 +1,4 @@
-var site = require('../../../testData/site/website.js');
+var site = require('../../../setup/site/website.js');
 var aux = require('./aux.js');
 var Xray = require('x-ray'), xray = new Xray();
 var async = require('async');

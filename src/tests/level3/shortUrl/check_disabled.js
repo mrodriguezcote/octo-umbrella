@@ -1,6 +1,6 @@
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
-var site = require('../../../testData/site/website.js');
+var site = require('../../../setup/site/website.js');
 var aux = require('./aux.js');
 
 var settings = {};

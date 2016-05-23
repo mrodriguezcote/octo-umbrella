@@ -2,10 +2,10 @@ if(!process.argv[2] || process.argv[2] == '1') {
 	var Jasmine = require('jasmine'), jasmine = new Jasmine;
 	var reporters = require('jasmine-reporters');
 	var junitReporter = new reporters.JUnitXmlReporter({
-	    savePath: './testData/reporter',
+	    savePath: './teardown/reporter',
 	    consolidateAll: true
 	});
-	jasmine.loadConfigFile('./testExec/levelConfig/level1_jasmine.json');
+	jasmine.loadConfigFile('./setup/levelConfig/level1_jasmine.json');
 	jasmine.configureDefaultReporter({ showColors: true });
 	jasmine.addReporter(junitReporter);
 	jasmine.onComplete(function(passed) {
@@ -20,10 +20,10 @@ else if(process.argv[2] == '2') {
 	var Jasmine = require('jasmine'), jasmine = new Jasmine;
 	var reporters = require('jasmine-reporters');
 	var junitReporter = new reporters.JUnitXmlReporter({
-	    savePath: './testData/reporter',
+	    savePath: './teardown/reporter',
 	    consolidateAll: true
 	});
-	jasmine.loadConfigFile('./testExec/levelConfig/level1_jasmine.json');
+	jasmine.loadConfigFile('./setup/levelConfig/level1_jasmine.json');
 	jasmine.configureDefaultReporter({ showColors: true });
 	jasmine.addReporter(junitReporter);
 	jasmine.onComplete(function(passed) {
@@ -31,10 +31,10 @@ else if(process.argv[2] == '2') {
 	    	var Jasmine = require('jasmine'), jasmine = new Jasmine;
 	    	var reporters = require('jasmine-reporters');
 			var junitReporter2 = new reporters.JUnitXmlReporter({
-			    savePath: './testData/reporter',
+			    savePath: './teardown/reporter',
 			    consolidateAll: true
 			});
-	    	jasmine.loadConfigFile('./testExec/levelConfig/level2_jasmine.json');
+	    	jasmine.loadConfigFile('./setup/levelConfig/level2_jasmine.json');
 	    	jasmine.configureDefaultReporter({ showColors: true });
 	    	jasmine.addReporter(junitReporter2);
 
@@ -54,10 +54,10 @@ else if(process.argv[2] == '3') {
 	var Jasmine = require('jasmine'), jasmine = new Jasmine;
 	var reporters = require('jasmine-reporters');
 	var junitReporter = new reporters.JUnitXmlReporter({
-	    savePath: './testData/reporter',
+	    savePath: './teardown/reporter',
 	    consolidateAll: true
 	});
-	jasmine.loadConfigFile('./testExec/levelConfig/level1_jasmine.json');
+	jasmine.loadConfigFile('./setup/levelConfig/level1_jasmine.json');
 	jasmine.configureDefaultReporter({ showColors: true });
 	jasmine.addReporter(junitReporter);
 	jasmine.onComplete(function(passed) {
@@ -65,10 +65,10 @@ else if(process.argv[2] == '3') {
 	    	var Jasmine = require('jasmine'), jasmine = new Jasmine;
 	    	var reporters = require('jasmine-reporters');
 			var junitReporter2 = new reporters.JUnitXmlReporter({
-			    savePath: './testData/reporter',
+			    savePath: './teardown/reporter',
 			    consolidateAll: true
 			});
-	    	jasmine.loadConfigFile('testExec/levelConfig/level2_jasmine.json');
+	    	jasmine.loadConfigFile('setup/levelConfig/level2_jasmine.json');
 	    	jasmine.configureDefaultReporter({ showColors: true });
 	    	jasmine.addReporter(junitReporter2);
 			jasmine.onComplete(function(passed) {
@@ -76,10 +76,10 @@ else if(process.argv[2] == '3') {
 			    	var Jasmine = require('jasmine'), jasmine = new Jasmine;
 			    	var reporters = require('jasmine-reporters');
 					var junitReporter3 = new reporters.JUnitXmlReporter({
-					    savePath: './testData/reporter',
+					    savePath: './teardown/reporter',
 					    consolidateAll: true
 					});
-			    	jasmine.loadConfigFile('./testExec/levelConfig/level3_jasmine.json');
+			    	jasmine.loadConfigFile('./setup/levelConfig/level3_jasmine.json');
 			    	jasmine.configureDefaultReporter({ showColors: true });
 			    	jasmine.addReporter(junitReporter3);
 					jasmine.onComplete(function(passed) {

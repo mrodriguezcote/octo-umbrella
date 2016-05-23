@@ -2,7 +2,7 @@
 This file contains all feature-related artifacts such as URLs,
 admin configuration pages, feature-specific content, etc. */
 
-var site = require('../../../testData/site/website.js');
+var site = require('../../../setup/site/website.js');
 
 //Timeout for feature tests
 var specTime = 25000;
@@ -10,7 +10,7 @@ var specTime = 25000;
 
 //////////////////////// URLs ////////////////////////
 //Admin configuration page
-var adminFooter = site.adminUrl+'system_config/edit/section/ba_footer/';
+var adminFooter = site.adminUrl+'system_config/edit/section/ba_barter/';
 
 //////////////////////// VALUES ////////////////////////
 //Brands Block
@@ -20,7 +20,7 @@ var brandsWidth = 1024;
 
 //////////////////////// SELECTORS ////////////////////////
 //Admin Configuration
-var adminBrandsEnabled = '#ba_footer_brands_brands_block_enabled';
+var adminBrandsEnabled = '#ba_barter_brands_brands_block_enabled';
 var adminSave = '#save';
 var adminSaveConfirm = '.message.message-success.success';
 

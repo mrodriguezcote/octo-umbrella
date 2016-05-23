@@ -1,6 +1,6 @@
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
-var site = require('../../../testData/site/website.js');
+var site = require('../../../setup/site/website.js');
 var aux = require('./aux.js');
 
 describe("Global Footer dimensions...", function() {
@@ -47,8 +47,8 @@ describe("Global Footer dimensions...", function() {
                 return dim;
             },aux.zipField)
             .then(function (dimensions) { 
-                expect(dimensions[0]).toBe(aux.footerZipHeight); 
-                expect(dimensions[1]).toBe(aux.footerZipWidth);
+                expect(dimensions[0]).toBe(aux.barterZipHeight); 
+                expect(dimensions[1]).toBe(aux.barterZipWidth);
                 done();
             })
 

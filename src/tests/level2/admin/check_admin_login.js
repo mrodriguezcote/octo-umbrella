@@ -1,6 +1,7 @@
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
-var site = require('../../../testData/site/website.js');
+var replace = require('replace');
+var site = require('../../../setup/site/website.js');
 var aux = require('./aux.js');
 
 describe("Admin", function() {
@@ -18,19 +19,20 @@ describe("Admin", function() {
     /* Log into admin and ensure that the dashboard displays */
     it("frontend login successful", function(done) {
 
-            browser
-                .goto(site.adminUrl)
-                .type(aux.adminLoginInput.user, aux.adminLogin.user)
-                .type(aux.adminLoginInput.pass, aux.adminLogin.pass)
-                .click(aux.adminLoginButton)
-                .wait(aux.adminDashboard)
-                .title()
-                .then(function (title) {
-                    expect(title).toBe('Dashboard / Magento Admin');
-                    done();
-                })
+        browser
+            .goto(site.adminUrl)
+            .type(aux.adminLoginInput.user, aux.adminLogin.user)
+            .type(aux.adminLoginInput.pass, aux.adminLogin.pass)
+            .click(aux.adminLoginButton)
+            .wait(aux.adminDashboard)
+            .title()
+            .then(function (title) {
+                expect(title).toBe('Dashboard / Magento Admin');
+                done();
+            })
 
     }, aux.specTime);
+
 
 });
 
