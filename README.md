@@ -85,14 +85,16 @@ Most of the time a test suite (`describe`) will contain more than one test (`it`
 
 * src
   * node_modules (modules needed to run the harness)
+  * setup
+     * levelConfig - jasmine spec loading files for each level
+     * scripts - scripts to execute before test runner is engaged
+     * site - global website variables (root URLs, admin creds, ..)
+  * teardown
+     * reporter - results and reporting 
+     * scripts - scripts to execute after test runner is engaged
   * tests
      * level1 - Simpler tests
      * level2 - ..
      * level3 - More complex tests
-  * testData
-     * reporter - results and reporting 
-     * website - global website variables (root URLs, admin creds, ..)
-  * testExec
-     * levelConfig - jasmine spec loading files for each level 
   * package.json (module dependency management)
   * runner.js (app executable, execution logic)
