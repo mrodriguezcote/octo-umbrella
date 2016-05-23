@@ -30,9 +30,9 @@ async.series([
 			    callback(null, null);
 			})
 	},
-	function(callback) {
-		xvfb.stop(); 
+	function(callback) { 
 		browser.end().then();
+		xvfb.stop();
 		callback(null, null);
 	}],
 	function(err,results) {
