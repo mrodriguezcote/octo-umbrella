@@ -39,7 +39,7 @@ var productUrl = homeUrl+'batest.html/';
 //For logging in admin on page load:
 var adminCookie = {
   name: 'admin',
-  value: '92d5434b0f319b2773b0b75f46147930'
+  value: 'ADMIN_COOKIE_PLACEHOLDER'
 }
 
 //Test Catalog Pages:
