@@ -97,4 +97,4 @@ Most of the time a test suite (`describe`) will contain more than one test (`it`
      * level2 - ..
      * level3 - More complex tests
   * package.json (module dependency management)
-  * runner.js (app executable, execution logic)
+  * runner.js (test runner executable, execution logic)
