@@ -31,6 +31,7 @@ describe("Loading", function() {
             }
             else {
                 fail('unusual HTTP status received');
+                done();
             }
         })
 
@@ -61,6 +62,7 @@ describe("Loading", function() {
             }
             else {
                 fail('unusual HTTP status received');
+                done();
             }
         })
 
