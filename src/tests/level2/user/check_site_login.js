@@ -7,13 +7,11 @@ describe("User", function() {
    
     beforeAll(function() { 
         xvfb.start(); 
-    });
-
-    beforeEach(function() { 
         browser = nightmare(site.electronOptions); 
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
 
@@ -27,7 +25,6 @@ describe("User", function() {
             .click(aux.loginButton)
             .wait(aux.accountSidebar)
             .title()
-            .end()
             .then(function (title) {
                 expect(title).toBe('My Account')
                 done();

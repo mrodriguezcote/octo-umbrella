@@ -15,7 +15,8 @@ describe("Chache", function() {
         xvfb.stop(); 
     });
 
-   it("can be cleared in admin", function(done) {
+    /* Ensure cache can be cleared through admin without errors*/
+    it("can be cleared in admin", function(done) {
 
         browser
             .goto(site.adminUrl)

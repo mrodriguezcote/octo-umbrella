@@ -3,22 +3,20 @@ var nightmare = require('nightmare'), browser;
 var site = require('../../../testData/site/website.js');
 var aux = require('./aux.js');
 
-describe("User", function() {
+describe("Admin", function() {
        
     beforeAll(function() { 
-        xvfb.start(); 
-    });
-
-    beforeEach(function() { 
-        browser = nightmare(site.electronOptions); 
+        xvfb.start();
+        browser = nightmare(site.electronOptions);  
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
 
     /* Log into admin and ensure that the dashboard displays */
-    it("is able to log into admin", function(done) {
+    it("frontend login successful", function(done) {
 
             browser
                 .goto(site.adminUrl)
@@ -27,10 +25,8 @@ describe("User", function() {
                 .click(aux.adminLoginButton)
                 .wait(aux.adminDashboard)
                 .title()
-                .end()
                 .then(function (title) {
                     expect(title).toBe('Dashboard / Magento Admin');
-                    xvfb.stop();
                     done();
                 })
 

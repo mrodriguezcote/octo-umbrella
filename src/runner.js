@@ -5,7 +5,7 @@ if(!process.argv[2] || process.argv[2] == '1') {
 	    savePath: './testData/reporter',
 	    consolidateAll: true
 	});
-	jasmine.loadConfigFile('./testOrg/levelConfig/level1_jasmine.json');
+	jasmine.loadConfigFile('./testExec/levelConfig/level1_jasmine.json');
 	jasmine.configureDefaultReporter({ showColors: true });
 	jasmine.addReporter(junitReporter);
 	jasmine.onComplete(function(passed) {
@@ -23,7 +23,7 @@ else if(process.argv[2] == '2') {
 	    savePath: './testData/reporter',
 	    consolidateAll: true
 	});
-	jasmine.loadConfigFile('./testOrg/levelConfig/level1_jasmine.json');
+	jasmine.loadConfigFile('./testExec/levelConfig/level1_jasmine.json');
 	jasmine.configureDefaultReporter({ showColors: true });
 	jasmine.addReporter(junitReporter);
 	jasmine.onComplete(function(passed) {
@@ -34,7 +34,7 @@ else if(process.argv[2] == '2') {
 			    savePath: './testData/reporter',
 			    consolidateAll: true
 			});
-	    	jasmine.loadConfigFile('./testOrg/levelConfig/level2_jasmine.json');
+	    	jasmine.loadConfigFile('./testExec/levelConfig/level2_jasmine.json');
 	    	jasmine.configureDefaultReporter({ showColors: true });
 	    	jasmine.addReporter(junitReporter2);
 
@@ -57,7 +57,7 @@ else if(process.argv[2] == '3') {
 	    savePath: './testData/reporter',
 	    consolidateAll: true
 	});
-	jasmine.loadConfigFile('./testOrg/levelConfig/level1_jasmine.json');
+	jasmine.loadConfigFile('./testExec/levelConfig/level1_jasmine.json');
 	jasmine.configureDefaultReporter({ showColors: true });
 	jasmine.addReporter(junitReporter);
 	jasmine.onComplete(function(passed) {
@@ -68,7 +68,7 @@ else if(process.argv[2] == '3') {
 			    savePath: './testData/reporter',
 			    consolidateAll: true
 			});
-	    	jasmine.loadConfigFile('testOrg/levelConfig/level2_jasmine.json');
+	    	jasmine.loadConfigFile('testExec/levelConfig/level2_jasmine.json');
 	    	jasmine.configureDefaultReporter({ showColors: true });
 	    	jasmine.addReporter(junitReporter2);
 			jasmine.onComplete(function(passed) {
@@ -79,7 +79,7 @@ else if(process.argv[2] == '3') {
 					    savePath: './testData/reporter',
 					    consolidateAll: true
 					});
-			    	jasmine.loadConfigFile('./testOrg/levelConfig/level3_jasmine.json');
+			    	jasmine.loadConfigFile('./testExec/levelConfig/level3_jasmine.json');
 			    	jasmine.configureDefaultReporter({ showColors: true });
 			    	jasmine.addReporter(junitReporter3);
 					jasmine.onComplete(function(passed) {

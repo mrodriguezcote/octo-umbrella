@@ -2,12 +2,16 @@
 // var aux = require('./aux.js');
 // var nightmare = require('nightmare'), browser;
 
-// var expectedStyles;
-
 // xdescribe("User", function() {
    
-//     beforeEach(function() {
-//         browser = nightmare(site.electronOptions);
+//     beforeAll(function() { 
+//         xvfb.start(); 
+//         browser = nightmare(site.electronOptions); 
+//     });
+    
+//     afterAll(function() { 
+//         browser.end().then();
+//         xvfb.stop(); 
 //     });
 
 //     /* Register for an account through the front end and ensure
@@ -24,7 +28,6 @@
 //             .click(aux.registerButton)
 //             .wait(aux.accountSidebar)
 //             .title()
-//             .end()
 //             .then(function (title) {
 //                 expect(title).toBe('My Account')
 //                 done();
