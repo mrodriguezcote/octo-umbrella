@@ -1,6 +1,6 @@
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
-var site = require('../../../setup/site/website.js');
+var site = require('../../../setup/config/website.js');
 var aux = require('./aux.js');
 
 describe("Mobile", function() {
@@ -36,17 +36,17 @@ describe("Mobile", function() {
 
     }, aux.specTime);
 
-    /* Ensure the barter accordion block has six tabs, and that none
+    /* Ensure the footer accordion block has six tabs, and that none
     of the tabs are expanded on page load */
-    it("barter accordion displays six collapsed tabs", function(done) {
+    it("footer accordion displays six collapsed tabs", function(done) {
 
         browser
-            .evaluate(function(barterLinksColumn, barterLinksExpanded) {
+            .evaluate(function(footerLinksColumn, footerLinksExpanded) {
                 tabs = [];
-                tabs.push(jQuery(barterLinksColumn).length);
-                tabs.push(jQuery(barterLinksExpanded).length);
+                tabs.push(jQuery(footerLinksColumn).length);
+                tabs.push(jQuery(footerLinksExpanded).length);
                 return tabs;
-            },aux.barterLinksColumn,aux.barterLinksExpanded)
+            },aux.footerLinksColumn,aux.footerLinksExpanded)
             .then(function (tabs) { 
                 expect(tabs[0]).toBe(aux.columns);
                 expect(tabs[1]).toBe(0);
@@ -55,14 +55,14 @@ describe("Mobile", function() {
 
     }, aux.specTime);
 
-    /* Ensure the barter accordion tabs expand on click */
+    /* Ensure the footer accordion tabs expand on click */
     it("accordion tab expands on click", function(done) {
 
         browser
             .click(aux.lastColumn)
-            .evaluate(function(barterLinksExpanded) {
-                return jQuery(barterLinksExpanded).length;
-            },aux.barterLinksExpanded)
+            .evaluate(function(footerLinksExpanded) {
+                return jQuery(footerLinksExpanded).length;
+            },aux.footerLinksExpanded)
             .then(function (expanded) { 
                 expect(expanded).toBe(1);
                 done();

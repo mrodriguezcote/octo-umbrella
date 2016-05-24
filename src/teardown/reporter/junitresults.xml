@@ -1,41 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
- <testsuite name="Loading" timestamp="2016-05-23T03:11:07" hostname="localhost" time="6.086" errors="0" tests="6" skipped="0" disabled="0" failures="0">
-  <testcase classname="Loading" name="homepage" time="1.064" />
-  <testcase classname="Loading" name="admin" time="0.607" />
-  <testcase classname="Loading" name="login page" time="1.302" />
-  <testcase classname="Loading" name="category page" time="0.881" />
-  <testcase classname="Loading" name="product page" time="0.951" />
-  <testcase classname="Loading" name="cart page" time="1.281" />
+ <testsuite name="Admin" timestamp="2016-05-24T17:04:24" hostname="localhost" time="6.045" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="Admin" name="frontend login successful" time="6.035" />
  </testsuite>
- <testsuite name="Loading" timestamp="2016-05-23T03:11:14" hostname="localhost" time="8.011" errors="0" tests="2" skipped="0" disabled="0" failures="2">
-  <testcase classname="Loading" name="staging homepage" time="4.007">
-   <failure type="exception" message="Failed: server error"><![CDATA[Error: Failed: server error
-    at stack (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1577:17)
-    at buildExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1547:14)
-    at Spec.Env.expectationResultFactory (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:638:18)
-    at Spec.addExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:330:34)
-    at Env.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:987:25)
-    at jasmineInterface.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:3423:23)
-    at Request._callback (/www/octo-umbrella/src/tests/level1/access/check_staging.js:13:17)
-    at self.callback (/www/octo-umbrella/src/node_modules/request/request.js:200:22)
-    at emitOne (events.js:90:13)
-    at Request.emit (events.js:182:7)]]>
-   </failure>
-  </testcase>
-  <testcase classname="Loading" name="staging admin" time="4.004">
-   <failure type="exception" message="Failed: server error"><![CDATA[Error: Failed: server error
-    at stack (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1577:17)
-    at buildExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1547:14)
-    at Spec.Env.expectationResultFactory (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:638:18)
-    at Spec.addExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:330:34)
-    at Env.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:987:25)
-    at jasmineInterface.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:3423:23)
-    at Request._callback (/www/octo-umbrella/src/tests/level1/access/check_staging.js:50:17)
-    at self.callback (/www/octo-umbrella/src/node_modules/request/request.js:200:22)
-    at emitOne (events.js:90:13)
-    at Request.emit (events.js:182:7)]]>
-   </failure>
-  </testcase>
+ <testsuite name="Chache" timestamp="2016-05-24T17:04:30" hostname="localhost" time="8.069" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="Chache" name="can be cleared in admin" time="8.065" />
+ </testsuite>
+ <testsuite name="Adding product to cart" timestamp="2016-05-24T17:04:38" hostname="localhost" time="8.312" errors="0" tests="3" skipped="0" disabled="0" failures="0">
+  <testcase classname="Adding product to cart" name="page loads" time="8.299" />
+  <testcase classname="Adding product to cart" name="item is in cart" time="0.002" />
+  <testcase classname="Adding product to cart" name="mini cart count updates" time="0.007" />
+ </testsuite>
+ <testsuite name="Crawler" timestamp="2016-05-24T17:04:46" hostname="localhost" time="5.652" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+  <testcase classname="Crawler" name="enough links scraped from homepage" time="1.939" />
+  <testcase classname="Crawler" name="yields no 404 from any links" time="3.713" />
+ </testsuite>
+ <testsuite name="Style guide" timestamp="2016-05-24T17:04:52" hostname="localhost" time="2.989" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+  <testcase classname="Style guide" name="link styles retrieved from style guide" time="1.439" />
+  <testcase classname="Style guide" name="links from page follow style guide" time="1.549" />
+ </testsuite>
+ <testsuite name="User" timestamp="2016-05-24T17:04:55" hostname="localhost" time="7.349" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="User" name="is able to log into store front end" time="7.345" />
  </testsuite>
 </testsuites>

@@ -2,7 +2,7 @@ var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
 var async = require('async');
 var replace = require('replace');
-var site = require('../../setup/site/website.js');
+var site = require('../../setup/config/website.js');
 var aux = require('../../tests/level2/admin/aux.js');
 
 async.series([
@@ -23,7 +23,7 @@ async.series([
 				replace({
 					regex: 'ADMIN_COOKIE_PLACEHOLDER',
 					replacement: cookie.value,
-					paths: ['./setup/site'],
+					paths: ['./setup/config'],
 					recursive: true,
 				 	silent: true,
 				});
@@ -40,4 +40,5 @@ async.series([
 			console.log(err)
 		}
 	})
+
 

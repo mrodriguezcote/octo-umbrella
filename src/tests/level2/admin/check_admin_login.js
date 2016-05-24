@@ -1,7 +1,7 @@
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
 var replace = require('replace');
-var site = require('../../../setup/site/website.js');
+var site = require('../../../setup/config/website.js');
 var aux = require('./aux.js');
 
 describe("Admin", function() {

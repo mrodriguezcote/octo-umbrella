@@ -2,7 +2,7 @@
 This file contains all feature-related artifacts such as URLs,
 admin configuration pages, feature-specific content, etc. */
 
-var site = require('../../../setup/site/website.js');
+var site = require('../../../setup/config/website.js');
 
 //Timeout for feature tests
 var specTime = 25000;
@@ -10,7 +10,7 @@ var specTime = 25000;
 
 //////////////////////// URLs ////////////////////////
 //Admin configuration page
-var adminFooter = site.adminUrl+'system_config/edit/section/ba_barter/';
+var adminFooter = site.adminUrl+'system_config/edit/section/ba_footer/';
 
 //////////////////////// VALUES ////////////////////////
 //Footer links number of columns in place
@@ -25,26 +25,26 @@ var newsletterText = 'Exclusive Offers: Enter Email'
 //Footer accordion
 var accordionHeight = 300;
 var accordionWidth = 400;
-//Zip Code field in barter links
-var barterZipHeight = 42;
-var barterZipWidth = 145;
-var barterZipText = 'Enter zipcode';
+//Zip Code field in footer links
+var footerZipHeight = 42;
+var footerZipWidth = 145;
+var footerZipText = 'Enter zipcode';
 
 //////////////////////// SELECTORS ////////////////////////
 //Admin Configuration
-var adminSocialEnabled = '#ba_barter_social_social_block_enabled';
+var adminSocialEnabled = '#ba_footer_social_social_block_enabled';
 var adminSocialUrls = {
-	facebook: '#ba_barter_social_barter_facebook_url',
-	pinterest: '#ba_barter_social_barter_pinterest_url',
-	twitter: '#ba_barter_social_barter_twitter_url',
-	youtube: '#ba_barter_social_barter_youtube_url',
-	instagram: '#ba_barter_social_barter_instagram_url',
-	gplus: '#ba_barter_social_barter_gplus_url',
-	wanelo: '#ba_barter_social_barter_wanelo_url'
+	facebook: '#ba_footer_social_footer_facebook_url',
+	pinterest: '#ba_footer_social_footer_pinterest_url',
+	twitter: '#ba_footer_social_footer_twitter_url',
+	youtube: '#ba_footer_social_footer_youtube_url',
+	instagram: '#ba_footer_social_footer_instagram_url',
+	gplus: '#ba_footer_social_footer_gplus_url',
+	wanelo: '#ba_footer_social_footer_wanelo_url'
 }
 //Social LInks
 var socialBlock = '.social-container';
-var socialSelectorRoot = 'body>div.page-wrapper>barter>div.barter-social-container>div.social-container>div.social-icon.';
+var socialSelectorRoot = 'body>div.page-wrapper>footer>div.footer-social-container>div.social-container>div.social-icon.';
 var facebookSelector = socialSelectorRoot+'facebook>a';
 var pinterestSelector = socialSelectorRoot+'pinterest>a';
 var twitterSelector = socialSelectorRoot+'twitter>a';
@@ -55,10 +55,10 @@ var waneloSelector = socialSelectorRoot+'wanelo>a';
 //Newsletter
 var newsletterField = '#newsletter';
 //Footer Links
-var barterLinksBlock = '.barter-links';
-var barterLinksColumn = '.links-column';
-var barterLinksExpanded = '.links-column.expanded';
-var lastColumn = 'body>div.page-wrapper>barter>div.barter-links-container>div>div:nth-child('+columns+')>h4';
+var footerLinksBlock = '.footer-links';
+var footerLinksColumn = '.links-column';
+var footerLinksExpanded = '.links-column.expanded';
+var lastColumn = 'body>div.page-wrapper>footer>div.footer-links-container>div>div:nth-child('+columns+')>h4';
 var zipField = '.find-store-form';
 //Copyright
 var copyrightBlock = '.copyright';
@@ -74,9 +74,9 @@ exports.mobileNewsletterWidth = mobileNewsletterWidth;
 exports.newsletterText = newsletterText
 exports.accordionHeight = accordionHeight;
 exports.accordionWidth= accordionWidth;
-exports.barterZipHeight = barterZipHeight;
-exports.barterZipWidth = barterZipWidth;
-exports.barterZipText = barterZipText;
+exports.footerZipHeight = footerZipHeight;
+exports.footerZipWidth = footerZipWidth;
+exports.footerZipText = footerZipText;
 exports.adminSocialEnabled = adminSocialEnabled;
 exports.adminSocialUrls = adminSocialUrls;
 exports.socialBlock = socialBlock;
@@ -88,9 +88,9 @@ exports.instagramSelector = instagramSelector;
 exports.googleplusSelector = googleplusSelector;
 exports.waneloSelector = waneloSelector;
 exports.newsletterField = newsletterField;
-exports.barterLinksBlock = barterLinksBlock;
-exports.barterLinksColumn = barterLinksColumn;
-exports.barterLinksExpanded = barterLinksExpanded;
+exports.footerLinksBlock = footerLinksBlock;
+exports.footerLinksColumn = footerLinksColumn;
+exports.footerLinksExpanded = footerLinksExpanded;
 exports.lastColumn = lastColumn;
 exports.zipField = zipField;
 exports.copyrightBlock = copyrightBlock;

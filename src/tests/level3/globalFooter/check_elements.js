@@ -1,6 +1,6 @@
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
-var site = require('../../../setup/site/website.js');
+var site = require('../../../setup/config/website.js');
 var aux = require('./aux.js');
 
 var settings = {};
@@ -92,13 +92,13 @@ describe("Global Footer", function() {
 
     }, aux.specTime);
 
-    /* Ensure the barter links display in six columns */
-    it("barter links display in six columns", function(done) {
+    /* Ensure the footer links display in six columns */
+    it("footer links display in six columns", function(done) {
 
         browser
-            .evaluate(function(barterLinksBlock) {
-                return jQuery(barterLinksBlock).children().length;
-            },aux.barterLinksBlock)
+            .evaluate(function(footerLinksBlock) {
+                return jQuery(footerLinksBlock).children().length;
+            },aux.footerLinksBlock)
             .then(function (cols) { 
                 expect(cols).toBe(aux.columns);
                 done();
@@ -114,7 +114,7 @@ describe("Global Footer", function() {
                 return jQuery(jQuery(zipField).children()[0]).attr('placeholder');
             },aux.zipField)
             .then(function (text) { 
-                expect(text).toBe(aux.barterZipText);
+                expect(text).toBe(aux.footerZipText);
                 done();
             })
 
