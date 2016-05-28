@@ -1,98 +1,35 @@
-if(!process.argv[2] || process.argv[2] == '1') {
-	var Jasmine = require('jasmine'), jasmine = new Jasmine;
-	var reporters = require('jasmine-reporters');
-	var junitReporter = new reporters.JUnitXmlReporter({
-	    savePath: './teardown/reporter',
-	    consolidateAll: true
-	});
-	jasmine.loadConfigFile('./setup/config/level1_jasmine.json');
-	jasmine.configureDefaultReporter({ showColors: true });
-	jasmine.addReporter(junitReporter);
-	jasmine.onComplete(function(passed) {
-	    if(passed) {console.log('All specs passed');}
-	    else {console.log('At least one spec failed');}
-	});
-	jasmine.execute();
+var _ = require('lodash');
+var roster = require('./setup/config/roster');
+var level1 = require('./runners/level1_runner');
+var level2 = require('./runners/level2_runner');
+var level3 = require('./runners/level3_runner');
+
+var command = process.argv[2];
+
+if(!command) {
+	console.log('provide arg');
+} 
+else if(command == 'level1') {
+	level1.runLevel();
 }
-
-else if(process.argv[2] == '2') {
-
-	var Jasmine = require('jasmine'), jasmine = new Jasmine;
-	var reporters = require('jasmine-reporters');
-	var junitReporter = new reporters.JUnitXmlReporter({
-	    savePath: './teardown/reporter',
-	    consolidateAll: true
-	});
-	jasmine.loadConfigFile('./setup/config/level1_jasmine.json');
-	jasmine.configureDefaultReporter({ showColors: true });
-	jasmine.addReporter(junitReporter);
-	jasmine.onComplete(function(passed) {
-	    if(passed) {
-	    	var Jasmine = require('jasmine'), jasmine = new Jasmine;
-	    	var reporters = require('jasmine-reporters');
-			var junitReporter2 = new reporters.JUnitXmlReporter({
-			    savePath: './teardown/reporter',
-			    consolidateAll: true
-			});
-	    	jasmine.loadConfigFile('./setup/config/level2_jasmine.json');
-	    	jasmine.configureDefaultReporter({ showColors: true });
-	    	jasmine.addReporter(junitReporter2);
-
-			jasmine.onComplete(function(passed) {
-			    if(passed) {console.log('All specs passed');}
-			    else {console.log('At least one spec failed');}
-			});
-			jasmine.execute();
-	    }
-	    else {console.log('At least one spec failed');}
-	});
-	jasmine.execute();
+else if(command == 'level2') {
+	level2.runLevel();
 }
+else if(command == 'level3') {
+	level3.runLevel();
+}
+else {
+	console.log('Work In Progress');
+	var testLevels = roster.read();
+	var whichLevel = 0;
+	_.each(testLevels, function(sets) {
+		whichLevel++;
+		_.each(sets, function(set) {
+			if(command == set) {
+				console.log(whichLevel);
+			}
+		})
+	})
 
-else if(process.argv[2] == '3') {
 
-	var Jasmine = require('jasmine'), jasmine = new Jasmine;
-	var reporters = require('jasmine-reporters');
-	var junitReporter = new reporters.JUnitXmlReporter({
-	    savePath: './teardown/reporter',
-	    consolidateAll: true
-	});
-	jasmine.loadConfigFile('./setup/config/level1_jasmine.json');
-	jasmine.configureDefaultReporter({ showColors: true });
-	jasmine.addReporter(junitReporter);
-	jasmine.onComplete(function(passed) {
-	    if(passed) {
-	    	var Jasmine = require('jasmine'), jasmine = new Jasmine;
-	    	var reporters = require('jasmine-reporters');
-			var junitReporter2 = new reporters.JUnitXmlReporter({
-			    savePath: './teardown/reporter',
-			    consolidateAll: true
-			});
-	    	jasmine.loadConfigFile('setup/config/level2_jasmine.json');
-	    	jasmine.configureDefaultReporter({ showColors: true });
-	    	jasmine.addReporter(junitReporter2);
-			jasmine.onComplete(function(passed) {
-			    if(passed) {
-			    	var Jasmine = require('jasmine'), jasmine = new Jasmine;
-			    	var reporters = require('jasmine-reporters');
-					var junitReporter3 = new reporters.JUnitXmlReporter({
-					    savePath: './teardown/reporter',
-					    consolidateAll: true
-					});
-			    	jasmine.loadConfigFile('./setup/config/level3_jasmine.json');
-			    	jasmine.configureDefaultReporter({ showColors: true });
-			    	jasmine.addReporter(junitReporter3);
-					jasmine.onComplete(function(passed) {
-					    if(passed) {console.log('All specs passed');}
-					    else {console.log('At least one spec failed');}
-					});
-					jasmine.execute();	
-			    }
-			    else {console.log('At least one spec failed');}
-			});
-			jasmine.execute();
-	    }
-	    else {console.log('At least one spec failed');}
-	});
-	jasmine.execute();
 }
