@@ -1,8 +1,8 @@
 var _ = require('lodash');
 var roster = require('./setup/config/roster');
-var level1 = require('./runners/level1_runner');
-var level2 = require('./runners/level2_runner');
-var level3 = require('./runners/level3_runner');
+var level1 = require('./setup/level1');
+var level2 = require('./setup/level2');
+var level3 = require('./setup/level3');
 
 var command = process.argv[2];
 
