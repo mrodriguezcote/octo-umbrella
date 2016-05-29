@@ -8,7 +8,7 @@ The two main modules leveraged by the harness are [Jasmine](http://jasmine.githu
 
 ### Test Design
 
-Tests can be of varying complexity, when running on a continuous integration server the most simple tests run first and the more complex tests run only if the previous ones pass. The following is an example of a simple test:
+Tests can be of varying complexity, the more simple tests run first and the more complex tests run only if the previous ones pass. The following is an example of a simple test:
 
 ```javascript
 var site = require('../../website.js');
