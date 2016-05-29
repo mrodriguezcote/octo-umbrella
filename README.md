@@ -97,3 +97,25 @@ Most of the time a test suite (`describe`) will contain more than one test (`it`
      * level3 - More complex tests
   * package.json (module dependency management)
   * runner.js (test runner executable, execution logic)
+
+##### Available Tests
+
+Every (`it`) function is considered a test, tests are grouped in tests suites and there is usually one test suite per file. Test sets are groups of one or more test suites, and levels are groups of one or more test sets. The tests currently available are organized as follows:
+
+* level1
+  * access
+* level2
+  * admin
+  * cart
+  * crawler
+  * style
+  * user
+* level3
+  * associateOrders
+  * brandManager
+  * globalFooter
+  * globalHeader
+  * homepage
+  * megaMenu
+  * productBadges
+  * shortUrl
