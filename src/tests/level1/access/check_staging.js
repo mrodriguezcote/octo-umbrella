@@ -4,7 +4,7 @@ var request = require('request');
 
 /* Perform an HTTP request from staging homepage/admin and ensure no
 whitescreens of 404s from any */
-xdescribe("Loading", function() {
+describe("Loading", function() {
    
     it("staging homepage", function(done) {
 

@@ -7,6 +7,7 @@ var electronOptions = {
   show: electronShow,
   width: 1400,
   height: 800,
+  gotoTimeout: 8000,
   webPreferences:{
     partition: electronPartition,
   }
@@ -15,6 +16,7 @@ var electronMobileOptions = {
   show: electronShow,
   width: 400,
   height: 800,
+  gotoTimeout: 8000,
   webPreferences:{
     partition: electronPartition,
   }
