@@ -108,7 +108,7 @@ Level 1 tests are rudimentary http request tests to make sure the major pages of
 ##### Project Structure
 
 * src
-  * node_modules (modules needed to run the harness)
+  * node_modules (npm modules needed)
   * setup
      * config - configuration files
      * scripts - scripts executed before test runner is engaged
@@ -119,7 +119,7 @@ Level 1 tests are rudimentary http request tests to make sure the major pages of
      * level1 - Simpler tests
      * level2 - ..
      * level3 - More complex tests
-  * package.json (module dependency management)
+  * package.json (dependency management)
   * runner.js (test runner executable, execution logic)
 
 ### Test Execution
