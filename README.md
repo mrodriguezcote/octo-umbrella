@@ -111,10 +111,10 @@ Level 1 tests are rudimentary http request tests to make sure the major pages of
   * node_modules (modules needed to run the harness)
   * setup
      * config - configuration files
-     * scripts - scripts to execute before test runner is engaged
+     * scripts - scripts executed before test runner is engaged
   * teardown
      * reporter - results and reporting 
-     * scripts - scripts to execute after test runner is engaged
+     * scripts - scripts executed after test runner is engaged
   * tests
      * level1 - Simpler tests
      * level2 - ..
