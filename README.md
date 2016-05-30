@@ -105,7 +105,7 @@ Every (`it`) function is considered a test. Tests are grouped in test suites, an
 
 Level 1 tests are rudimentary http request tests to make sure the major pages of the site are accessible. Level 2 tests are slightly more complex tests, like checking adding an item to cart, or checking if the user can log in through the storefront. Level 3 tests are feature tests, these tests check specific use cases to assure the functionality of major features of the site. 
 
-\* The style guide test set is currently disabled. Since the style guide resides on staging, these tests need to be redesigned to not rely on accessing staging at runtime
+\* The style guide tests are currently disabled. Since the style guide resides on staging, these tests need to be redesigned to not rely on accessing staging at runtime
 
 ##### Project Structure
 
