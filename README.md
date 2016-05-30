@@ -1,4 +1,4 @@
-# octo-umbrella
+# RDS Test Harness
 
 This project is a work-in-progress implementation of a test harness for the RDS client site. Running on node, it executes a number of functional regression tests, reports on the test results, and integrates into the site deployment workflow.
 
