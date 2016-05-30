@@ -3,27 +3,35 @@ var roster = require('./setup/config/roster');
 var level1 = require('./setup/config/level1');
 var level2 = require('./setup/config/level2');
 var level3 = require('./setup/config/level3');
+var bypass = require('./setup/config/bypass');
 
 var command = process.argv[2];
+var mode = process.argv[3];
 
 if(!command) {
-	level1.runLevel();
+	level1.run();
 }
 
 else if(command.includes('level')) {
 	upToLevel = parseInt(command[5]);
-	if (upToLevel == 1) {
-		level1.runLevel();
+	if(mode == 'bypass') {
+		bypass.run(command);
+	}
+	else if (upToLevel == 1) {
+		level1.run();
 	}
 	else if (upToLevel == 2) {
-		level2.runLevel();
+		level2.run();
 	}
 	else if (upToLevel == 3) {
-		level3.runLevel();
+		level3.run();
 	}
 	else {
 		console.log('Unidentified Level');
 	}
+}
+else if(command == 'bypass') {
+	level1.run();
 }
 else {
 	var testLevels = roster.read();
@@ -35,14 +43,18 @@ else {
 			if(command == set) {
 				found = true;
 				var upToLevel = setLevel-1;
-				if (upToLevel == 0) {
-					level1.runLevel(command);
+				if (mode == 'bypass') {
+					var level = 'level'+setLevel.toString();
+					bypass.run(level, command);
+				}
+				else if (upToLevel == 0) {
+					level1.run(command);
 				}
 				else if (upToLevel == 1) {
-					level2.runLevel(command);
+					level2.run(command);
 				}
 				else if (upToLevel == 2) {
-					level3.runLevel(command);
+					level3.run(command);
 				}
 			}
 		})

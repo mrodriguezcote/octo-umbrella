@@ -1,6 +1,7 @@
-//Level 1 Runner
-module.exports.run = function(flag) {
-	var setToRun = !flag ? '' : flag;
+//Bypass Runner. The second argument [setToRun] is optional
+module.exports.run = function(level, set) {
+	var levelToRun = level;
+	var setToRun = !set ? '' : set;
 	var Jasmine = require('jasmine'), jasmine = new Jasmine;
 	var reporters = require('jasmine-reporters');
 	var junitReporter = new reporters.JUnitXmlReporter({
@@ -8,14 +9,14 @@ module.exports.run = function(flag) {
 		consolidateAll: true
 	});
 	jasmine.loadConfig({
-		spec_dir: './tests/level1/'+setToRun,
+		spec_dir: './tests/'+levelToRun+'/'+setToRun,
 		spec_files: ['**/*.js'],
 	});
 	jasmine.configureDefaultReporter({ showColors: true });
 	jasmine.addReporter(junitReporter);
 	jasmine.onComplete(function(passed) {
-		if(passed) {console.log('All Level 1 tests passed');}
-		else {console.log('At least one Level 1 test failed');}
+		if(passed) {console.log('All tests passed');}
+		else {console.log('At least one test failed');}
 	});
 	jasmine.execute();
 }

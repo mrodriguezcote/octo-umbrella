@@ -1,5 +1,5 @@
 //Level 3 Runner
-module.exports.runLevel = function(flag) {
+module.exports.run = function(flag) {
 	var setToRun = !flag ? '' : flag;
 	var Jasmine = require('jasmine'), jasmine = new Jasmine;
 	var reporters = require('jasmine-reporters');
