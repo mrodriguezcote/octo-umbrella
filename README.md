@@ -11,7 +11,7 @@ The two main modules leveraged by the harness are [Jasmine](http://jasmine.githu
 Tests can be of varying complexity; the harness is designed to allow simple tests to run first and have the more complex tests run only if the previous ones pass. This design makes it so longer/larger tests are not executed if a more fundamental problem is found. The following is an example of a simple test:
 
 ```javascript
-var site = require('../../website.js');
+var site = require('../../../setup/config/website.js');
 var aux = require('./aux.js');
 var request = require('request');
 
@@ -49,7 +49,7 @@ The test uses the `request` module to make an HTTP request to the homepage and c
 ```javascript
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
-var site = require('../../../website.js');
+var site = require('../../../setup/config/website.js');
 var aux = require('./aux.js');
 
 describe("Associate Orders", function() {
@@ -130,7 +130,7 @@ To run the tests on your machine, against the QA1 environment:
 - From the `src/` directory call `npm install`
 - Call `npm start [command]`
 
-`command` is either the name of a level (like `level2`) or the name of a test set (like `homepage`). When calling `npm start [command]` the tests will execute in dependency mode, that is, the more complex tests will not execute until the previous tests have passed. In order to bypass dependency mode call `npm test [command]`, this will run the level or set indicated by `command` without executing any previous simpler tests. By default, calling `npm start` with no argument will execute all tests in the first level.
+The single optional argument `command` is either the name of a level (like `'level2'`) or the name of a test set (like `'homepage'`). When calling `npm start [command]` the tests will execute in dependency mode, that is, the more complex tests will not execute until the previous tests have passed. If `npm start homepage` is called, then all level 1 and level 2 tests will run before the homepage set is run. In order to bypass dependency mode call `npm test [command]`, this will run the level or set indicated by `command` without executing any previous simpler tests. By default, calling `npm start` with no argument will run all tests in the first level.
 
 `
   
