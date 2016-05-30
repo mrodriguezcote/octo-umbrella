@@ -126,9 +126,11 @@ Level 1 tests are rudimentary http request tests to make sure the major pages of
 
 To run the tests on your machine, against the QA1 environment: 
 
-- clone or fork this repository
-- from the `src/` directory call `npm install`
-- run `npm start [command]` where `command` is either the name of a level (like `level2`) or the name of a test set (like `homepage`)
+- Clone or fork this repository
+- From the `src/` directory call `npm install`
+- Call `npm start [command]`
+
+`command` is either the name of a level (like `level2`) or the name of a test set (like `homepage`). When calling `npm start [command]` the tests will execute in dependency mode, that is, the more complex tests will not execute until the previous tests have passed. In order to bypass dependency mode call `npm test [command]`, this will run the level or set indicated by `command` without executing any previous simpler tests. By default, calling `npm start` with no argument will execute all tests in the first level.
 
 `
   
