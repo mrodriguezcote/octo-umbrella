@@ -1,4 +1,4 @@
-//Bypass Runner. The second argument [setToRun] is optional
+//Bypass Runner. The second argument [set] is optional
 module.exports.run = function(level, set) {
 	var levelToRun = level;
 	var setToRun = !set ? '' : set;
