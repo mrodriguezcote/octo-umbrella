@@ -126,7 +126,7 @@ Level 1 tests are rudimentary http request tests to make sure the major pages of
 
 ### Test Execution
 
-To run the tests on your machine, against the QA1 environment: 
+To run the tests on your machine (against the QA1 environment): 
 
 1. Clone or fork this repository
 2. From the `src/` directory call `npm install`
