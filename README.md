@@ -134,7 +134,7 @@ To run the tests locally (against the QA1 environment):
 
 The single optional argument `command` is either the name of a level (like `'level2'`) or the name of a test set (like `'homepage'`). When calling `npm start [command]` the tests will execute in dependency mode, that is, the more complex tests will not execute until the previous tests have passed. If `npm start homepage` is called, then all level 1 and level 2 tests will run before the homepage set is run. 
 
-To bypass dependency mode call `npm test [command]`, this will run the level or set indicated by `command` without executing any previous simpler tests. By default, calling `npm start` or `npm test` with no argument will run all tests in the first level.
+To bypass dependency mode call `npm start [command] bypass`, this will run the level or set indicated by `command` without executing any previous simpler tests. By default, calling `npm start` or `npm start bypass` with no `command` argument will run all tests in the first level.
 
 
 
