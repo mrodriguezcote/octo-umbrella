@@ -8,7 +8,7 @@ The two main modules leveraged by the harness are [Jasmine](http://jasmine.githu
 
 ### Test Design
 
-Tests can be of varying complexity, the more simple tests run first and the more complex tests run only if the previous ones pass. The following is an example of a simple test:
+Tests can be of varying complexity; the harness is designed to allow simple tests to run first and have the more complex tests run only if the previous ones pass. This design makes it so longer/larger tests are not executed if a more fundamental problem is found. The following is an example of a simple test:
 
 ```javascript
 var site = require('../../website.js');
@@ -83,7 +83,7 @@ Most of the time a test suite (`describe`) will contain more than one test (`it`
 
 ##### Available Tests
 
-Every (`it`) function is considered a test, tests are grouped in tests suites and there is usually one test suite per file. Test sets are groups of one or more test suites, and levels are groups of one or more test sets. The tests currently available are organized as such:
+Every (`it`) function is considered a test, tests are grouped in test suites and so far there is always one test suite per file. Test sets are groups of one or more test suites, and levels are groups of one or more test sets. The test sets currently available are:
 
 * level1
   * access
@@ -103,7 +103,7 @@ Every (`it`) function is considered a test, tests are grouped in tests suites an
   * productBadges
   * shortUrl
 
-Level 1 tests are rudimentary http request tests to make sure the major pages of the site ara accessible. Level 2 tests are slightly more complex tests, like checking adding an item to cart, or checking the user can log in through the storefront. Level 3 tests are feature tests, these tests check specific use cases to assure the functionality of major features of the site. 
+Level 1 tests are rudimentary http request tests to make sure the major pages of the site are accessible. Level 2 tests are slightly more complex tests, like checking adding an item to cart, or checking if the user can log in through the storefront. Level 3 tests are feature tests, these tests check specific use cases to assure the functionality of major features of the site. 
 
 ##### Project Structure
 
@@ -121,5 +121,17 @@ Level 1 tests are rudimentary http request tests to make sure the major pages of
      * level3 - More complex tests
   * package.json (module dependency management)
   * runner.js (test runner executable, execution logic)
+
+### Test Execution
+
+To run the tests on your machine, against the QA1 environment: 
+
+- clone or fork this repository
+- from the `src/` directory call `npm install`
+- run `npm start [command]` where `command` is either the name of a level (like `level2`) or the name of a test set (like `homepage`)
+
+`
+  
+
 
 
