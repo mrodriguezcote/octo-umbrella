@@ -83,7 +83,7 @@ Most of the time a test suite (`describe`) will contain more than one test (`it`
 
 ##### Available Tests
 
-Every (`it`) function is considered a test, tests are grouped in test suites and so far there is always one test suite per file. Test sets are groups of one or more test suites, and levels are groups of one or more test sets. The test sets currently available are:
+Every (`it`) function is considered a test. Tests are grouped in test suites, and so far there is one test suite per file. Test sets are groups of one or more test suites, and levels are groups of one or more test sets. The test sets currently available are:
 
 * level1
   * access
