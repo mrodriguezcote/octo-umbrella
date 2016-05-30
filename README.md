@@ -130,7 +130,9 @@ To run the tests on your machine, against the QA1 environment:
 - From the `src/` directory call `npm install`
 - To run tests, call `npm start [command]`
 
-The single optional argument `command` is either the name of a level (like `'level2'`) or the name of a test set (like `'homepage'`). When calling `npm start [command]` the tests will execute in dependency mode, that is, the more complex tests will not execute until the previous tests have passed. If `npm start homepage` is called, then all level 1 and level 2 tests will run before the homepage set is run. In order to bypass dependency mode call `npm test [command]`, this will run the level or set indicated by `command` without executing any previous simpler tests. By default, calling `npm start` with no argument will run all tests in the first level.
+The single optional argument `command` is either the name of a level (like `'level2'`) or the name of a test set (like `'homepage'`). When calling `npm start [command]` the tests will execute in dependency mode, that is, the more complex tests will not execute until the previous tests have passed. If `npm start homepage` is called, then all level 1 and level 2 tests will run before the homepage set is run. By default, calling `npm start` with no argument will run all tests in the first level.
+
+In order to bypass dependency mode call `npm test [command]`, this will run the level or set indicated by `command` without executing any previous simpler tests. .
 
 `
   
