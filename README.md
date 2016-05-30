@@ -44,7 +44,7 @@ describe("Loading", function() {
     }, aux.specTime);
 });
 ```
-The test uses the `request` module to make an HTTP request to the homepage and check the response. *website.js* is a helper file that includes site specific information like the homepage URL. *aux.js* is a helper file that includes test specific information like the test time out value `specTime`. In more complex tests *aux.js* could include atrifacts such as selectors and URLs of pages specifc to the test. The following is an example of a more complex test:
+The test uses the `request` module to make an HTTP request to the homepage and check the response. *website.js* is a helper file that includes site specific information like the homepage URL. *aux.js* is a helper file that includes test specific information like the test time out value `specTime`. In more complex tests *aux.js* could include artifacts such as selectors and URLs of pages specifc to the test. The following is an example of a more complex test:
 
 ```javascript
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
