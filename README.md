@@ -81,26 +81,9 @@ The `xvfb` module allows us to start and stop a [virtual display framebuffer](ht
 
 Most of the time a test suite (`describe`) will contain more than one test (`it`). The tests within a test suite can be daisy-chained, with each test picking up the state of the site as the previous test left it. Since tests are always executed sequentially within their suites, it is possible to translate complex user interactions into a series of small tests.
 
-##### Project Structure
-
-* src
-  * node_modules (modules needed to run the harness)
-  * setup
-     * config - configuration files
-     * scripts - scripts to execute before test runner is engaged
-  * teardown
-     * reporter - results and reporting 
-     * scripts - scripts to execute after test runner is engaged
-  * tests
-     * level1 - Simpler tests
-     * level2 - ..
-     * level3 - More complex tests
-  * package.json (module dependency management)
-  * runner.js (test runner executable, execution logic)
-
 ##### Available Tests
 
-Every (`it`) function is considered a test, tests are grouped in tests suites and there is usually one test suite per file. Test sets are groups of one or more test suites, and levels are groups of one or more test sets. The tests currently available are organized as follows:
+Every (`it`) function is considered a test, tests are grouped in tests suites and there is usually one test suite per file. Test sets are groups of one or more test suites, and levels are groups of one or more test sets. The tests currently available are organized as such:
 
 * level1
   * access
@@ -119,3 +102,24 @@ Every (`it`) function is considered a test, tests are grouped in tests suites an
   * megaMenu
   * productBadges
   * shortUrl
+
+Level 1 tests are rudimentary http request tests to make sure the major pages of the site ara accessible. Level 2 tests are slightly more complex tests, like checking adding an item to cart, or checking the user can log in through the storefront. Level 3 tests are feature tests, these tests check specific use cases to assure the functionality of major features of the site. 
+
+##### Project Structure
+
+* src
+  * node_modules (modules needed to run the harness)
+  * setup
+     * config - configuration files
+     * scripts - scripts to execute before test runner is engaged
+  * teardown
+     * reporter - results and reporting 
+     * scripts - scripts to execute after test runner is engaged
+  * tests
+     * level1 - Simpler tests
+     * level2 - ..
+     * level3 - More complex tests
+  * package.json (module dependency management)
+  * runner.js (test runner executable, execution logic)
+
+
