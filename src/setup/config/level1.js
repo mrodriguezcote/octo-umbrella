@@ -14,8 +14,8 @@ module.exports.runLevel = function(flag) {
 	jasmine.configureDefaultReporter({ showColors: true });
 	jasmine.addReporter(junitReporter);
 	jasmine.onComplete(function(passed) {
-		if(passed) {console.log('All specs passed');}
-		else {console.log('At least one spec failed');}
+		if(passed) {console.log('All Level 1 tests passed');}
+		else {console.log('At least one Level 1 test failed');}
 	});
 	jasmine.execute();
 }

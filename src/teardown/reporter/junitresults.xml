@@ -1,41 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
- <testsuite name="Loading" timestamp="2016-05-29T01:35:23" hostname="localhost" time="6.215" errors="0" tests="6" skipped="0" disabled="0" failures="0">
-  <testcase classname="Loading" name="homepage" time="0.882" />
-  <testcase classname="Loading" name="admin" time="0.65" />
-  <testcase classname="Loading" name="login page" time="1.178" />
-  <testcase classname="Loading" name="category page" time="1.048" />
-  <testcase classname="Loading" name="product page" time="0.833" />
-  <testcase classname="Loading" name="cart page" time="1.62" />
- </testsuite>
- <testsuite name="Loading" timestamp="2016-05-29T01:35:29" hostname="localhost" time="8.023" errors="0" tests="2" skipped="0" disabled="0" failures="2">
-  <testcase classname="Loading" name="staging homepage" time="4.015">
-   <failure type="exception" message="Failed: server error"><![CDATA[Error: Failed: server error
-    at stack (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1577:17)
-    at buildExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1547:14)
-    at Spec.Env.expectationResultFactory (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:638:18)
-    at Spec.addExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:330:34)
-    at Env.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:987:25)
-    at jasmineInterface.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:3423:23)
-    at Request._callback (/www/octo-umbrella/src/tests/level1/access/check_staging.js:13:17)
-    at self.callback (/www/octo-umbrella/src/node_modules/request/request.js:200:22)
-    at emitOne (events.js:90:13)
-    at Request.emit (events.js:182:7)]]>
-   </failure>
-  </testcase>
-  <testcase classname="Loading" name="staging admin" time="4.007">
-   <failure type="exception" message="Failed: server error"><![CDATA[Error: Failed: server error
-    at stack (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1577:17)
-    at buildExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:1547:14)
-    at Spec.Env.expectationResultFactory (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:638:18)
-    at Spec.addExpectationResult (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:330:34)
-    at Env.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:987:25)
-    at jasmineInterface.fail (/www/octo-umbrella/src/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:3423:23)
-    at Request._callback (/www/octo-umbrella/src/tests/level1/access/check_staging.js:50:17)
-    at self.callback (/www/octo-umbrella/src/node_modules/request/request.js:200:22)
-    at emitOne (events.js:90:13)
-    at Request.emit (events.js:182:7)]]>
-   </failure>
-  </testcase>
+ <testsuite name="Loading" timestamp="2016-05-30T15:04:34" hostname="localhost" time="6.983" errors="0" tests="6" skipped="0" disabled="0" failures="0">
+  <testcase classname="Loading" name="homepage" time="0.819" />
+  <testcase classname="Loading" name="admin" time="0.684" />
+  <testcase classname="Loading" name="login page" time="1.398" />
+  <testcase classname="Loading" name="category page" time="1.73" />
+  <testcase classname="Loading" name="product page" time="0.908" />
+  <testcase classname="Loading" name="cart page" time="1.443" />
  </testsuite>
 </testsuites>

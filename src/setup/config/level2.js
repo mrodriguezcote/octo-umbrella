@@ -29,12 +29,12 @@ module.exports.runLevel = function(flag) {
 			jasmine.addReporter(junitReporter2);
 
 			jasmine.onComplete(function(passed) {
-				if(passed) {console.log('All specs passed');}
-				else {console.log('At least one spec failed');}
+				if(passed) {console.log('All Level 2 tests passed');}
+				else {console.log('At least one Level 2 test failed');}
 			});
 			jasmine.execute();
 		}
-		else {console.log('At least one spec failed');}
+		else {console.log('At least one Level 1 test failed');}
 	});
 	jasmine.execute();
 }

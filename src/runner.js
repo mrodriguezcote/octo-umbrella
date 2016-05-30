@@ -7,7 +7,7 @@ var level3 = require('./setup/config/level3');
 var command = process.argv[2];
 
 if(!command) {
-	console.log('usage: npm start [testLevel/Set]');
+	level1.runLevel();
 }
 
 else if(command.includes('level')) {

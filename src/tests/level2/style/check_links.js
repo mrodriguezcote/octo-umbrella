@@ -10,13 +10,11 @@ describe("Style guide", function() {
    
     beforeAll(function() { 
         xvfb.start(); 
-    });
-
-    beforeEach(function() { 
         browser = nightmare(site.electronOptions); 
     });
     
     afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
 
@@ -35,14 +33,13 @@ describe("Style guide", function() {
                 atts.push(jQuery(element).css('color'));
                 return atts;
             })
-            .end()
             .then(function (linkStyles) {
                 expect(linkStyles).toBeDefined();
                 expectedStyles = linkStyles;
                 done();
             })
 
-    }, aux.specTime);
+    }, aux.specTime).pend('Need to redesign (test disabled)');
 
     /* In the first async series function we retireve each attribute from each a tag
     on the homepage. In the second async series function we compare each attribute from
@@ -68,7 +65,6 @@ describe("Style guide", function() {
                         })
                         return allLinks;
                     })
-                    .end()
                     .then(function (linksOnPage) {
                         expect(linksOnPage).toBeDefined();
                         callback(null, linksOnPage);
@@ -97,7 +93,6 @@ describe("Style guide", function() {
                 done();
             })
 
-    }, aux.specTime);
-
+    }, aux.specTime).pend('Need to redesign (test disabled)');
 
 });
