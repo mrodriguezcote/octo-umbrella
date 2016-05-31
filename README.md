@@ -119,9 +119,9 @@ Level 1 tests are rudimentary http request tests to make sure the major pages of
      * reporter/ *results and reporting* 
      * scripts/ *scripts executed after test runner is engaged*
   * tests/
-     * level1/ *Simpler tests*
+     * level1/ *simpler tests*
      * level2/ ..
-     * level3/ *More complex tests*
+     * level3/ *more complex tests*
   * package.json
   * runner.js *test runner executable, execution logic*
 
