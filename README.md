@@ -110,18 +110,18 @@ Level 1 tests are rudimentary http request tests to make sure the major pages of
 
 ##### Project Structure
 
-* src
-  * node_modules
-  * setup
-     * config - configuration files
-     * scripts - scripts executed before test runner is engaged
-  * teardown
-     * reporter - results and reporting 
-     * scripts - scripts executed after test runner is engaged
-  * tests
-     * level1 - Simpler tests
-     * level2 - ..
-     * level3 - More complex tests
+* src/
+  * node_modules/
+  * setup/
+     * config/   *configuration files*
+     * scripts/   *scripts executed before test runner is engaged*
+  * teardown/
+     * reporter/   *results and reporting* 
+     * scripts/   *scripts executed after test runner is engaged*
+  * tests/
+     * level1/   *Simpler tests*
+     * level2/   ..
+     * level3/   *More complex tests*
   * package.json
   * runner.js (test runner executable, execution logic)
 
