@@ -5,6 +5,8 @@
 <html>
 <body style="background-color:#47476b">
   <h1 style="color:#ffffff;font-family:verdana;font-weight:300;text-align:center;"><i>RDS Test Runner Results</i></h1>
+  <p style="color:#ffffff;font-family:verdana;font-weight:300;text-align:center;">Last Run -- <xsl:value-of select="testsuite/@timestamp"/> -- </p>
+
   <br></br>
   <br></br>
   <h2 style="color:#ffffff;font-family:verdana;font-weight:300;text-align:center;">Failures</h2>
