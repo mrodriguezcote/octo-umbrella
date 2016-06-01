@@ -11,7 +11,9 @@ var mode = process.argv[3];
 if(!command) {
 	level1.run();
 }
-
+else if(command == 'bypass') {
+	level1.run();
+}
 else if(command.includes('level')) {
 	upToLevel = parseInt(command[5]);
 	if(mode == 'bypass') {
@@ -29,9 +31,6 @@ else if(command.includes('level')) {
 	else {
 		console.log('Unidentified Level');
 	}
-}
-else if(command == 'bypass') {
-	level1.run();
 }
 else {
 	var testLevels = roster.read();

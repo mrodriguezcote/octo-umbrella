@@ -1,4 +1,3 @@
-/* global __phantom_writeFile */
 (function(global) {
     var UNDEFINED,
         exportObject;
@@ -369,6 +368,7 @@
 
         // To remove complexity and be more DRY about the silly preamble and <testsuites> element
         var prefix = '<?xml version="1.0" encoding="UTF-8" ?>';
+        prefix += '\n<?xml-stylesheet type="text/xsl" href="'+options.stylesheet+'"?>';
         prefix += '\n<testsuites>';
         var suffix = '\n</testsuites>';
         function wrapOutputAndWriteFile(filename, text) {

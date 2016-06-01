@@ -3,10 +3,11 @@ module.exports.run = function(level, set) {
 	var levelToRun = level;
 	var setToRun = !set ? '' : set;
 	var Jasmine = require('jasmine'), jasmine = new Jasmine;
-	var reporters = require('jasmine-reporters');
-	var junitReporter = new reporters.JUnitXmlReporter({
+	var reporter = require('../../teardown/reporter/junit_reporter.js');
+	var junitReporter = new reporter.JUnitXmlReporter({
 		savePath: './teardown/reporter/',
-		consolidateAll: true
+		consolidateAll: true,
+		stylesheet: 'junitresults.xsl'
 	});
 	jasmine.loadConfig({
 		spec_dir: './tests/'+levelToRun+'/'+setToRun,
