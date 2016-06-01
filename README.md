@@ -143,4 +143,4 @@ The `setup/scripts/` and `teardown/scripts/` spaces hold scripts that will be ex
 
 ##### Reporting
 
-The results of each test run are both output to the command line and written to file as XML. The `teardowm/reporter` space houses the XML file as well as an XSL stylesheet. This allows us to see the results of the last test run by reaching the XML file through a browser: *http://localhost/path-to-reporter/junitresults.xml* . The resulting page will show all test suites executed, the time it took to execute them, and which (if any) failed.
+The results of each test run are both output to the command line and written to file as XML. The `teardown/reporter` space houses the XML file as well as an XSL stylesheet. This allows us to see the results of the last test run by reaching the XML file through a browser: *http://localhost/path-to-reporter/junitresults.xml* . The resulting page will show all test suites executed, the time it took to execute them, and which (if any) failed.
