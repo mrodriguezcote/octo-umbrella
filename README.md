@@ -6,7 +6,13 @@ The harness runs on OS X and Linux environments, as well as in Docker containers
 
 The two main modules leveraged here are [Jasmine](http://jasmine.github.io/) and [Nightmare] (https://github.com/segmentio/nightmare). Jasmine to organize and run the tests, and Nightmare to drive the browser interaction necessary to retrieve information that can be subject to tests. Nightmare itself is a browser automation library, running on top of a headless version of [Electron](https://github.com/electron/electron), a web framework developed by GitHub.
 
-[Test Execution](#test-execution)
+* [Test Design](#test-design)
+  * [Available Tests](#available-tests)
+  * [Framework Structure](#available-tests)
+* [Test Execution](#test-execution)
+  * [Setup and Teardown](#setup-and-teardown)
+  * [Reporting](#reporting)
+  * [Diagnosis](#diagnosis)
 
 ### Test Design
 
@@ -110,7 +116,7 @@ Level 1 tests are rudimentary http request tests to make sure the major pages of
 
 \* The style guide tests are currently disabled. Since the style guide resides on staging, these tests need to be redesigned to not rely on accessing staging at runtime
 
-##### Project Structure
+##### Framework Structure
 
 * src/
   * node_modules/
@@ -139,15 +145,15 @@ The single optional argument `command` is either the name of a level (like `leve
 
 To bypass dependency mode call `npm start [command] bypass`, this will run the level or set indicated by `command` without executing any previous simpler tests. By default, calling `npm start` or `npm start bypass` with no `command` argument will run all tests in the first level.
 
-##### Setup/Teardown
+##### Setup and Teardown
 
 The `setup/scripts/` and `teardown/scripts/` spaces hold scripts that will be executed before and after the actual call to the test runner occurs and completes. The only setup/teardown currently being executed is logic that retrieves a Magento admin session cookie through the front end and puts it in a configuration file that the tests then reference later. Ideally this will be taken care of by a permanent session configured in the host environment, and in the future, these spaces will hold scripts that prepare the Magento application for testing by injecting testable data into the database and removing it after the tests have executed. This way, tests that rely on specific product/cateogory setup, CMS content configuration, or user accounts information can run effectively and consistently every time, and the database of the application under test is not affected by test execution.
 
-### Reporting
+##### Reporting
 
 The results of each test run are both output to the command line and written to file as XML. The `teardown/reporter` space houses the XML file as well as an XSL stylesheet. This allows us to see the results of the last test run by reaching the XML file through a browser at *http://localhost/path-to-reporter/junitresults.xml* . The resulting page will show all test suites executed, the time it took to execute them, and which (if any) failed.
 
-##### Failure Diagnosis
+##### Diagnosis
 
 There are two mechanisms that can detect a failure in a test - the Jasmine expectation, and the time out value of the Jasmine test. Take the following as example:
 
