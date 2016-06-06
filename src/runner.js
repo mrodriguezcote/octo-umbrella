@@ -8,10 +8,7 @@ var bypass = require('./setup/config/bypass');
 var command = process.argv[2];
 var mode = process.argv[3];
 
-if(!command) {
-	level1.run();
-}
-else if(command == 'bypass') {
+if(command == 'bypass' || !command) {
 	level1.run();
 }
 else if(command.includes('level')) {
@@ -33,10 +30,10 @@ else if(command.includes('level')) {
 	}
 }
 else {
-	var testLevels = roster.read();
+	var allSets = roster.read();
 	var setLevel = 0;
 	var found = false;
-	_.each(testLevels, function(sets) {
+	_.each(allSets, function(sets) {
 		setLevel++;
 		_.each(sets, function(set) {
 			if(command == set) {

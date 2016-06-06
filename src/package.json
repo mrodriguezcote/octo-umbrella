@@ -23,6 +23,7 @@
   "scripts": {
     "prestart": "node setup/scripts/",
     "start": "node runner",
-    "poststart": "node teardown/scripts/"
+    "poststart": "node teardown/scripts/",
+    "stop": "node teardown/scripts/"
   }
 }
