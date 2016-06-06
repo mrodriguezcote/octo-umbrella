@@ -6,6 +6,8 @@ The harness runs on OS X and Linux environments, as well as in Docker containers
 
 The two main modules leveraged here are [Jasmine](http://jasmine.github.io/) and [Nightmare] (https://github.com/segmentio/nightmare). Jasmine to organize and run the tests, and Nightmare to drive the browser interaction necessary to retrieve information that can be subject to tests. Nightmare itself is a browser automation library, running on top of a headless version of [Electron](https://github.com/electron/electron), a web framework developed by GitHub.
 
+[Test Execution](#test-execution)
+
 ### Test Design
 
 Tests can be of varying complexity; the harness is designed to allow simple tests to run first and have the more complex tests run only if the previous ones pass. This design makes it so longer/larger tests are not executed if a more fundamental problem is found. The following is an example of a simple test:
@@ -141,6 +143,48 @@ To bypass dependency mode call `npm start [command] bypass`, this will run the l
 
 The `setup/scripts/` and `teardown/scripts/` spaces hold scripts that will be executed before and after the actual call to the test runner occurs and completes. The only setup/teardown currently being executed is logic that retrieves a Magento admin session cookie through the front end and puts it in a configuration file that the tests then reference later. Ideally this will be taken care of by a permanent session configured in the host environment, and in the future, these spaces will hold scripts that prepare the Magento application for testing by injecting testable data into the database and removing it after the tests have executed. This way, tests that rely on specific product/cateogory setup, CMS content configuration, or user accounts information can run effectively and consistently every time, and the database of the application under test is not affected by test execution.
 
-##### Reporting
+### Reporting
 
-The results of each test run are both output to the command line and written to file as XML. The `teardown/reporter` space houses the XML file as well as an XSL stylesheet. This allows us to see the results of the last test run by reaching the XML file through a browser: *http://localhost/path-to-reporter/junitresults.xml* . The resulting page will show all test suites executed, the time it took to execute them, and which (if any) failed.
+The results of each test run are both output to the command line and written to file as XML. The `teardown/reporter` space houses the XML file as well as an XSL stylesheet. This allows us to see the results of the last test run by reaching the XML file through a browser at *http://localhost/path-to-reporter/junitresults.xml* . The resulting page will show all test suites executed, the time it took to execute them, and which (if any) failed.
+
+##### Failure Diagnosis
+
+There are two mechanisms that can detect a failure in a test - the Jasmine expectation, and the time out value of the Jasmine test. Take the following as example:
+
+```javascript
+var Xvfb = require('xvfb'), xvfb = new Xvfb();
+var nightmare = require('nightmare'), browser;
+var site = require('../../../setup/config/website.js');
+var aux = require('./aux.js');
+
+describe("Adding product to cart", function() {
+    beforeAll(function() { 
+        xvfb.start(); 
+        browser = nightmare(site.electronOptions); 
+    });
+    afterAll(function() { 
+        browser.end().then();
+        xvfb.stop(); 
+    });
+    it("page loads", function(done) {
+        browser
+            .goto(site.productUrl)
+            .click(site.addToCart)
+            .wait(site.addToCartConfirm)
+            .goto(site.cartUrl)
+            .title()
+            .then(function (title) {
+                expect(title).toBe('Shopping Cart');
+                done();
+            })          
+    }, aux.specTime);
+});
+```
+
+The test could fail if `expect(title).toBe('Shopping Cart')` resolves negative, which would mean that when the cart page was requested, the correct title of the page was not found, which would mean the page was loaded incorrectly or not at all. The test could also fail if `.goto(site.cartUrl)` takes longer than the timeout value `aux.specTime`, which would mean the cart page took too long to load. In the first scenario, the failure is reported as:
+
+-- *Expected 'wrongtitle' to be 'Shopping Cart'* --
+
+In the second scenairio the failure is reported as:
+
+-- *Error: Timeout - Async callback was not invoked within timeout specified by jasmine* --
