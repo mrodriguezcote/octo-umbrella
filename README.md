@@ -187,7 +187,7 @@ describe("Adding product to cart", function() {
 });
 ```
 
-The test could fail if `expect(title).toBe('Shopping Cart')` resolves negative, which would mean that when the cart page was requested, the correct title of the page was not found, which would mean the page was loaded incorrectly or not at all. The test could also fail if `.goto(site.cartUrl)` takes longer than the timeout value `aux.specTime`, which would mean the cart page took too long to load. In the first scenario, the failure is reported as:
+The test could fail if `expect(title).toBe('Shopping Cart')` resolves negative, which would mean that when the cart page was requested, the correct title of the page was not found, indicating the page was loaded incorrectly or not at all. The test could also fail if `.goto(site.cartUrl)` takes longer than the timeout value `aux.specTime`, which would mean the cart page took too long to load. In the first scenario, the failure is reported as:
 
 -- *Expected 'wrongtitle' to be 'Shopping Cart'* --
 
