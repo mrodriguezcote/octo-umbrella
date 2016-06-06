@@ -8,7 +8,7 @@ The two main modules leveraged here are [Jasmine](http://jasmine.github.io/) and
 
 * [Test Design](#test-design)
   * [Available Tests](#available-tests)
-  * [Framework Structure](#available-tests)
+  * [Framework Structure](#framework-structure)
 * [Test Execution](#test-execution)
   * [Setup and Teardown](#setup-and-teardown)
   * [Reporting](#reporting)
