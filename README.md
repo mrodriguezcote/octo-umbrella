@@ -8,7 +8,7 @@ The two main modules leveraged here are [Jasmine](http://jasmine.github.io/) and
 
 * [Test Design](#test-design)
   * [Available Tests](#available-tests)
-  * [Framework Structure](#framework-structure)
+  * [Framework Layout](#framework-layout)
 * [Test Execution](#test-execution)
   * [Setup and Teardown](#setup-and-teardown)
   * [Reporting](#reporting)
@@ -116,7 +116,7 @@ Level 1 tests are rudimentary http request tests to make sure the major pages of
 
 \* The style guide tests are currently disabled. Since the style guide resides on staging, these tests need to be redesigned to not rely on accessing staging at runtime
 
-##### Framework Structure
+##### Framework Layout
 
 * src/
   * node_modules/
