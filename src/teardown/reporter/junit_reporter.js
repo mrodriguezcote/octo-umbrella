@@ -1,3 +1,6 @@
+/* The following code is taken from the npm module:
+https://www.npmjs.com/package/jasmine-reporters */
+
 (function(global) {
     var UNDEFINED,
         exportObject;
@@ -14,7 +17,7 @@
     function isSkipped(obj) { return obj.status === "pending"; }
     function isDisabled(obj) { return obj.status === "disabled"; }
     function pad(n) { return n < 10 ? '0'+n : n; }
-    function extend(dupe, obj) { // performs a shallow copy of all props of `obj` onto `dupe`
+    function extend(dupe, obj) {
         for (var prop in obj) {
             if (obj.hasOwnProperty(prop)) {
                 dupe[prop] = obj[prop];
@@ -50,61 +53,10 @@
         }
     }
 
-    /**
-     * A delegate for letting the consumer
-     * modify the suite name when it is used inside the junit report and as a file
-     * name. This is useful when running a test suite against multiple capabilities
-     * because the report can have unique names for each combination of suite/spec
-     * and capability/test environment.
-     *
-     * @callback modifySuiteName
-     * @param {string} fullName
-     * @param {object} suite
-     */
-
-    /**
-     * Generates JUnit XML for the given spec run. There are various options
-     * to control where the results are written, and the default values are
-     * set to create as few .xml files as possible. It is possible to save a
-     * single XML file, or an XML file for each top-level `describe`, or an
-     * XML file for each `describe` regardless of nesting.
-     *
-     * Usage:
-     *
-     * jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter(options));
-     *
-     * @param {object} [options]
-     * @param {string} [savePath] directory to save the files (default: '')
-     * @param {boolean} [consolidateAll] whether to save all test results in a
-     *   single file (default: true)
-     *   NOTE: if true, {filePrefix} is treated as the full filename (excluding
-     *     extension)
-     * @param {boolean} [consolidate] whether to save nested describes within the
-     *   same file as their parent (default: true)
-     *   NOTE: true does nothing if consolidateAll is also true.
-     *   NOTE: false also sets consolidateAll to false.
-     * @param {boolean} [useDotNotation] whether to separate suite names with
-     *   dots instead of spaces, ie "Class.init" not "Class init" (default: true)
-     * @param {string} [filePrefix] is the string value that is prepended to the
-     *   xml output file (default: junitresults-)
-     *   NOTE: if consolidateAll is true, the default is simply "junitresults" and
-     *     this becomes the actual filename, ie "junitresults.xml"
-     * @param {string} [package] is the base package for all test suits that are
-     *   handled by this report {default: none}
-     * @param {function} [modifySuiteName] a delegate for letting the consumer
-     *   modify the suite name when it is used inside the junit report and as a file
-     *   name. This is useful when running a test suite against multiple capabilities
-     *   because the report can have unique names for each combination of suite/spec
-     *   and capability/test environment.
-     * @param {function} [systemOut] a delegate for letting the consumer add content
-     *   to a <system-out> tag as part of each <testcase> spec output. If provided,
-     *   it is invoked with the spec object and the fully qualified suite as filename.
-     */
     exportObject.JUnitXmlReporter = function(options) {
         var self = this;
         self.started = false;
         self.finished = false;
-        // sanitize arguments
         options = options || {};
         self.savePath = options.savePath || '';
         self.consolidate = options.consolidate === UNDEFINED ? true : options.consolidate;
@@ -132,7 +84,6 @@
             currentSuite = null,
             totalSpecsExecuted = 0,
             totalSpecsDefined,
-            // when use use fit, jasmine never calls suiteStarted / suiteDone, so make a fake one to use
             fakeFocusedSuite = {
                 id: 'focused',
                 description: 'focused specs',
@@ -172,7 +123,6 @@
         };
         self.specStarted = function(spec) {
             if (!currentSuite) {
-                // focused spec (fit) -- suiteStarted was never called
                 self.suiteStarted(fakeFocusedSuite);
             }
             spec = getSpec(spec);
@@ -191,29 +141,24 @@
         self.suiteDone = function(suite) {
             suite = getSuite(suite);
             if (suite._parent === UNDEFINED) {
-                // disabled suite (xdescribe) -- suiteStarted was never called
                 self.suiteStarted(suite);
             }
             suite._endTime = new Date();
             currentSuite = suite._parent;
         };
         self.jasmineDone = function() {
-            if (currentSuite) {
-                // focused spec (fit) -- suiteDone was never called
+            if (currentSuite) {        
                 self.suiteDone(fakeFocusedSuite);
             }
             var output = '';
             for (var i = 0; i < suites.length; i++) {
                 output += self.getOrWriteNestedOutput(suites[i]);
             }
-            // if we have anything to write here, write out the consolidated file
             if (output) {
                 wrapOutputAndWriteFile(self.filePrefix, output);
             }
-            //log("Specs skipped but not reported (entire suite skipped or targeted to specific specs)", totalSpecsDefined - totalSpecsExecuted + totalSpecsDisabled);
 
             self.finished = true;
-            // this is so phantomjs-testrunner.js can tell if we're done executing
             exportObject.endTime = new Date();
         };
 
@@ -225,7 +170,6 @@
             if (self.consolidateAll || self.consolidate && suite._parent) {
                 return output;
             } else {
-                // if we aren't supposed to consolidate output, just write it now
                 wrapOutputAndWriteFile(generateFilename(suite), output);
                 return '';
             }
@@ -236,24 +180,20 @@
             var path = self.savePath;
 
             function phantomWrite(path, filename, text) {
-                // turn filename into a qualified path
                 filename = getQualifiedFilename(path, filename, window.fs_path_separator);
-                // write via a method injected by phantomjs-testrunner.js
                 __phantom_writeFile(filename, text);
             }
 
             function nodeWrite(path, filename, text) {
                 var fs = require("fs");
                 var nodejs_path = require("path");
-                require("mkdirp").sync(path); // make sure the path exists
+                require("mkdirp").sync(path);
                 var filepath = nodejs_path.join(path, filename);
                 var xmlfile = fs.openSync(filepath, "w");
                 fs.writeSync(xmlfile, text, 0);
                 fs.closeSync(xmlfile);
                 return;
             }
-            // Attempt writing with each possible environment.
-            // Track errors in case no write succeeds
             try {
                 phantomWrite(path, filename, text);
                 return;
@@ -263,14 +203,12 @@
                 return;
             } catch (f) { errors.push('  NodeJS attempt: ' + f.message); }
 
-            // If made it here, no write succeeded.  Let user know.
             log("Warning: writing junit report failed for '" + path + "', '" +
                 filename + "'. Reasons:\n" +
                 errors.join("\n")
             );
         };
 
-        /******** Helper functions with closure access for simplicity ********/
         function generateFilename(suite) {
             return self.filePrefix + getFullyQualifiedSuiteName(suite, true) + '.xml';
         }
@@ -286,7 +224,6 @@
                 fullName = suite.fullName;
             }
 
-            // Either remove or escape invalid XML characters
             if (isFilename) {
                 var fileName = "",
                     rFileChars = /[\w\.]/,
@@ -312,13 +249,12 @@
         function suiteAsXml(suite) {
             var xml = '\n <testsuite name="' + getFullyQualifiedSuiteName(suite) + '"';
             xml += ' timestamp="' + ISODateString(suite._startTime) + '"';
-            xml += ' hostname="localhost"'; // many CI systems like Jenkins don't care about this, but junit spec says it is required
+            xml += ' hostname="localhost"';
             xml += ' time="' + elapsed(suite._startTime, suite._endTime) + '"';
             xml += ' errors="0"';
             xml += ' tests="' + suite._specs.length + '"';
             xml += ' skipped="' + suite._skipped + '"';
             xml += ' disabled="' + suite._disabled + '"';
-            // Because of JUnit's flat structure, only include directly failed tests (not failures for nested suites)
             xml += ' failures="' + suite._failures + '"';
             if (self.package) {
                 xml += ' package="' + self.package + '"';
@@ -366,7 +302,6 @@
             return xml;
         }
 
-        // To remove complexity and be more DRY about the silly preamble and <testsuites> element
         var prefix = '<?xml version="1.0" encoding="UTF-8" ?>';
         prefix += '\n<?xml-stylesheet type="text/xsl" href="'+options.stylesheet+'"?>';
         prefix += '\n<testsuites>';

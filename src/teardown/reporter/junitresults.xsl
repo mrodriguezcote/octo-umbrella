@@ -3,7 +3,7 @@
 
 <xsl:template match="testsuites">
 <html>
-<body style="background-color:#47476b">
+<body style="background-color:#004080">
   <h1 style="color:#ffffff;font-family:verdana;font-weight:300;text-align:center;"><i>RDS Test Runner Results</i></h1>
   <p style="color:#ffffff;font-family:verdana;font-weight:300;text-align:center;">Last Run -- <xsl:value-of select="testsuite/@timestamp"/> -- </p>
 
