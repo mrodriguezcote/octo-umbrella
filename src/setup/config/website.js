@@ -27,9 +27,11 @@ var stageHomeUrl = 'http://staging.reeds.com/';
 var stageAdminUrl = 'http://staging.reeds.com/admin/admin/';
 var styleGuide = 'http://staging.reeds.com/styleguide';
 
+//ROOT URL
+var homeUrl = 'http://rds.qa-2.blueacorn.net/';
+
 //General URLs:
-var homeUrl = 'http://rds.qa-1.blueacorn.net/';
-var adminUrl = 'http://rds.qa-1.blueacorn.net/admin/admin/';
+var adminUrl = homeUrl+'admin/admin/';
 var adminCache = adminUrl+'cache/'
 var checkoutUrl = homeUrl+'checkout/';
 var cartUrl = homeUrl+'checkout/cart/';
