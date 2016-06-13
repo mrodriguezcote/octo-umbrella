@@ -12,8 +12,6 @@ module.exports = async.series([
 		callback(null, null);
 	},
 	function(callback) {
-		console.log(site.adminLogin.user);
-		console.log(site.adminLogin.pass);
 		browser
             .goto(site.adminUrl)
             .type(aux.adminLoginInput.user, site.adminLogin.user)
