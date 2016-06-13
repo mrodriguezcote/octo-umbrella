@@ -20,8 +20,8 @@ describe("User", function() {
         
         browser
             .goto(site.loginUrl)
-            .type(aux.siteLoginInput.user, aux.siteLogin.user)
-            .type(aux.siteLoginInput.pass, aux.siteLogin.pass)
+            .type(aux.siteLoginInput.user, site.siteLogin.user)
+            .type(aux.siteLoginInput.pass, site.siteLogin.pass)
             .click(aux.loginButton)
             .wait(aux.accountSidebar)
             .title()

@@ -20,11 +20,11 @@
         
 //         browser
 //             .goto(site.registerUrl)
-//             .type(aux.siteRegisterInput.first, aux.siteRegister.first)
-//             .type(aux.siteRegisterInput.last, aux.siteRegister.last)
-//             .type(aux.siteRegisterInput.email, aux.siteRegister.email)
-//             .type(aux.siteRegisterInput.pass, aux.siteRegister.pass)
-//             .type(aux.siteRegisterInput.passConfirm, aux.siteRegister.pass)
+//             .type(aux.siteRegisterInput.first, site.siteRegister.first)
+//             .type(aux.siteRegisterInput.last, site.siteRegister.last)
+//             .type(aux.siteRegisterInput.email, site.siteRegister.email)
+//             .type(aux.siteRegisterInput.pass, site.siteRegister.pass)
+//             .type(aux.siteRegisterInput.passConfirm, site.siteRegister.pass)
 //             .click(aux.registerButton)
 //             .wait(aux.accountSidebar)
 //             .title()

@@ -12,10 +12,12 @@ module.exports = async.series([
 		callback(null, null);
 	},
 	function(callback) {
+		console.log(site.adminLogin.user);
+		console.log(site.adminLogin.pass);
 		browser
             .goto(site.adminUrl)
-            .type(aux.adminLoginInput.user, aux.adminLogin.user)
-            .type(aux.adminLoginInput.pass, aux.adminLogin.pass)
+            .type(aux.adminLoginInput.user, site.adminLogin.user)
+            .type(aux.adminLoginInput.pass, site.adminLogin.pass)
             .click(aux.adminLoginButton)
             .wait(aux.adminDashboard)
 		    .cookies.get(site.adminCookie.name)

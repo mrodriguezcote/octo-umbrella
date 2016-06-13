@@ -11,22 +11,12 @@ var siteLoginInput = {
 	user: '#email',
 	pass: '#pass'
 }
-var siteLogin = {
-	user: 'marco@blueacorn.com',
-	pass: 'pass4marco'
-}
 var siteRegisterInput = {
 	first: '#firstname',
 	last: '#lastname',
 	email: '#email_address',
 	pass: '#password',
 	passConfirm: '#password-confirmation'
-}
-var siteRegister = {
-	first: 'Test',
-	last: 'User',
-	email: 'test@blueacorn.com',
-	pass: 'pass4test'
 }
 
 var loginButton = '#send2>span';
@@ -36,9 +26,7 @@ var adminUsersUrl = site.homeUrl+'admin/customer/index/index/';
 
 exports.specTime = specTime;
 exports.siteLoginInput = siteLoginInput;
-exports.siteLogin = siteLogin;
 exports.siteRegisterInput = siteRegisterInput;
-exports.siteRegister = siteRegister;
 exports.loginButton = loginButton;
 exports.registerButton = registerButton;
 exports.accountSidebar = accountSidebar;

@@ -28,7 +28,7 @@ var stageAdminUrl = 'http://staging.reeds.com/admin/admin/';
 var styleGuide = 'http://staging.reeds.com/styleguide';
 
 //ROOT URL
-var homeUrl = 'http://rds.qa-2.blueacorn.net/';
+var homeUrl = 'http://rds.qa-1.blueacorn.net/';
 
 //General URLs:
 var adminUrl = homeUrl+'admin/admin/';
@@ -39,6 +39,22 @@ var loginUrl = homeUrl+'customer/account/login/';
 var registerUrl = homeUrl+'customer/account/create/';
 var categoryUrl = homeUrl+'test-category.html/';
 var productUrl = homeUrl+'batest.html/';
+
+//User Information
+var adminLogin = {
+  user: 'marco@blueacorn.com',
+  pass: 'pass4marco'
+}
+var siteLogin = {
+  user: 'marco@blueacorn.com',
+  pass: 'pass4marco'
+}
+var siteRegister = {
+  first: 'Test',
+  last: 'User',
+  email: 'test@blueacorn.com',
+  pass: 'pass4test'
+}
 
 //For logging in admin on page load:
 var adminCookie = {
@@ -76,6 +92,9 @@ exports.loginUrl = loginUrl;
 exports.registerUrl = registerUrl;
 exports.categoryUrl = categoryUrl;
 exports.productUrl = productUrl;
+exports.adminLogin = adminLogin;
+exports.siteLogin = siteLogin;
+exports.siteRegister = siteRegister;
 exports.adminCookie = adminCookie;
 exports.testSimpleURL = testSimpleURL;
 exports.adminTestSimple = adminTestSimple;

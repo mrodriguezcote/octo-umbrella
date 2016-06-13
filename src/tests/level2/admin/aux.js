@@ -15,10 +15,6 @@ var adminLoginInput = {
 	user: '#username',
 	pass: '#login'
 }
-var adminLogin = {
-	user: 'marco@blueacorn.com',
-	pass: 'pass4marco'
-}
 var expectedMsg = 'The Magento cache storage has been flushed.';
 
 //////////////////////// SELECTORS ////////////////////////
@@ -29,7 +25,6 @@ var msgSelector = '.message.message-success.success';
 
 exports.specTime = specTime;
 exports.adminLoginInput = adminLoginInput;
-exports.adminLogin = adminLogin;
 exports.expectedMsg = expectedMsg;
 exports.adminLoginButton = adminLoginButton;
 exports.adminDashboard = adminDashboard;
