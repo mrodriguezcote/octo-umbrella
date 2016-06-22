@@ -1,0 +1,5 @@
+name: Jasmine poc
+skel_vars:
+  env: "www"
+  base_urls:
+    - "reeds.com/"

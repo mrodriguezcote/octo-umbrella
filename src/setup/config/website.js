@@ -21,6 +21,9 @@ var electronMobileOptions = {
     partition: electronPartition,
   }
 }
+//Page names to check
+var pages = ['homepage', 'admin', 'login page', 'category page', 'product page', 'cart page'];
+
 
 //Staging
 var stageHomeUrl = 'http://staging.reeds.com/';
@@ -30,7 +33,7 @@ var styleGuide = 'http://staging.reeds.com/styleguide';
 //ROOT URL
 var homeUrl = 'http://rds.qa-1.blueacorn.net/';
 
-//General URLs:
+//General URLs
 var adminUrl = homeUrl+'admin/admin/';
 var adminCache = adminUrl+'cache/'
 var checkoutUrl = homeUrl+'checkout/';
@@ -39,6 +42,9 @@ var loginUrl = homeUrl+'customer/account/login/';
 var registerUrl = homeUrl+'customer/account/create/';
 var categoryUrl = homeUrl+'test-category.html/';
 var productUrl = homeUrl+'batest.html/';
+
+//Urls to check
+var urls = [ '', 'admin/admin/', 'customer/account/login/', 'test-category.html/', 'batest.html/', 'checkout/cart/'];
 
 //User Information
 var adminLogin = {
@@ -102,6 +108,8 @@ exports.cacheFlush = cacheFlush;
 exports.cacheFlushConfirm = cacheFlushConfirm;
 exports.addToCart = addToCart;
 exports.addToCartConfirm = addToCartConfirm;
+exports.pages = pages;
+exports.urls = urls;
 
 module.exports = exports;
 
