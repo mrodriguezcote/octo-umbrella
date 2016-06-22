@@ -1,8 +1,5 @@
 /* Preliminary configuration file for sitewide variables */
 
-var yamlObject = require('yamljs').load('setup/config/config.yaml');
-
-
 //Electron configuration options
 var electronShow = false;
 var electronPartition = 'nopersist';
@@ -24,9 +21,6 @@ var electronMobileOptions = {
     partition: electronPartition,
   }
 }
-//Page names to check
-var pages = yamlObject.pages || ['homepage', 'admin', 'login page', 'category page', 'product page', 'cart page'];
-
 
 //Staging
 var stageHomeUrl = 'http://staging.reeds.com/';
@@ -46,12 +40,15 @@ var registerUrl = homeUrl+'customer/account/create/';
 var categoryUrl = homeUrl+'test-category.html/';
 var productUrl = homeUrl+'batest.html/';
 
-//Urls to check
-var urls = yamlObject.urls || [ '', 'admin/admin/', 'customer/account/login/', 'test-category.html/', 'batest.html/', 'checkout/cart/'];
-
 //User Information
-var adminLogin = yamlObject.admin_login || { user: 'marco@blueacorn.com', pass: 'pass4marco'};
-var siteLogin = yamlObject.site_login || { user: 'marco@blueacorn.com', pass: 'pass4marco'};
+var adminLogin = { 
+  user: 'marco@blueacorn.com', 
+  pass: 'pass4marco'
+}
+var siteLogin = {
+  user: 'marco@blueacorn.com', 
+  pass: 'pass4marco'
+}
 var siteRegister = {
   first: 'Test',
   last: 'User',
@@ -105,9 +102,6 @@ exports.cacheFlush = cacheFlush;
 exports.cacheFlushConfirm = cacheFlushConfirm;
 exports.addToCart = addToCart;
 exports.addToCartConfirm = addToCartConfirm;
-exports.pages = pages;
-exports.urls = urls;
-exports.yamlObject = yamlObject;
 
 module.exports = exports;
 
