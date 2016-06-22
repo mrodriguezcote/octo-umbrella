@@ -1,12 +1,11 @@
 var site = require('../../../setup/config/website.js');
-var YAML = require('yamljs');
 var aux = require('./aux.js');
 var request = require('request');
 var j = 0;
 var homeUrl = "";
 
-var yamlObject = YAML.load('setup/config/config.yaml');
-
+var yamlObject = site.yamlObject;//YAML.load('setup/config/config.yaml');
+console.log("Check Access tests:");
 
 /* Perform an HTTP request from each of the main pages and ensure no
 whitescreens of 404s from any */

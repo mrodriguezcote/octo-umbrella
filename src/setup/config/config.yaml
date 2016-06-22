@@ -3,3 +3,9 @@ skel_vars:
   env: "www"
   base_urls:
     - "reeds.com/"
+admin_login:
+  user: "marco@blueacorn.com"
+  pass: "pass4marco"
+site_login:
+  user: "marco@blueacorn.com"
+  pass: "pass4marco"
