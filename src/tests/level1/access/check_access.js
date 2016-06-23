@@ -15,7 +15,7 @@ describe("Loading", function() {
                 done();
             }
             else {
-                var flag = body.split(' ')[0][1];
+                var flag = body.split('\n')[0];
                 if(response.statusCode == 404) {
                     fail('404 on homepage');
                     done();
@@ -25,7 +25,7 @@ describe("Loading", function() {
                     done();
                 }
                 else if(response.statusCode == 200) {
-                    if(flag == '<' || flag == '!') {
+                    if(flag == site.expectedBody) {
                         done();
                     }
                     else {
@@ -50,7 +50,7 @@ describe("Loading", function() {
                 done();
             }
             else {
-                var flag = body.split(' ')[0][1];
+                var flag = body.split('\n')[0];
                 if(response.statusCode == 404) {
                     fail('404 on admin');
                     done();
@@ -60,7 +60,7 @@ describe("Loading", function() {
                     done();
                 }
                 else if(response.statusCode == 200) {
-                    if(flag == '<' || flag == '!') {
+                    if(flag == site.expectedBody) {
                         done();
                     }
                     else {
@@ -85,7 +85,7 @@ describe("Loading", function() {
                 done();
             }
             else {
-                var flag = body.split(' ')[0][1];
+                var flag = body.split('\n')[0];
                 if(response.statusCode == 404) {
                     fail('404 on login page');
                     done();
@@ -95,7 +95,7 @@ describe("Loading", function() {
                     done();
                 }
                 else if(response.statusCode == 200) {
-                    if(flag == '<' || flag == '!') {
+                    if(flag == site.expectedBody) {
                         done();
                     }
                     else {
@@ -120,7 +120,7 @@ describe("Loading", function() {
                 done();
             }
             else {
-                var flag = body.split(' ')[0][1];
+                var flag = body.split('\n')[0];
                 if(response.statusCode == 404) {
                     fail('404 on category page');
                     done();
@@ -130,7 +130,7 @@ describe("Loading", function() {
                     done();
                 }
                 else if(response.statusCode == 200) {
-                    if(flag == '<' || flag == '!') {
+                    if(flag == site.expectedBody) {
                         done();
                     }
                     else {
@@ -155,7 +155,7 @@ describe("Loading", function() {
                 done();
             }
             else {
-                var flag = body.split(' ')[0][1];
+                var flag = body.split('\n')[0];
                 if(response.statusCode == 404) {
                     fail('404 on product page');
                     done();
@@ -165,7 +165,7 @@ describe("Loading", function() {
                     done();
                 }
                 else if(response.statusCode == 200) {
-                    if(flag == '<' || flag == '!') {
+                    if(flag == site.expectedBody) {
                         done();
                     }
                     else {
@@ -191,7 +191,7 @@ describe("Loading", function() {
                 done();
             }
             else {
-                var flag = body.split(' ')[0][1];
+                var flag = body.split('\n')[0];
                 if(response.statusCode == 404) {
                     fail('404 on cart page');
                     done();
@@ -201,7 +201,7 @@ describe("Loading", function() {
                     done();
                 }
                 else if(response.statusCode == 200) {
-                    if(flag == '<' || flag == '!') {
+                    if(flag == site.expectedBody) {
                         done();
                     }
                     else {

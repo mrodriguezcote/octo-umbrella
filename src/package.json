@@ -9,6 +9,7 @@
     "async": "^2.0.0-rc.2",
     "git-promise": "*",
     "jasmine": "*",
+    "loadtest": "^1.4.3",
     "lodash": "^4.13.1",
     "mkdirp": "~0.3.5",
     "mysql": "^2.10.2",

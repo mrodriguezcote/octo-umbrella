@@ -39,6 +39,7 @@ var loginUrl = homeUrl+'customer/account/login/';
 var registerUrl = homeUrl+'customer/account/create/';
 var categoryUrl = homeUrl+'test-category.html/';
 var productUrl = homeUrl+'batest.html/';
+var searchUrl = homeUrl+'catalogsearch/result/?q=';
 
 //User Information
 var adminLogin = { 
@@ -76,6 +77,9 @@ Different features might use the same page object functions/variables */
 var addToCart = '#product-addtocart-button';
 var addToCartConfirm = '.message-success';
 
+//First line of a successful page load response body string
+var expectedBody = '<!doctype html>';
+
 
 //Exporting
 exports.electronOptions = electronOptions;
@@ -92,6 +96,7 @@ exports.loginUrl = loginUrl;
 exports.registerUrl = registerUrl;
 exports.categoryUrl = categoryUrl;
 exports.productUrl = productUrl;
+exports.searchUrl = searchUrl;
 exports.adminLogin = adminLogin;
 exports.siteLogin = siteLogin;
 exports.siteRegister = siteRegister;
@@ -102,6 +107,7 @@ exports.cacheFlush = cacheFlush;
 exports.cacheFlushConfirm = cacheFlushConfirm;
 exports.addToCart = addToCart;
 exports.addToCartConfirm = addToCartConfirm;
+exports.expectedBody = expectedBody;
 
 module.exports = exports;
 
