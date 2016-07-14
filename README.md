@@ -97,24 +97,15 @@ Every (`it`) function is considered a test. Tests are grouped in test suites, an
 * level1
   * access
 * level2
-  * admin
+  * filtration
+* level3
+  * performance
+* level4
   * cart
   * crawler
-  * style\*
   * user
-* level3
-  * associateOrders
-  * brandManager
-  * globalFooter
-  * globalHeader
-  * homepage
-  * megaMenu
-  * productBadges
-  * shortUrl
 
-Level 1 tests are rudimentary http request tests to make sure the major pages of the site are accessible. Level 2 tests are slightly more complex tests, like checking adding an item to cart, or checking if the user can log in through the storefront. Level 3 tests are feature tests, these tests check specific use cases to assure the functionality of major features of the site. 
-
-\* The style guide tests are currently disabled. Since the style guide resides on staging, these tests need to be redesigned to not rely on accessing staging at runtime
+Level 1 tests are rudimentary http request tests to make sure the major pages of the site are accessible. Level 2 tests are slightly more complex tests, like checking a category page to make sure enough products display. Level 3 tests are performance tests. Level 4 tests are even more involved tests, like adding an item to cart and checking a user can log in through the storefront 
 
 ##### Framework Layout
 
@@ -129,7 +120,8 @@ Level 1 tests are rudimentary http request tests to make sure the major pages of
   * tests/
      * level1/ *simpler tests*
      * level2/ ..
-     * level3/ *more complex tests*
+     * level3/ ..
+     * level4/ *more complex tests*
   * package.json
   * runner.js *test runner executable, execution logic*
 
