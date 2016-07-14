@@ -3,6 +3,7 @@ var roster = require('./setup/config/roster');
 var level1 = require('./setup/config/level1');
 var level2 = require('./setup/config/level2');
 var level3 = require('./setup/config/level3');
+var level4 = require('./setup/config/level4');
 var bypass = require('./setup/config/bypass');
 
 var command = process.argv[2];
@@ -24,6 +25,9 @@ else if(command.includes('level')) {
 	}
 	else if (upToLevel == 3) {
 		level3.run();
+	}
+	else if (upToLevel == 4) {
+		level4.run();
 	}
 	else {
 		console.log('Unidentified Level');
@@ -51,6 +55,9 @@ else {
 				}
 				else if (upToLevel == 2) {
 					level3.run(command);
+				}
+				else if (upToLevel == 3) {
+					level4.run(command);
 				}
 			}
 		})

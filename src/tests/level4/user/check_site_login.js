@@ -8,6 +8,7 @@ describe("User", function() {
     beforeAll(function() { 
         xvfb.start(); 
         browser = nightmare(site.electronOptions); 
+        browser.authentication(site.htuser, site.htpass);
     });
     
     afterAll(function() { 

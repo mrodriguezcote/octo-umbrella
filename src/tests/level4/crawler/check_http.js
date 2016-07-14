@@ -1,28 +1,44 @@
-var site = require('../../../setup/config/website.js');
-var aux = require('./aux.js');
-var Xray = require('x-ray'), xray = new Xray();
+var Xvfb = require('xvfb'), xvfb = new Xvfb();
+var nightmare = require('nightmare'), browser;
 var async = require('async');
 var request = require('request');
+var site = require('../../../setup/config/website.js');
+var aux = require('./aux.js');
 
 var scrapedLinks = [];
 var badLinks = [];
 var goodLinks = [];
 
 describe("Crawler", function() {
+
+    beforeAll(function() { 
+        xvfb.start(); 
+        browser = nightmare(site.electronOptions); 
+        browser.authentication(site.htuser, site.htpass);
+    });
     
-    /* Use xray to retrieve the href attribute from all a tags */
+    afterAll(function() { 
+        browser.end().then();
+        xvfb.stop(); 
+    });
+
+    /* Ensure the cart page display */
     it("enough links scraped from homepage", function(done) {
 
-        xray(site.homeUrl, ['a@href'])
-        (function(err, hrefs) {
-            for(i in hrefs) {
-                if(hrefs[i] != undefined) {
-                    scrapedLinks.push(hrefs[i]);
-                }
-            }
-            expect(scrapedLinks.length).toBeGreaterThan(400);
-            done();
-        })   
+        browser
+            .goto(site.homeUrl)
+            .evaluate(function() {
+                hrefs = [];
+                jQuery('a').each(function() {
+                    hrefs.push(this.href);
+                })
+                return hrefs;
+            })
+            .then(function (hrefs) {
+                scrapedLinks = hrefs;
+                expect(scrapedLinks.length).toBeGreaterThan(400);
+                done();
+            })          
 
     }, aux.specTime);
 

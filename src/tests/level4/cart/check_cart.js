@@ -7,7 +7,8 @@ describe("Adding product to cart", function() {
 
     beforeAll(function() { 
         xvfb.start(); 
-        browser = nightmare(site.electronOptions); 
+        browser = nightmare(site.electronOptions);
+        browser.authentication(site.htuser, site.htpass);
     });
     
     afterAll(function() { 
@@ -50,6 +51,7 @@ describe("Adding product to cart", function() {
     it("mini cart count updates", function(done) {
 
         browser
+            .wait(1000)
             .evaluate(function(counterLabel) {
                 return parseInt(jQuery(counterLabel).text().trim().charAt(0));
             },aux.counterLabel)
