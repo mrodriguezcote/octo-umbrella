@@ -1,7 +1,7 @@
 /* Preliminary configuration file for sitewide variables */
 
 //Electron configuration options
-var electronShow = true;
+var electronShow = false;
 var electronPartition = 'nopersist';
 var electronOptions = {
   show: electronShow,
@@ -27,8 +27,8 @@ var htuser = 'blueacorn';
 var htpass = 'pass4blueacorn';
 
 //ROOT URL
-var homeUrl = 'http://rds.qa-1.blueacorn.net/';
-//var homeUrl = 'http://staging.reeds.com/';
+//var homeUrl = 'http://rds.qa-1.blueacorn.net/';
+var homeUrl = 'http://staging.reeds.com/';
 
 //General URLs
 var adminUrl = homeUrl+'admin/admin/';

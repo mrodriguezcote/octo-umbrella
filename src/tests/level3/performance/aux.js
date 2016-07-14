@@ -5,7 +5,7 @@ admin configuration pages, feature-specific content, etc. */
 var site = require('../../../setup/config/website.js');
 
 //Timeout for feature tests
-var specTime = 25000;
+var specTime = 20000;
 
 //////////////////////// URLs ////////////////////////
 

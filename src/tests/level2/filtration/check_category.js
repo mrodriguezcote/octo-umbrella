@@ -45,21 +45,5 @@ describe("Category", function() {
 
     }, aux.specTime);
 
-    /* Ensure the correct number of items are in view */
-    it("correct number of products in grid", function(done) {
-
-        browser
-            .evaluate(function(viewSelect, prodList) {
-                test = [];
-                test.push(parseInt(jQuery(viewSelect+' :selected').val()));
-                test.push(jQuery(prodList).children().length);
-                return test;
-            },aux.viewSelect,aux.prodList)
-            .then(function (test) {
-                expect(test[0]).toBe(test[1]);
-                done();
-            })          
-
-    }, aux.specTime);
 
 });

@@ -11,7 +11,7 @@ var specTime = 5000;
 
 
 //////////////////////// VALUES ////////////////////////
-var itemsExpected = 12;
+var itemsExpected = 8;
 var expectedTitle = 'Test Category';
 var expectedSorting = 'position';
 
