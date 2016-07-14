@@ -34,11 +34,11 @@ describe("Loading", function() {
                     }
                 }
                 else {
-                    fail('unusual HTTP status received');
+                    fail(response.statusCode+' HTTP status received');
                     done();
                 }
             }
-        })
+        }).auth(site.htuser, site.htpass)
 
     }, aux.specTime);
 
@@ -69,11 +69,11 @@ describe("Loading", function() {
                     }
                 }
                 else {
-                    fail('unusual HTTP status received');
+                    fail(response.statusCode+' HTTP status received');
                     done();
                 }
             }
-        })
+        }).auth(site.htuser, site.htpass)
 
     }, aux.specTime);
 
@@ -104,11 +104,11 @@ describe("Loading", function() {
                     }
                 }
                 else {
-                    fail('unusual HTTP status received');
+                    fail(response.statusCode+' HTTP status received');
                     done();
                 }
             }
-        })
+        }).auth(site.htuser, site.htpass)
 
     }, aux.specTime);
 
@@ -139,11 +139,11 @@ describe("Loading", function() {
                     }
                 }
                 else {
-                    fail('unusual HTTP status received');
+                    fail(response.statusCode+' HTTP status received');
                     done();
                 }
             }
-        })
+        }).auth(site.htuser, site.htpass)
 
     }, aux.specTime); 
     
@@ -174,11 +174,11 @@ describe("Loading", function() {
                     }
                 }
                 else {
-                    fail('unusual HTTP status received');
+                    fail(response.statusCode+' HTTP status received');
                     done();
                 }
             }
-        })
+        }).auth(site.htuser, site.htpass)
 
     }, aux.specTime);
 
@@ -210,12 +210,11 @@ describe("Loading", function() {
                     }
                 }
                 else {
-                    fail('unusual HTTP status received');
+                    fail(response.statusCode+' HTTP status received');
                     done();
                 }                
             }
-
-        })
+        }).auth(site.htuser, site.htpass)
 
     }, aux.specTime);
 
