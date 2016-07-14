@@ -42,41 +42,6 @@ describe("Loading", function() {
 
     }, aux.specTime);
 
-    it("admin", function(done) {
-
-        request(site.adminUrl, {timeout: aux.timeout}, function(error, response, body) {
-            if(error) {
-                fail('server error');
-                done();
-            }
-            else {
-                var flag = body.split('\n')[0];
-                if(response.statusCode == 404) {
-                    fail('404 on admin');
-                    done();
-                }
-                else if(response.statusCode == 500) {
-                    fail('whitescreen on admin: '+flag);
-                    done();
-                }
-                else if(response.statusCode == 200) {
-                    if(flag == site.expectedBody) {
-                        done();
-                    }
-                    else {
-                        fail('exception on admin: '+flag);
-                        done();
-                    }
-                }
-                else {
-                    fail(response.statusCode+' HTTP status received');
-                    done();
-                }
-            }
-        }).auth(site.htuser, site.htpass)
-
-    }, aux.specTime);
-
     it("login page", function(done) {
 
         request(site.loginUrl, {timeout: aux.timeout}, function(error, response, body) {

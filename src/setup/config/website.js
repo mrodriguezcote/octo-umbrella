@@ -22,17 +22,13 @@ var electronMobileOptions = {
   }
 }
 
-//Staging
-var stageHomeUrl = 'http://staging.reeds.com/';
-var stageAdminUrl = 'http://staging.reeds.com/admin/admin/';
-var styleGuide = 'http://staging.reeds.com/styleguide';
-
 //Htaccess credentials
 var htuser = 'blueacorn';
 var htpass = 'pass4blueacorn';
 
 //ROOT URL
-var homeUrl = 'http://rds.qa-1.blueacorn.net/';
+//var homeUrl = 'http://rds.qa-1.blueacorn.net/';
+var homeUrl = 'http://staging.reeds.com/';
 
 //General URLs
 var adminUrl = homeUrl+'admin/admin/';
@@ -45,11 +41,12 @@ var categoryUrl = homeUrl+'test-category.html/';
 var productUrl = homeUrl+'batest.html/';
 var searchUrl = homeUrl+'catalogsearch/result/?q=';
 
+//Staging
+var stageHomeUrl = 'http://staging.reeds.com/';
+var stageAdminUrl = 'http://staging.reeds.com/admin/admin/';
+var styleGuide = 'http://staging.reeds.com/styleguide';
+
 //User Information
-var adminLogin = { 
-  user: 'marco@blueacorn.com', 
-  pass: 'pass4marco'
-}
 var siteLogin = {
   user: 'marco@blueacorn.com', 
   pass: 'pass4marco'
@@ -103,7 +100,6 @@ exports.registerUrl = registerUrl;
 exports.categoryUrl = categoryUrl;
 exports.productUrl = productUrl;
 exports.searchUrl = searchUrl;
-exports.adminLogin = adminLogin;
 exports.siteLogin = siteLogin;
 exports.siteRegister = siteRegister;
 exports.adminCookie = adminCookie;

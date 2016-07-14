@@ -17,10 +17,10 @@ describe("Crawler", function() {
         (function(err, hrefs) {
             for(i in hrefs) {
                 if(hrefs[i] != undefined) {
-                    scrapedLinks.push(hrefs[i])
+                    scrapedLinks.push(hrefs[i]);
                 }
             }
-            expect(scrapedLinks.length).not.toBeLessThan(400);
+            expect(scrapedLinks.length).toBeGreaterThan(400);
             done();
         })   
 
@@ -32,7 +32,7 @@ describe("Crawler", function() {
 
         var q = async.queue(function (url, callback) {
             request(url, function (error, response, body) {
-                if (response.statusCode == 404) {
+                if (response.statusCode == 404 || response.statusCode == 500) {
                     badLinks.push(url);
                     callback();
                 }
@@ -40,7 +40,7 @@ describe("Crawler", function() {
                     goodLinks.push(url);
                     callback();
                 }
-            })
+            }).auth(site.htuser, site.htpass)
         }, 10);
 
         q.push(aux.clean(scrapedLinks))
