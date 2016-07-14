@@ -5,11 +5,19 @@ admin configuration pages, feature-specific content, etc. */
 var site = require('../../../setup/config/website.js');
 
 //Timeout for feature tests
-var specTime = 10000;
+var specTime = 15000;
 
+//////////////////////// URLs ////////////////////////
+
+
+//////////////////////// VALUES ////////////////////////
 //This link does not return a response from request
 var deleteLinks = ['http://www.bbb.org/myrtle-beach/business-reviews/jewelers-retail/reeds-jewelers-in-wilmington-nc-11002451#sealclick'];
 
+//////////////////////// SELECTORS ////////////////////////
+
+
+//////////////////////// METHODS ////////////////////////
 var clean = function(array) {
 
     deleteLinks.push('');

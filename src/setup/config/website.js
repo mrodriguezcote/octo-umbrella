@@ -27,8 +27,8 @@ var htuser = 'blueacorn';
 var htpass = 'pass4blueacorn';
 
 //ROOT URL
-//var homeUrl = 'http://rds.qa-1.blueacorn.net/';
-var homeUrl = 'http://staging.reeds.com/';
+var homeUrl = 'http://rds.qa-1.blueacorn.net/';
+//var homeUrl = 'http://staging.reeds.com/';
 
 //General URLs
 var adminUrl = homeUrl+'admin/admin/';
@@ -40,7 +40,6 @@ var registerUrl = homeUrl+'customer/account/create/';
 var categoryUrl = homeUrl+'test-category.html/';
 var productUrl = homeUrl+'batest.html/';
 var searchUrl = homeUrl+'catalogsearch/result/?q=';
-
 //Staging
 var stageHomeUrl = 'http://staging.reeds.com/';
 var stageAdminUrl = 'http://staging.reeds.com/admin/admin/';
@@ -58,23 +57,11 @@ var siteRegister = {
   pass: 'pass4test'
 }
 
-//For logging in admin on page load:
-var adminCookie = {
-  name: 'admin',
-  value: 'ADMIN_COOKIE_PLACEHOLDER'
-}
-
-//Test Catalog Pages:
-var testSimpleURL = homeUrl+'batest.html/';
-var adminTestSimple = homeUrl+'admin/catalog/product/edit/id/1/';
-
 //Admin Cache Management page
 var cacheFlush = '#flush_magento';
 var cacheFlushConfirm = '.message.message-success.success';
 
 //Product Page
-/*TODO: Need to think if each major page should have a page object
-Different features might use the same page object functions/variables */
 var addToCart = '#product-addtocart-button';
 var addToCartConfirm = '.message-success';
 
@@ -85,9 +72,6 @@ var expectedBody = '<!doctype html>';
 //Exporting
 exports.electronOptions = electronOptions;
 exports.electronMobileOptions = electronMobileOptions;
-exports.stageHomeUrl = stageHomeUrl;
-exports.stageAdminUrl = stageAdminUrl;
-exports.styleGuide = styleGuide;
 exports.htuser = htuser;
 exports.htpass = htpass;
 exports.homeUrl = homeUrl;
@@ -100,11 +84,11 @@ exports.registerUrl = registerUrl;
 exports.categoryUrl = categoryUrl;
 exports.productUrl = productUrl;
 exports.searchUrl = searchUrl;
+exports.stageHomeUrl = stageHomeUrl;
+exports.stageAdminUrl = stageAdminUrl;
+exports.styleGuide = styleGuide;
 exports.siteLogin = siteLogin;
 exports.siteRegister = siteRegister;
-exports.adminCookie = adminCookie;
-exports.testSimpleURL = testSimpleURL;
-exports.adminTestSimple = adminTestSimple;
 exports.cacheFlush = cacheFlush;
 exports.cacheFlushConfirm = cacheFlushConfirm;
 exports.addToCart = addToCart;
