@@ -1,6 +1,6 @@
-# RDS Test Harness
+# Cross-Client Test Harness
 
-This project is a work-in-progress implementation of a test harness for the RDS client site. Running on node, it executes a number of functional regression tests, reports on the test results, and integrates into the site deployment workflow.
+This project is a work-in-progress implementation of a test harness that can execute against any number of client sites. Running on node, it executes a number of functional regression tests, reports on the test results, and integrates into the site deployment workflow.
 
 The harness runs on OS X and Linux environments, as well as in Docker containers, therefore it can run on local dev environments as well as in dockerized test environments.
 
@@ -110,18 +110,15 @@ Level 1 tests are rudimentary http request tests to make sure the major pages of
 ##### Framework Layout
 
 * src/
-  * node_modules/
-  * setup/
-     * config/ *configuration files*
-     * scripts/ *scripts executed before test runner is engaged*
-  * teardown/
-     * reporter/ *results and reporting* 
-     * scripts/ *scripts executed after test runner is engaged*
+  * config/ *client configuration overrides*
   * tests/
      * level1/ *simpler tests*
      * level2/ ..
      * level3/ ..
      * level4/ *more complex tests*
+  * utilities/
+     * reporting/ *results and reporting* 
+     * scripts/ *scripts executed around the test runner*
   * package.json
   * runner.js *test runner executable, execution logic*
 
@@ -139,7 +136,7 @@ To bypass dependency mode call `npm start [command] bypass`, this will run the l
 
 ##### Setup and Teardown
 
-The `setup/scripts/` and `teardown/scripts/` spaces hold scripts that will be executed before and after the actual call to the test runner occurs and completes. The only setup/teardown currently being executed is logic that retrieves a Magento admin session cookie through the front end and puts it in a configuration file that the tests then reference later. Ideally this will be taken care of by a permanent session configured in the host environment, and in the future, these spaces will hold scripts that prepare the Magento application for testing by injecting testable data into the database and removing it after the tests have executed. This way, tests that rely on specific product/cateogory setup, CMS content configuration, or user accounts information can run effectively and consistently every time, and the database of the application under test is not affected by test execution.
+The `utilities/scripts/` space holds scripts that can be executed before and after the actual call to the test runner occurs and completes. In the future, these spaces will hold scripts that prepare the Magento application for testing by injecting testable data into the database and removing it after the tests have executed. This way, tests that rely on specific product/cateogory setup, CMS content configuration, or user accounts information can run effectively and consistently every time, and the database of the application under test is not affected by test execution.
 
 ##### Reporting
 
