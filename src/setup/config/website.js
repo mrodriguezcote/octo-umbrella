@@ -1,5 +1,7 @@
 /* Preliminary configuration file for sitewide variables */
 
+var config = require('config');
+
 //Electron configuration options
 var electronShow = false;
 var electronPartition = 'nopersist';
@@ -23,13 +25,10 @@ var electronMobileOptions = {
 }
 
 //Htaccess credentials
-var htuser = 'blueacorn';
-var htpass = 'pass4blueacorn';
-
+var htuser = config.get('HTACCESS.user');
+var htpass = config.get('HTACCESS.pass');
 //ROOT URL
-//var homeUrl = 'http://rds.qa-1.blueacorn.net/';
-var homeUrl = 'http://staging.reeds.com/';
-
+var homeUrl = config.get('ROOT_URLS.qa1');
 //General URLs
 var adminUrl = homeUrl+'admin/admin/';
 var adminCache = adminUrl+'cache/'
@@ -40,26 +39,12 @@ var registerUrl = homeUrl+'customer/account/create/';
 var categoryUrl = homeUrl+'test-category.html/';
 var productUrl = homeUrl+'batest.html/';
 var searchUrl = homeUrl+'catalogsearch/result/?q=';
-//Staging
-var stageHomeUrl = 'http://staging.reeds.com/';
-var stageAdminUrl = 'http://staging.reeds.com/admin/admin/';
-var styleGuide = 'http://staging.reeds.com/styleguide';
 
 //User Information
 var siteLogin = {
-  user: 'marco@blueacorn.com', 
-  pass: 'pass4marco'
+  user: config.get('USER_CREDS.user'),
+  pass: config.get('USER_CREDS.pass')
 }
-var siteRegister = {
-  first: 'Test',
-  last: 'User',
-  email: 'test@blueacorn.com',
-  pass: 'pass4test'
-}
-
-//Admin Cache Management page
-var cacheFlush = '#flush_magento';
-var cacheFlushConfirm = '.message.message-success.success';
 
 //Product Page
 var addToCart = '#product-addtocart-button';
@@ -84,13 +69,7 @@ exports.registerUrl = registerUrl;
 exports.categoryUrl = categoryUrl;
 exports.productUrl = productUrl;
 exports.searchUrl = searchUrl;
-exports.stageHomeUrl = stageHomeUrl;
-exports.stageAdminUrl = stageAdminUrl;
-exports.styleGuide = styleGuide;
 exports.siteLogin = siteLogin;
-exports.siteRegister = siteRegister;
-exports.cacheFlush = cacheFlush;
-exports.cacheFlushConfirm = cacheFlushConfirm;
 exports.addToCart = addToCart;
 exports.addToCartConfirm = addToCartConfirm;
 exports.expectedBody = expectedBody;

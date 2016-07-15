@@ -1,0 +1,16 @@
+//SIG Override configuration file
+{
+  "ROOT_URLS": {
+    "qa1": "",
+    "staging": "",
+    "production": "https://www.signaturehardware.com/"
+  },
+  "HTACCESS": {
+    "user": "",
+    "pass": ""
+  },
+  "USER_CREDS":{
+    "user": "",
+    "pass": ""
+  }
+}

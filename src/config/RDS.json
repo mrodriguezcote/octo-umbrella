@@ -1,0 +1,16 @@
+//RDS Override configuration file
+{
+  "ROOT_URLS": {
+    "qa1": "http://rds.qa-1.blueacorn.net/",
+    "staging": "http://staging.reeds.com/",
+    "production": "http://www.reeds.com/"
+  },
+  "HTACCESS": {
+    "user": "blueacorn",
+    "pass": "pass4blueacorn"
+  },
+  "USER_CREDS":{
+    "user": "marco@blueacorn.com",
+    "pass": "pass4marco"
+  }
+}

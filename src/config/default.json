@@ -1,0 +1,16 @@
+//Default configuration file
+{
+  "ROOT_URLS": {
+    "qa1": "DEFAULT_QA1_ROOT",
+    "staging": "DEFAULT_STAGING_ROOT",
+    "production": "DEFAULT_PRODUCTION_ROOT"
+  },
+  "HTACCESS": {
+    "user": "DEFAULT_HTUSER",
+    "pass": "DEFAULT_HTPASS"
+  },
+  "USER_CREDS":{
+    "user": "DEFUALT_SITEUSER",
+    "pass": "DEFAULT_SITEPASS"
+  }
+}
