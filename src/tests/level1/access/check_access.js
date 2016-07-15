@@ -44,7 +44,7 @@ describe("Loading", function() {
 
     it("login page", function(done) {
 
-        request(site.loginUrl, {timeout: aux.timeout}, function(error, response, body) {
+        request(site.loginUrl, {timeout: specTime}, function(error, response, body) {
             if(error) {
                 fail('server error');
                 done();
@@ -80,7 +80,7 @@ describe("Loading", function() {
 
     it("category page", function(done) {
 
-        request(site.categoryUrl, {timeout: aux.timeout}, function(error, response, body) {
+        request(site.categoryUrl, {timeout: specTime}, function(error, response, body) {
             if(error) {
                 fail('server error');
                 done();
@@ -116,7 +116,7 @@ describe("Loading", function() {
     
     it("product page", function(done) {
 
-        request(site.productUrl, {timeout: aux.timeout}, function(error, response, body) {
+        request(site.productUrl, {timeout: specTime}, function(error, response, body) {
             if(error) {
                 fail('server error');
                 done();
@@ -153,7 +153,7 @@ describe("Loading", function() {
     // Hit the empty cart page and ensure it loads correctly //
     it("cart page", function(done) {
 
-        request(site.cartUrl, {timeout: aux.timeout}, function(error, response, body) {
+        request(site.cartUrl, {timeout: specTime}, function(error, response, body) {
             if(error) {
                 fail('server error');
                 done();
