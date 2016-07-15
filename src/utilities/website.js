@@ -27,7 +27,7 @@ var electronMobileOptions = {
 var htuser = config.get('HTACCESS.user');
 var htpass = config.get('HTACCESS.pass');
 //ROOT URL
-var homeUrl = config.get('ROOT_URLS.qa1');
+var homeUrl = config.get('ROOT_URLS.staging');
 //General URLs
 var adminUrl = homeUrl+'admin/admin/';
 var adminCache = adminUrl+'cache/'
@@ -61,7 +61,7 @@ var siteLoginInput = {
   user: config.get('LOGIN.userInput'),
   pass: config.get('LOGIN.passInput')
 }
-var loginButton = config.get('LOGIN.passInput')
+var loginButton = config.get('LOGIN.loginButton')
 var registerButton = config.get('LOGIN.registerButton');
 var accountSidebar = config.get('LOGIN.accountSidebar');
 

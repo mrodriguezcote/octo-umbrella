@@ -1,5 +1,6 @@
 //Bypass Runner. The second argument [set] is optional
 module.exports.run = function(level, set) {
+	var hipchat = require('./hipchat.js');
 	var levelToRun = level;
 	var setToRun = !set ? '' : set;
 	var Jasmine = require('jasmine'), jasmine = new Jasmine;
@@ -16,8 +17,14 @@ module.exports.run = function(level, set) {
 	jasmine.configureDefaultReporter({ showColors: true });
 	jasmine.addReporter(junitReporter);
 	jasmine.onComplete(function(passed) {
-		if(passed) {console.log('All tests passed');}
-		else {console.log('At least one test failed');}
+		if(passed) {
+			console.log('All tests passed');
+			hipchat.report(true);
+		}
+		else {
+			console.log('At least one test failed');
+			hipchat.report(false);
+		}
 	});
 	jasmine.execute();
 }

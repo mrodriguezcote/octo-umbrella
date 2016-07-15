@@ -1,5 +1,6 @@
 //Level 4 Runner
 module.exports.run = function(flag) {
+	var hipchat = require('./hipchat.js');
 	var setToRun = !flag ? '' : flag;
 	var Jasmine = require('jasmine'), jasmine = new Jasmine;
 	var reporter = require('../utilities/reporting/junit_reporter.js');
@@ -62,8 +63,14 @@ module.exports.run = function(flag) {
 							jasmine.addReporter(junitReporter4);
 
 							jasmine.onComplete(function(passed) {
-								if(passed) {console.log('All Level 4 tests passed');}
-								else {console.log('At least one Level 4 test failed');}
+								if(passed) {
+									console.log('All Level 4 tests passed');
+									hipchat.report(true);
+								}
+								else {
+									console.log('At least one Level 4 test failed');
+									hipchat.report(false);
+								}
 							});
 							jasmine.execute();
 						}
