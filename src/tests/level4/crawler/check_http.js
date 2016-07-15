@@ -3,7 +3,8 @@ var nightmare = require('nightmare'), browser;
 var async = require('async');
 var request = require('request');
 var site = require('../../../setup/config/website.js');
-var aux = require('./aux.js');
+var helpers = require('../../../setup/config/helpers.js');
+var specTime = 15000;
 
 var scrapedLinks = [];
 var badLinks = [];
@@ -40,7 +41,7 @@ describe("Crawler", function() {
                 done();
             })          
 
-    }, aux.specTime);
+    },specTime);
 
     /* Use async to queue up all hrefs, perform a request for each of them
     and ensure no 404 returns from any  */
@@ -59,13 +60,13 @@ describe("Crawler", function() {
             }).auth(site.htuser, site.htpass)
         }, 10);
 
-        q.push(aux.clean(scrapedLinks))
+        q.push(helpers.clean(scrapedLinks))
 
         q.drain = function() {
             expect(badLinks.length).toBe(0);
             done();
         }
 
-    }, aux.specTime);
+    },specTime);
 
 });

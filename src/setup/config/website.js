@@ -1,9 +1,8 @@
 /* Preliminary configuration file for sitewide variables */
-
 var config = require('config');
 
 //Electron configuration options
-var electronShow = false;
+var electronShow = true;
 var electronPartition = 'nopersist';
 var electronOptions = {
   show: electronShow,
@@ -39,16 +38,33 @@ var registerUrl = homeUrl+'customer/account/create/';
 var categoryUrl = homeUrl+'test-category.html/';
 var productUrl = homeUrl+'batest.html/';
 var searchUrl = homeUrl+'catalogsearch/result/?q=';
-
 //User Information
 var siteLogin = {
   user: config.get('USER_CREDS.user'),
   pass: config.get('USER_CREDS.pass')
 }
-
-//Product Page
+//CATEGORY PAGE
+var itemsExpected = config.get('CATEGORY.itemsExpected');
+var expectedTitle = config.get('CATEGORY.name');
+var expectedSorting = config.get('CATEGORY.expectedSortingSelected');
+var itemsActualSelector = config.get('CATEGORY.itemsActualSelector');
+var sortSelect = config.get('CATEGORY.sortSelector');
+var viewSelect = config.get('CATEGORY.viewSelector');
+//PRODUCT PAGE
 var addToCart = '#product-addtocart-button';
 var addToCartConfirm = '.message-success';
+//CART PAGE
+var itemInfo = config.get('CART.itemInfo');
+var counterLabel = config.get('CART.counterLabel');
+//LOGIN PAG
+var siteLoginInput = {
+  user: config.get('LOGIN.userInput'),
+  pass: config.get('LOGIN.passInput')
+}
+var loginButton = config.get('LOGIN.passInput')
+var registerButton = config.get('LOGIN.registerButton');
+var accountSidebar = config.get('LOGIN.accountSidebar');
+
 
 //First line of a successful page load response body string
 var expectedBody = '<!doctype html>';
@@ -70,8 +86,25 @@ exports.categoryUrl = categoryUrl;
 exports.productUrl = productUrl;
 exports.searchUrl = searchUrl;
 exports.siteLogin = siteLogin;
+//CATEGORY PAGE
+exports.itemsExpected = itemsExpected;
+exports.expectedTitle = expectedTitle;
+exports.expectedSorting = expectedSorting;
+exports.itemsActualSelector = itemsActualSelector;
+exports.sortSelect = sortSelect;
+exports.viewSelect = viewSelect;
+//PRODUCT PAGE
 exports.addToCart = addToCart;
 exports.addToCartConfirm = addToCartConfirm;
+//CART PAGE
+exports.itemInfo = itemInfo;
+exports.counterLabel = counterLabel;
+//LOGIN PAGE
+exports.siteLoginInput = siteLoginInput;
+exports.loginButton = loginButton;
+exports.registerButton = registerButton;
+exports.accountSidebar = accountSidebar;
+
 exports.expectedBody = expectedBody;
 
 module.exports = exports;

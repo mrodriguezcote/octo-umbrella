@@ -12,5 +12,24 @@
   "USER_CREDS":{
     "user": "marco@blueacorn.com",
     "pass": "pass4marco"
+  },
+  "CATEGORY": {
+    "name": "Test Category",
+    "itemsExpected": 8,
+    "expectedSortingSelected": "position",
+    "itemsActualSelector": ".toolbar-number",
+    "sortSelector": "#sorter",
+    "viewSelector": "#limiter"
+  },
+  "CART": {
+    "itemInfo": ".item-info",
+    "counterLabel": ".counter-label"
+  },
+  "LOGIN": {
+    "userInput": "#email",
+    "passInput": "#pass",
+    "loginButton": "#send2>span",
+    "registerButton": "#form-validate>div>div.primary>button>span",
+    "accountSidebar": "#block-collapsible-nav"
   }
 }

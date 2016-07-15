@@ -1,7 +1,7 @@
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
 var site = require('../../../setup/config/website.js');
-var aux = require('./aux.js');
+var specTime = 10000;
 
 describe("User", function() {
    
@@ -21,17 +21,17 @@ describe("User", function() {
         
         browser
             .goto(site.loginUrl)
-            .type(aux.siteLoginInput.user, site.siteLogin.user)
-            .type(aux.siteLoginInput.pass, site.siteLogin.pass)
-            .click(aux.loginButton)
-            .wait(aux.accountSidebar)
+            .type(site.siteLoginInput.user, site.siteLogin.user)
+            .type(site.siteLoginInput.pass, site.siteLogin.pass)
+            .click(site.loginButton)
+            .wait(site.accountSidebar)
             .title()
             .then(function (title) {
                 expect(title).toBe('My Account')
                 done();
             })
 
-    }, aux.specTime);
+    },specTime);
 
 
 });

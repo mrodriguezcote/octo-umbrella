@@ -12,5 +12,24 @@
   "USER_CREDS":{
     "user": "DEFUALT_SITEUSER",
     "pass": "DEFAULT_SITEPASS"
+  },
+  "CATEGORY": {
+    "name": "DEFAULT_CATEGORY_NAME",
+    "itemsExpected": "DEFAULT_ITEMS_EXPECTED",
+    "expectedSortingSelected": "DEFAULT",
+    "itemsActualSelector": "DEFAULT",
+    "sortSelector": "DEFAULT",
+    "viewSelector": "DEFAULT"
+  },
+  "CART": {
+    "itemInfo": "DEFAULT",
+    "counterLabel": "DEFAULT"
+  },
+  "LOGIN": {
+    "userInput": "DEFAULT",
+    "passInput": "DEFAULT",
+    "loginButton": "DEFAULT",
+    "registerButton": "DEFAULT",
+    "accountSidebar": "DEFAULT"
   }
 }

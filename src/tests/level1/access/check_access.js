@@ -1,7 +1,6 @@
 var site = require('../../../setup/config/website.js');
-var aux = require('./aux.js');
 var request = require('request');
-
+var specTime = 6000;
 
 /* Perform an HTTP request from each of the main pages and ensure no
 whitescreens of 404s from any */
@@ -9,7 +8,7 @@ describe("Loading", function() {
 
     it("homepage", function(done) {
 
-        request(site.homeUrl, {timeout: aux.timeout}, function(error, response, body) {
+        request(site.homeUrl, {timeout: specTime}, function(error, response, body) {
             if(error) {
                 fail('server error');
                 done();
@@ -41,7 +40,7 @@ describe("Loading", function() {
             }
         }).auth(site.htuser, site.htpass)
 
-    }, aux.specTime);
+    },specTime);
 
     it("login page", function(done) {
 
@@ -77,7 +76,7 @@ describe("Loading", function() {
             }
         }).auth(site.htuser, site.htpass)
 
-    }, aux.specTime);
+    },specTime);
 
     it("category page", function(done) {
 
@@ -113,7 +112,7 @@ describe("Loading", function() {
             }
         }).auth(site.htuser, site.htpass)
 
-    }, aux.specTime); 
+    },specTime); 
     
     it("product page", function(done) {
 
@@ -149,7 +148,7 @@ describe("Loading", function() {
             }
         }).auth(site.htuser, site.htpass)
 
-    }, aux.specTime);
+    },specTime);
 
     // Hit the empty cart page and ensure it loads correctly //
     it("cart page", function(done) {
@@ -186,6 +185,6 @@ describe("Loading", function() {
             }
         }).auth(site.htuser, site.htpass)
 
-    }, aux.specTime);
+    },specTime);
 
 });

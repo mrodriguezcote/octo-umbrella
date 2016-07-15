@@ -1,7 +1,7 @@
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
 var site = require('../../../setup/config/website.js');
-var aux = require('./aux.js');
+var specTime = 15000;
 
 describe("Adding product to cart", function() {
 
@@ -31,7 +31,7 @@ describe("Adding product to cart", function() {
                 done();
             })          
 
-    }, aux.specTime);
+    },specTime);
 
     /* Ensure the item url is in the cart */
     it("item is in cart", function(done) {
@@ -39,13 +39,13 @@ describe("Adding product to cart", function() {
         browser
             .evaluate(function(itemInfo) {
                 return jQuery(itemInfo).children()[0].children[0].href+'/';
-            },aux.itemInfo)
+            },site.itemInfo)
             .then(function (info) {
                 expect(info).toBe(site.productUrl);
                 done();
             })          
 
-    }, aux.specTime);
+    },specTime);
 
     /* Ensure the mini cart badge count updates */
     it("mini cart count updates", function(done) {
@@ -54,12 +54,12 @@ describe("Adding product to cart", function() {
             .wait(1000)
             .evaluate(function(counterLabel) {
                 return parseInt(jQuery(counterLabel).text().trim().charAt(0));
-            },aux.counterLabel)
+            },site.counterLabel)
             .then(function (count) {
                 expect(count).toBe(1);
                 done();
             })          
 
-    }, aux.specTime);
+    },specTime);
 
 });

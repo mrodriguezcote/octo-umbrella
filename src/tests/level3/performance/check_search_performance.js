@@ -1,12 +1,12 @@
 var loadtest = require('loadtest');
 var site = require('../../../setup/config/website.js');
-var aux = require('./aux.js');
+var specTime = 20000;
 
 var options = {
     url: site.searchUrl+'test',
     concurrency: 10,
     maxRequests: 100,
-    maxSeconds: aux.specTime,
+    maxSeconds: specTime,
 };
 
 describe("Performing site search", function() {
@@ -23,7 +23,7 @@ describe("Performing site search", function() {
             done();
         });         
 
-    }, aux.specTime);
+    },specTime);
 
 
 });

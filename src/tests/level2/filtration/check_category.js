@@ -1,7 +1,7 @@
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
 var site = require('../../../setup/config/website.js');
-var aux = require('./aux.js');
+var specTime = 5000;
 
 describe("Category", function() {
 
@@ -21,15 +21,15 @@ describe("Category", function() {
 
         browser
             .goto(site.categoryUrl)
-            .evaluate(function(itemsActual) {
-                return parseInt(jQuery(itemsActual)[0].innerText);
-            },aux.itemsActual)
+            .evaluate(function(itemsActualSelector) {
+                return parseInt(jQuery(itemsActualSelector)[0].innerText);
+            },site.itemsActualSelector)
             .then(function (count) {
-                expect(count).toBe(aux.itemsExpected);
+                expect(count).toBe(site.itemsExpected);
                 done();
             })          
 
-    }, aux.specTime);
+    },specTime);
 
     /* Ensure the correct sorting optino is selected by default */
     it("correct sorting option selected", function(done) {
@@ -37,13 +37,13 @@ describe("Category", function() {
         browser
             .evaluate(function(sortSelect) {
                 return jQuery(sortSelect+' :selected').val();
-            },aux.sortSelect)
+            },site.sortSelect)
             .then(function (option) {
-                expect(option).toBe(aux.expectedSorting);
+                expect(option).toBe(site.expectedSorting);
                 done();
             })          
 
-    }, aux.specTime);
+    },specTime);
 
 
 });

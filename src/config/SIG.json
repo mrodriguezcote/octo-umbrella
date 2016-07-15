@@ -12,5 +12,24 @@
   "USER_CREDS":{
     "user": "",
     "pass": ""
+  },
+  "CATEGORY": {
+    "name": "",
+    "itemsExpected": "",
+    "expectedSortingSelected": "",
+    "itemsActualSelector": "",
+    "sortSelector": "",
+    "viewSelector": ""
+  },
+  "CART": {
+    "itemInfo": "",
+    "counterLabel": ""
+  },
+  "LOGIN": {
+    "userInput": "",
+    "passInput": "",
+    "loginButton": "",
+    "registerButton": "",
+    "accountSidebar": ""
   }
 }
