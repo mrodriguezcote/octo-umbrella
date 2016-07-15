@@ -2,7 +2,7 @@
 module.exports.run = function(flag) {
 	var setToRun = !flag ? '' : flag;
 	var Jasmine = require('jasmine'), jasmine = new Jasmine;
-	var reporter = require('../reporting/junit_reporter.js');
+	var reporter = require('../utilities/reporting/junit_reporter.js');
 	var junitReporter = new reporter.JUnitXmlReporter({
 		savePath: './reporting/',
 		consolidateAll: true,
