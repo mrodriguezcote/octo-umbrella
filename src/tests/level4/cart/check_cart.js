@@ -1,6 +1,6 @@
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
-var site = require('../../../setup/config/website.js');
+var site = require('../../../utilities/website.js');
 var specTime = 15000;
 
 describe("Adding product to cart", function() {

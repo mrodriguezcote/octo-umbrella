@@ -2,9 +2,9 @@
 module.exports.run = function(flag) {
 	var setToRun = !flag ? '' : flag;
 	var Jasmine = require('jasmine'), jasmine = new Jasmine;
-	var reporter = require('../../teardown/reporter/junit_reporter.js');
+	var reporter = require('../reporting/junit_reporter.js');
 	var junitReporter = new reporter.JUnitXmlReporter({
-		savePath: './teardown/reporter/',
+		savePath: './reporting/',
 		consolidateAll: true,
 		stylesheet: 'junitresults.xsl'
 	});
@@ -17,9 +17,9 @@ module.exports.run = function(flag) {
 	jasmine.onComplete(function(passed) {
 		if(passed) {
 			var Jasmine = require('jasmine'), jasmine = new Jasmine;
-			var reporter = require('../../teardown/reporter/junit_reporter.js');
+			var reporter = require('../reporting/junit_reporter.js');
 			var junitReporter2 = new reporter.JUnitXmlReporter({
-				savePath: './teardown/reporter/',
+				savePath: './reporting/',
 				consolidateAll: true,
 				stylesheet: 'junitresults.xsl'
 			});
@@ -33,9 +33,9 @@ module.exports.run = function(flag) {
 			jasmine.onComplete(function(passed) {
 				if(passed) {
 					var Jasmine = require('jasmine'), jasmine = new Jasmine;
-					var reporter = require('../../teardown/reporter/junit_reporter.js');
+					var reporter = require('../reporting/junit_reporter.js');
 					var junitReporter3 = new reporter.JUnitXmlReporter({
-						savePath: './teardown/reporter/',
+						savePath: './reporting/',
 						consolidateAll: true,
 						stylesheet: 'junitresults.xsl'
 					});

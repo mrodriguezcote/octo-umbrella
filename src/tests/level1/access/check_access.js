@@ -1,5 +1,5 @@
-var site = require('../../../setup/config/website.js');
 var request = require('request');
+var site = require('../../../utilities/website.js');
 var specTime = 6000;
 
 /* Perform an HTTP request from each of the main pages and ensure no

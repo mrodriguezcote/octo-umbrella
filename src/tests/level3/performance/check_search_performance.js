@@ -1,5 +1,5 @@
 var loadtest = require('loadtest');
-var site = require('../../../setup/config/website.js');
+var site = require('../../../utilities/website.js');
 var specTime = 20000;
 
 var options = {

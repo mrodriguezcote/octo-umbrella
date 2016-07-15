@@ -1,10 +1,10 @@
 var _ = require('lodash');
-var roster = require('./setup/config/roster');
-var level1 = require('./setup/config/level1');
-var level2 = require('./setup/config/level2');
-var level3 = require('./setup/config/level3');
-var level4 = require('./setup/config/level4');
-var bypass = require('./setup/config/bypass');
+var roster = require('./utilities/roster');
+var level1 = require('./utilities/level1');
+var level2 = require('./utilities/level2');
+var level3 = require('./utilities/level3');
+var level4 = require('./utilities/level4');
+var bypass = require('./utilities/bypass');
 
 var command = process.argv[2];
 var mode = process.argv[3];

@@ -2,9 +2,9 @@
 module.exports.run = function(flag) {
 	var setToRun = !flag ? '' : flag;
 	var Jasmine = require('jasmine'), jasmine = new Jasmine;
-	var reporter = require('../../teardown/reporter/junit_reporter.js');
+	var reporter = require('../reporting/junit_reporter.js');
 	var junitReporter = new reporter.JUnitXmlReporter({
-		savePath: './teardown/reporter/',
+		savePath: './reporting/',
 		consolidateAll: true,
 		stylesheet: 'junitresults.xsl'
 	});

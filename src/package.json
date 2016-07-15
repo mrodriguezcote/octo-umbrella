@@ -22,9 +22,9 @@
     "xvfb": "^0.2.3",
   },
   "scripts": {
-    "prestart": "node setup/scripts/",
-    "start": "node runner",
-    "poststart": "node teardown/scripts/",
-    "stop": "node teardown/scripts/"
+    "prestart": "node utilities/scripts/setup/",
+    "start": "node runner.js",
+    "poststart": "node utilities/scripts/teardown/",
+    "stop": "node utilities/scripts/teardown/"
   }
 }

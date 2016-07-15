@@ -2,8 +2,8 @@ var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
 var async = require('async');
 var request = require('request');
-var site = require('../../../setup/config/website.js');
-var helpers = require('../../../setup/config/helpers.js');
+var site = require('../../../utilities/website.js');
+var helpers = require('../../../utilities/helpers.js');
 var specTime = 15000;
 
 var scrapedLinks = [];
