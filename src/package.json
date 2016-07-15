@@ -19,7 +19,7 @@
     "path": "*",
     "randomstring": "^1.1.4",
     "request": "^2.70.0",
-    "xvfb": "^0.2.3",
+    "xvfb": "^0.2.3"
   },
   "scripts": {
     "prestart": "node utilities/scripts/setup/",
