@@ -21,6 +21,12 @@
     "sortSelector": "#sorter",
     "viewSelector": "#limiter"
   },
+  "PRODUCT": {
+    "name": "Test Simple 1",
+    "sku": "TS1",
+    "addToCart": "#product-addtocart-button",
+    "addToCartConfirm": ".message-success"
+  },
   "CART": {
     "itemInfo": ".item-info",
     "counterLabel": ".counter-label"

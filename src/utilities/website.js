@@ -51,8 +51,8 @@ var itemsActualSelector = config.get('CATEGORY.itemsActualSelector');
 var sortSelect = config.get('CATEGORY.sortSelector');
 var viewSelect = config.get('CATEGORY.viewSelector');
 //PRODUCT PAGE
-var addToCart = '#product-addtocart-button';
-var addToCartConfirm = '.message-success';
+var addToCart = config.get('PRODUCT.addToCart');
+var addToCartConfirm = config.get('PRODUCT.addToCartConfirm');
 //CART PAGE
 var itemInfo = config.get('CART.itemInfo');
 var counterLabel = config.get('CART.counterLabel');

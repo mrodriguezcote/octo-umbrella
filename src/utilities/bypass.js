@@ -3,9 +3,9 @@ module.exports.run = function(level, set) {
 	var levelToRun = level;
 	var setToRun = !set ? '' : set;
 	var Jasmine = require('jasmine'), jasmine = new Jasmine;
-	var reporter = require('../../teardown/reporter/junit_reporter.js');
+	var reporter = require('../utilities/reporting/junit_reporter.js');
 	var junitReporter = new reporter.JUnitXmlReporter({
-		savePath: './teardown/reporter/',
+		savePath: './utilities/reporting/',
 		consolidateAll: true,
 		stylesheet: 'junitresults.xsl'
 	});

@@ -21,6 +21,12 @@
     "sortSelector": "DEFAULT",
     "viewSelector": "DEFAULT"
   },
+  "PRODUCT": {
+    "name": "DEFAULT_PRODUCT_NAME",
+    "sku": "DEFAULT_PRODUCT_SKU",
+    "addToCart": "DEFAULT",
+    "addToCartConfirm": "DEFAULT"
+  },
   "CART": {
     "itemInfo": "DEFAULT",
     "counterLabel": "DEFAULT"

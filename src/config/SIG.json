@@ -21,6 +21,12 @@
     "sortSelector": "",
     "viewSelector": ""
   },
+  "PRODUCT": {
+    "name": "",
+    "sku": "",
+    "addToCart": "",
+    "addToCartConfirm": ""
+  },
   "CART": {
     "itemInfo": "",
     "counterLabel": ""

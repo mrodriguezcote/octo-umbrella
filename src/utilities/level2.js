@@ -4,7 +4,7 @@ module.exports.run = function(flag) {
 	var Jasmine = require('jasmine'), jasmine = new Jasmine;
 	var reporter = require('../utilities/reporting/junit_reporter.js');
 	var junitReporter = new reporter.JUnitXmlReporter({
-		savePath: './reporting/',
+		savePath: './utilities/reporting/',
 		consolidateAll: true,
 		stylesheet: 'junitresults.xsl'
 	});
@@ -19,7 +19,7 @@ module.exports.run = function(flag) {
 			var Jasmine = require('jasmine'), jasmine = new Jasmine;
 			var reporter = require('../utilities/reporting/junit_reporter.js');
 			var junitReporter2 = new reporter.JUnitXmlReporter({
-				savePath: './reporting/',
+				savePath: './utilities/reporting/',
 				consolidateAll: true,
 				stylesheet: 'junitresults.xsl'
 			});
