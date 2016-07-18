@@ -1,0 +1,54 @@
+//MGBW Override configuration file
+{
+  "ROOT": "https://development-web-mgbw.demandware.net",
+  
+  "HTACCESS": {
+    "user": "",
+    "pass": ""
+  },
+  "USER_CREDS":{
+    "user": "DEFUALT",
+    "pass": "DEFAULT"
+  },
+  "HOMEPAGE": {
+    "url": "/s/MGBW/",
+    "expectedBody": "<!doctype html>",
+    "minLinks": 100
+  },
+  "CATEGORY": {
+    "name": "Suits",
+    "url": "/s/MGBW/mens/clothing/suits/",
+    "itemsExpected": "DEFAULT",
+    "expectedSortingSelected": "DEFAULT",
+    "itemsActualSelector": "DEFAULT",
+    "sortSelector": "DEFAULT",
+    "viewSelector": "DEFAULT"
+  },
+  "PRODUCT": {
+    "name": "BLACK SINGLE PLEAT ATHLETIC FIT WOOL SUIT",
+    "url": "/s/MGBW/black-single-pleat-athletic-fit-wool-suit/25604524.html",
+    "sku": "25604524",
+    "addToCart": "#add-to-cart",
+    "addToCartConfirm": ""
+  },
+  "CART": {
+    "url": "/s/MGBW/cart",
+    "itemInfo": ".product-list-item"
+  },
+  "CHECKOUT": {
+    "url": "/s/MGBW/checkout"
+  },
+  "LOGIN": {
+    "url": "/on/demandware.store/Sites-MGBW-Site/en_US/Login-Show",
+    "userInput": "#dwfrm_login_username_d0kozdldtark",
+    "passInput": "#dwfrm_login_password_d0oyeabeuxru",
+    "loginButton": "#dwfrm_login>fieldset>div.form-row.form-row-button>button",
+    "accountSidebar": "DEFAULT"
+  },
+  "REGISTER": {
+    "url": "/s/MGBW/register"
+  },
+  "SEARCH": {
+    "url": "/s/MGBW/search?q="
+  }
+}

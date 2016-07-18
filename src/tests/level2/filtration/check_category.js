@@ -1,7 +1,7 @@
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
 var site = require('../../../utilities/website.js');
-var specTime = 5000;
+var specTime = 10000;
 
 describe("Category", function() {
 

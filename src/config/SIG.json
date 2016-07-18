@@ -1,8 +1,7 @@
 //SIG Override configuration file
 {
-  "ROOT": {
-    "URL": "http://ocean-sig-2.badevops.com/",
-  },
+  "ROOT": "http://ocean-sig-2.badevops.com/",
+  
   "HTACCESS": {
     "user": "",
     "pass": ""
@@ -12,6 +11,7 @@
     "pass": "pass4albert"
   },
   "HOMEPAGE": {
+    "url": "",
     "expectedBody": "",
     "minLinks": 100
   },

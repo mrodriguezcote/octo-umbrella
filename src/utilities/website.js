@@ -27,17 +27,16 @@ var electronMobileOptions = {
 var htuser = config.get('HTACCESS.user');
 var htpass = config.get('HTACCESS.pass');
 //ROOT URL
-var homeUrl = config.get('ROOT.URL');
+var rootUrl = config.get('ROOT');
 //General URLs
-var adminUrl = homeUrl+'admin/admin/';
-var adminCache = adminUrl+'cache/'
-var checkoutUrl = homeUrl+'checkout/';
-var cartUrl = homeUrl+'checkout/cart/';
-var loginUrl = homeUrl+'customer/account/login/';
-var registerUrl = homeUrl+'customer/account/create/';
-var searchUrl = homeUrl+'catalogsearch/result/?q=';
-var categoryUrl = homeUrl+config.get('CATEGORY.url');
-var productUrl = homeUrl+config.get('PRODUCT.url');
+var homeUrl = rootUrl+config.get('HOMEPAGE.url');
+var categoryUrl = rootUrl+config.get('CATEGORY.url');
+var productUrl = rootUrl+config.get('PRODUCT.url');
+var cartUrl = rootUrl+config.get('CART.url');
+var checkoutUrl = rootUrl+config.get('CHECKOUT.url');
+var loginUrl = rootUrl+config.get('LOGIN.url');
+var registerUrl = rootUrl+config.get('REGISTER.url');
+var searchUrl = rootUrl+config.get('SEARCH.url');
 //User Information
 var siteLogin = {
   user: config.get('USER_CREDS.user'),
@@ -73,15 +72,13 @@ exports.electronMobileOptions = electronMobileOptions;
 exports.htuser = htuser;
 exports.htpass = htpass;
 exports.homeUrl = homeUrl;
-exports.adminUrl = adminUrl;
-exports.adminCache = adminCache;
-exports.checkoutUrl = checkoutUrl;
+exports.categoryUrl = categoryUrl;
+exports.productUrl = productUrl;
 exports.cartUrl = cartUrl;
+exports.checkoutUrl = checkoutUrl;
 exports.loginUrl = loginUrl;
 exports.registerUrl = registerUrl;
 exports.searchUrl = searchUrl;
-exports.categoryUrl = categoryUrl;
-exports.productUrl = productUrl;
 exports.siteLogin = siteLogin;
 //HOMEPAGE
 exports.expectedBody = expectedBody;

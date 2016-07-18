@@ -1,8 +1,7 @@
 //Default configuration file
 {
-  "ROOT": {
-    "URL": "DEFAULT",
-  },
+  "ROOT": "DEFAULT",
+  
   "HTACCESS": {
     "user": "blueacorn",
     "pass": "pass4blueacorn"
@@ -12,12 +11,13 @@
     "pass": "DEFAULT"
   },
   "HOMEPAGE": {
+    "url": "DEFAULT",
     "expectedBody": "DEFAULT",
     "minLinks": "DEFAULT"
   },
   "CATEGORY": {
     "name": "DEFAULT",
-    "urlKey": "DEFAULT",
+    "url": "DEFAULT",
     "itemsExpected": "DEFAULT",
     "expectedSortingSelected": "DEFAULT",
     "itemsActualSelector": "DEFAULT",
@@ -32,12 +32,23 @@
     "addToCartConfirm": "DEFAULT"
   },
   "CART": {
+    "url" : "checkout/cart",
     "itemInfo": "DEFAULT"
   },
+  "CHECKOUT": {
+    "url": "checkout/",
+  },
   "LOGIN": {
+    "url": "customer/account/login/",
     "userInput": "#email",
     "passInput": "#pass",
     "loginButton": "#send2>span",
     "accountSidebar": "DEFAULT"
+  },
+  "REGISTER": {
+    "url": "customer/account/create/"
+  },
+  "SEARCH": {
+    "url": "catalogsearch/result/?q="
   }
 }

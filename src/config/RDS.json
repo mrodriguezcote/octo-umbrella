@@ -1,8 +1,7 @@
 //RDS Override configuration file
 {
-  "ROOT": {
-    "URL": "http://staging.reeds.com/",
-  },
+  "ROOT": "http://staging.reeds.com/",
+  
   "HTACCESS": {
     "user": "rds",
     "pass": "pass4rds"
@@ -12,6 +11,7 @@
     "pass": "pass4marco"
   },
   "HOMEPAGE": {
+    "url": "",
     "expectedBody": "<!doctype html>",
     "minLinks": 400
   },
