@@ -10,9 +10,9 @@ The two main modules leveraged here are [Jasmine](http://jasmine.github.io/) and
   * [Available Tests](#available-tests)
   * [Framework Layout](#framework-layout)
 * [Test Execution](#test-execution)
-  * [Setup and Teardown](#setup-and-teardown)
+  * [Client Configuration](#client-configuration)
   * [Reporting](#reporting)
-  * [Diagnosis](#diagnosis)
+  * [Optional Setup/Teardown](#optional-setup-and-teardown)
 
 ### Test Design
 
@@ -20,79 +20,82 @@ Tests can be of varying complexity; the harness is designed to allow simple test
 
 ```javascript
 var site = require('../../../setup/config/website.js');
-var aux = require('./aux.js');
 var request = require('request');
 
 describe("Loading", function() {
+
     it("homepage", function(done) {
-        request(site.homeUrl, function(error, response, body) {
-            var flag = body.split(" ")[0];
-            if(response.statusCode == 404) {
-                fail('404 on homepage');
+        request(site.homeUrl, {timeout: specTime}, function(error, response, body) {
+            if(error) {
+                fail('server error');
                 done();
             }
-            else if(response.statusCode == 500) {
-                fail('whitescreen on homepage: ');
-                done();
-            }
-            else if(response.statusCode == 200) {
-                if(flag == 'exception' || flag == 'Exception' ||
-                    flag == 'warning' || flag == 'Warning') {
-                    fail('exception on homepage: ');
-                    done(); 
+            else {
+                var flag = body.split('\n')[0];
+                if(response.statusCode == 404) {
+                    fail('404 on homepage');
+                    done();
+                }
+                else if(response.statusCode == 500) {
+                    fail('whitescreen on homepage: '+flag);
+                    done();
+                }
+                else if(response.statusCode == 200) {
+                    done();
                 }
                 else {
+                    fail(response.statusCode+' HTTP status received');
                     done();
                 }
             }
-            else {
-                fail('unusual HTTP status received');
-                done();
-            }
-        })
-    }, aux.specTime);
+        }).auth(site.htuser, site.htpass)
+    },specTime);
+    
 });
 ```
-The test uses the `request` module to make an HTTP request to the homepage and check the response. *website.js* is a helper file that includes site specific information like the homepage URL. *aux.js* is a helper file that includes test specific information like the test time out value `specTime`. In more complex tests *aux.js* could include artifacts such as selectors and URLs of pages specifc to the test. The following is an example of a more complex test:
+The test uses the `request` module to make an HTTP request to the homepage and check the response. *website.js* is a helper file that includes site specific information like the homepage URL. *website.js* reads this information from a sngle configuration file, which can be overriden by specific client configurations. This allows a single code base of tests to be executed against multiple clients, and multiple environments via [text configuration files](#client-configuration). The following is an example of a more complex test:
 
 ```javascript
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
 var site = require('../../../setup/config/website.js');
-var aux = require('./aux.js');
 
-describe("Associate Orders", function() {
+describe("Category", function() {
+
     beforeAll(function() { 
-        xvfb.start();
-        browser = nightmare(site.electronOptions); 
+        xvfb.start(); 
+        browser = nightmare(site.electronOptions);
+        browser.authentication(site.htuser, site.htpass);
     });
-    afterAll(function() {
-        browser.end().then(); 
+    
+    afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
-    it("configuration is in place", function(done) {
+
+    /* Ensure category contains correct number of items */
+    it("correct number of items in category", function(done) {
         browser
-            .goto(site.adminUrl)
-            .cookies.set(site.adminCookie.name, site.adminCookie.value)
-            .goto(aux.adminConfig)
-            .evaluate(function(configField) {
-                return jQuery(configField).val();
-            },aux.configField)
-            .then(function (config) {
-                expect(config).toBeDefined();
+            .goto(site.categoryUrl)
+            .evaluate(function(itemsActualSelector) {
+                return parseInt(jQuery(itemsActualSelector)[0].innerText);
+            },site.itemsActualSelector)
+            .then(function (count) {
+                expect(count).toBe(site.itemsExpected);
                 done();
-            })
-    }, aux.specTime);
+            })          
+    },specTime);
+    
 });
 ```
 
-The `xvfb` module allows us to start and stop a [virtual display framebuffer](https://www.npmjs.com/package/xvfb), needed for Nightmare to execute on Docker/Linux environments. The `browser` object is a Nightmare instance that navigates to the admin login page, places a session cookie, loads the feature configuration page, and retrieves the value of the configuraiton field. The test then checks the configuration field is populated.
+The `xvfb` module allows us to start and stop a [virtual display framebuffer](https://www.npmjs.com/package/xvfb), needed for Nightmare (and any other WebDriver based tools) to execute on Docker/Linux servers. The `browser` object is a Nightmare instance that navigates to the category page and checks the number of items availabe in the store front.
 
 Most of the time a test suite (`describe`) will contain more than one test (`it`). The tests within a test suite can be daisy-chained, with each test picking up the state of the site as the previous test left it. Since tests are always executed sequentially within their suites, it is possible to translate complex user interactions into a series of small tests.
 
 ##### Available Tests
 
-Every (`it`) function is considered a test. Tests are grouped in test suites, and so far there is one test suite per file. Sets are groups of one or more suites, and levels are groups of one or more sets. The test sets currently available are:
+Every (`it`) function is considered a test. Tests are grouped in test suites. Sets are groups of one or more suites, and levels are groups of one or more sets. The base tests currently implemented are:
 
 * level1
   * access
@@ -110,7 +113,7 @@ Level 1 tests are rudimentary http request tests to make sure the major pages of
 ##### Framework Layout
 
 * src/
-  * config/ *client configuration overrides*
+  * config/ *configuration files*
   * tests/
      * level1/ *simpler tests*
      * level2/ ..
@@ -124,62 +127,25 @@ Level 1 tests are rudimentary http request tests to make sure the major pages of
 
 ### Test Execution
 
-To run the tests locally (against the QA1 environment): 
+To run the tests : 
 
 1. Clone or fork this repository
 2. From the `src/` directory call `npm install`
-3. To run tests, call `npm start [command]`
+3. Update your client configuration files
+4. Call `NODE_ENV=[client] npm start [command]`
 
-The single optional argument `command` is either the name of a level (like `level2`) or the name of a test set (like `homepage`). When calling `npm start [command]` the tests will execute in dependency mode, that is, the more complex tests will not execute until the previous tests have passed. If `npm start homepage` is called, then all level 1 and level 2 tests will run before the homepage set is run. 
+The optional argument `command` can be either the name of a level (like `level2`) or the name of a test set (like `filtration`). When calling `npm start [command]` the tests will execute in dependency mode, that is, the more complex tests will not execute until the previous tests have passed. If `npm start performance` is called, then all level 1 and level 2 tests will run before the performance tests run. 
 
-To bypass dependency mode call `npm start [command] bypass`, this will run the level or set indicated by `command` without executing any previous simpler tests. By default, calling `npm start` or `npm start bypass` with no `command` argument will run all tests in the first level.
+When developing/debugging new tests call `npm start [command] bypass` to bypass dependency mode. This will run the level or set indicated by `command` without executing any previous simpler tests. By default, calling `npm start` or `npm start bypass` with no `command` argument will run all available base tests.
 
-##### Setup and Teardown
+##### Client Configuration
 
-The `utilities/scripts/` space holds scripts that can be executed before and after the actual call to the test runner occurs and completes. In the future, these spaces will hold scripts that prepare the Magento application for testing by injecting testable data into the database and removing it after the tests have executed. This way, tests that rely on specific product/cateogory setup, CMS content configuration, or user accounts information can run effectively and consistently every time, and the database of the application under test is not affected by test execution.
+The required argument `client` is the client code for the client whose configuration file will override the default configuration. Each client can have its own configuration file, this file can contain client specific information like URLs, selectors, catalog values, etc. By following a common syntax acrosss configuration files, only the configuration values defined in the client files will override the default configuration file. This way, configuration information shared by multiple clients only has to be defined once. The `config/` space is reserved for the default configuration file and any other client configuration files.
 
 ##### Reporting
 
 The results of each test run are both output to the command line and written to file as XML. The `teardown/reporter/` space houses the XML file as well as an XSL stylesheet. This allows us to see the results of the last test run by reaching the XML file through a browser at *http://localhost/path-to-reporter/junitresults.xml* . The resulting page will show all test suites executed, the time it took to execute them, and which (if any) failed.
 
-##### Diagnosis
+##### Optional Setup and Teardown
 
-There are two mechanisms that can detect a failure in a test - the Jasmine expectation, and the time out value of the Jasmine test. Take the following as example:
-
-```javascript
-var Xvfb = require('xvfb'), xvfb = new Xvfb();
-var nightmare = require('nightmare'), browser;
-var site = require('../../../setup/config/website.js');
-var aux = require('./aux.js');
-
-describe("Adding product to cart", function() {
-    beforeAll(function() { 
-        xvfb.start(); 
-        browser = nightmare(site.electronOptions); 
-    });
-    afterAll(function() { 
-        browser.end().then();
-        xvfb.stop(); 
-    });
-    it("page loads", function(done) {
-        browser
-            .goto(site.productUrl)
-            .click(site.addToCart)
-            .wait(site.addToCartConfirm)
-            .goto(site.cartUrl)
-            .title()
-            .then(function (title) {
-                expect(title).toBe('Shopping Cart');
-                done();
-            })          
-    }, aux.specTime);
-});
-```
-
-The test could fail if `expect(title).toBe('Shopping Cart')` resolves negative, which would mean that when the cart page was requested, the correct title of the page was not found, indicating the page was loaded incorrectly or not at all. The test could also fail if `.goto(site.cartUrl)` takes longer than the timeout value `aux.specTime`, which would mean the cart page took too long to load. In the first scenario, the failure is reported as:
-
--- *Expected 'wrongtitle' to be 'Shopping Cart'* --
-
-In the second scenairio the failure is reported as:
-
--- *Error: Timeout - Async callback was not invoked within timeout specified by jasmine* --
+The `utilities/scripts/` space holds scripts that can be executed before and after the actual call to the test runner occurs and completes. These spaces could hold scripts that prepare the Magento application for testing by inserting testable data and removing it after the tests have executed, making it so tests that rely on specific product/cateogory setup, CMS content configuration, or user accounts information can run effectively and consistently every time, and the data of the application under test is not affected by test execution.
