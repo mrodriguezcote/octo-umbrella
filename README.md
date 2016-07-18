@@ -20,79 +20,80 @@ Tests can be of varying complexity; the harness is designed to allow simple test
 
 ```javascript
 var site = require('../../../setup/config/website.js');
-var aux = require('./aux.js');
 var request = require('request');
 
 describe("Loading", function() {
+
     it("homepage", function(done) {
-        request(site.homeUrl, function(error, response, body) {
-            var flag = body.split(" ")[0];
-            if(response.statusCode == 404) {
-                fail('404 on homepage');
+        request(site.homeUrl, {timeout: specTime}, function(error, response, body) {
+            if(error) {
+                fail('server error');
                 done();
             }
-            else if(response.statusCode == 500) {
-                fail('whitescreen on homepage: ');
-                done();
-            }
-            else if(response.statusCode == 200) {
-                if(flag == 'exception' || flag == 'Exception' ||
-                    flag == 'warning' || flag == 'Warning') {
-                    fail('exception on homepage: ');
-                    done(); 
+            else {
+                var flag = body.split('\n')[0];
+                if(response.statusCode == 404) {
+                    fail('404 on homepage');
+                    done();
+                }
+                else if(response.statusCode == 500) {
+                    fail('whitescreen on homepage: '+flag);
+                    done();
+                }
+                else if(response.statusCode == 200) {
+                    done();
                 }
                 else {
+                    fail(response.statusCode+' HTTP status received');
                     done();
                 }
             }
-            else {
-                fail('unusual HTTP status received');
-                done();
-            }
-        })
-    }, aux.specTime);
+        }).auth(site.htuser, site.htpass)
+    },specTime);
 });
 ```
-The test uses the `request` module to make an HTTP request to the homepage and check the response. *website.js* is a helper file that includes site specific information like the homepage URL. *aux.js* is a helper file that includes test specific information like the test time out value `specTime`. In more complex tests *aux.js* could include artifacts such as selectors and URLs of pages specifc to the test. The following is an example of a more complex test:
+The test uses the `request` module to make an HTTP request to the homepage and check the response. *website.js* is a helper file that includes site specific information like the homepage URL. *website.js* reads this information from a sngle configuration file, which can be overriden by specific client configurations. This allows a single code base of tests to be executed against multiple clients, and multiple environments via text configuration files. The following is an example of a more complex test:
 
 ```javascript
 var Xvfb = require('xvfb'), xvfb = new Xvfb();
 var nightmare = require('nightmare'), browser;
 var site = require('../../../setup/config/website.js');
-var aux = require('./aux.js');
 
-describe("Associate Orders", function() {
+describe("Category", function() {
+
     beforeAll(function() { 
-        xvfb.start();
-        browser = nightmare(site.electronOptions); 
+        xvfb.start(); 
+        browser = nightmare(site.electronOptions);
+        browser.authentication(site.htuser, site.htpass);
     });
-    afterAll(function() {
-        browser.end().then(); 
+    
+    afterAll(function() { 
+        browser.end().then();
         xvfb.stop(); 
     });
-    it("configuration is in place", function(done) {
+
+    /* Ensure category contains correct number of items */
+    it("correct number of items in category", function(done) {
         browser
-            .goto(site.adminUrl)
-            .cookies.set(site.adminCookie.name, site.adminCookie.value)
-            .goto(aux.adminConfig)
-            .evaluate(function(configField) {
-                return jQuery(configField).val();
-            },aux.configField)
-            .then(function (config) {
-                expect(config).toBeDefined();
+            .goto(site.categoryUrl)
+            .evaluate(function(itemsActualSelector) {
+                return parseInt(jQuery(itemsActualSelector)[0].innerText);
+            },site.itemsActualSelector)
+            .then(function (count) {
+                expect(count).toBe(site.itemsExpected);
                 done();
-            })
-    }, aux.specTime);
+            })          
+    },specTime);
 });
 ```
 
-The `xvfb` module allows us to start and stop a [virtual display framebuffer](https://www.npmjs.com/package/xvfb), needed for Nightmare to execute on Docker/Linux environments. The `browser` object is a Nightmare instance that navigates to the admin login page, places a session cookie, loads the feature configuration page, and retrieves the value of the configuraiton field. The test then checks the configuration field is populated.
+The `xvfb` module allows us to start and stop a [virtual display framebuffer](https://www.npmjs.com/package/xvfb), needed for Nightmare (and any other WebDriver based tools) to execute on Docker/Linux servers. The `browser` object is a Nightmare instance that navigates to the category page and checks the number of items availabe in the store front.
 
 Most of the time a test suite (`describe`) will contain more than one test (`it`). The tests within a test suite can be daisy-chained, with each test picking up the state of the site as the previous test left it. Since tests are always executed sequentially within their suites, it is possible to translate complex user interactions into a series of small tests.
 
 ##### Available Tests
 
-Every (`it`) function is considered a test. Tests are grouped in test suites, and so far there is one test suite per file. Sets are groups of one or more suites, and levels are groups of one or more sets. The test sets currently available are:
+Every (`it`) function is considered a test. Tests are grouped in test suites. Sets are groups of one or more suites, and levels are groups of one or more sets. The base tests currently implemented are:
 
 * level1
   * access
@@ -110,7 +111,7 @@ Level 1 tests are rudimentary http request tests to make sure the major pages of
 ##### Framework Layout
 
 * src/
-  * config/ *client configuration overrides*
+  * config/ *configuration files*
   * tests/
      * level1/ *simpler tests*
      * level2/ ..
