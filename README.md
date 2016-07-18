@@ -134,7 +134,7 @@ To run the tests :
 
 The optional argument `command` can be either the name of a level (like `level2`) or the name of a test set (like `filtration`). When calling `npm start [command]` the tests will execute in dependency mode, that is, the more complex tests will not execute until the previous tests have passed. If `npm start performance` is called, then all level 1 and level 2 tests will run before the performance tests run. 
 
-when developing/debugging new tests call `npm start [command] bypass` to bypass dependency mode. This will run the level or set indicated by `command` without executing any previous simpler tests. By default, calling `npm start` or `npm start bypass` with no `command` argument will run all available base tests.
+When developing/debugging new tests call `npm start [command] bypass` to bypass dependency mode. This will run the level or set indicated by `command` without executing any previous simpler tests. By default, calling `npm start` or `npm start bypass` with no `command` argument will run all available base tests.
 
 ##### Client Configuration
 
