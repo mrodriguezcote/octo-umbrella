@@ -11,6 +11,10 @@
     "user": "marco@blueacorn.com",
     "pass": "pass4marco"
   },
+  "HOMEPAGE": {
+    "expectedBody": "<!doctype html>",
+    "minLinks": 400
+  },
   "CATEGORY": {
     "name": "Test Category",
     "url": "test-category.html/",
@@ -28,14 +32,9 @@
     "addToCartConfirm": ".message-success"
   },
   "CART": {
-    "itemInfo": ".item-info",
-    "counterLabel": ".counter-label"
+    "itemInfo": ".product-item-name"
   },
   "LOGIN": {
-    "userInput": "#email",
-    "passInput": "#pass",
-    "loginButton": "#send2>span",
-    "registerButton": "#form-validate>div>div.primary>button>span",
     "accountSidebar": "#block-collapsible-nav"
   }
 }

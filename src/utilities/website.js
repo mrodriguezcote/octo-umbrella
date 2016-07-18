@@ -43,6 +43,9 @@ var siteLogin = {
   user: config.get('USER_CREDS.user'),
   pass: config.get('USER_CREDS.pass')
 }
+//HOMEPAGE
+var expectedBody = config.get('HOMEPAGE.expectedBody');
+var minLinks = config.get('HOMEPAGE.minLinks');
 //CATEGORY PAGE
 var itemsExpected = config.get('CATEGORY.itemsExpected');
 var expectedTitle = config.get('CATEGORY.name');
@@ -55,19 +58,13 @@ var addToCart = config.get('PRODUCT.addToCart');
 var addToCartConfirm = config.get('PRODUCT.addToCartConfirm');
 //CART PAGE
 var itemInfo = config.get('CART.itemInfo');
-var counterLabel = config.get('CART.counterLabel');
 //LOGIN PAG
 var siteLoginInput = {
   user: config.get('LOGIN.userInput'),
   pass: config.get('LOGIN.passInput')
 }
 var loginButton = config.get('LOGIN.loginButton')
-var registerButton = config.get('LOGIN.registerButton');
 var accountSidebar = config.get('LOGIN.accountSidebar');
-
-
-//First line of a successful page load response body string
-var expectedBody = '<!doctype html>';
 
 
 //Exporting
@@ -86,6 +83,9 @@ exports.searchUrl = searchUrl;
 exports.categoryUrl = categoryUrl;
 exports.productUrl = productUrl;
 exports.siteLogin = siteLogin;
+//HOMEPAGE
+exports.expectedBody = expectedBody;
+exports.minLinks = minLinks;
 //CATEGORY PAGE
 exports.itemsExpected = itemsExpected;
 exports.expectedTitle = expectedTitle;
@@ -98,14 +98,10 @@ exports.addToCart = addToCart;
 exports.addToCartConfirm = addToCartConfirm;
 //CART PAGE
 exports.itemInfo = itemInfo;
-exports.counterLabel = counterLabel;
 //LOGIN PAGE
 exports.siteLoginInput = siteLoginInput;
 exports.loginButton = loginButton;
-exports.registerButton = registerButton;
 exports.accountSidebar = accountSidebar;
-
-exports.expectedBody = expectedBody;
 
 module.exports = exports;
 

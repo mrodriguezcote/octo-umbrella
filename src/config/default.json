@@ -1,41 +1,43 @@
 //Default configuration file
 {
   "ROOT": {
-    "URL": "DEFAULT__ROOT",
+    "URL": "DEFAULT",
   },
   "HTACCESS": {
     "user": "blueacorn",
     "pass": "pass4blueacorn"
   },
   "USER_CREDS":{
-    "user": "DEFUALT_SITEUSER",
-    "pass": "DEFAULT_SITEPASS"
+    "user": "DEFUALT",
+    "pass": "DEFAULT"
+  },
+  "HOMEPAGE": {
+    "expectedBody": "DEFAULT",
+    "minLinks": "DEFAULT"
   },
   "CATEGORY": {
-    "name": "DEFAULT_CATEGORY_NAME",
-    "urlKey": "DEFAULT_CATEGORY_URL",
-    "itemsExpected": "DEFAULT_ITEMS_EXPECTED",
+    "name": "DEFAULT",
+    "urlKey": "DEFAULT",
+    "itemsExpected": "DEFAULT",
     "expectedSortingSelected": "DEFAULT",
     "itemsActualSelector": "DEFAULT",
     "sortSelector": "DEFAULT",
     "viewSelector": "DEFAULT"
   },
   "PRODUCT": {
-    "name": "DEFAULT_PRODUCT_NAME",
-    "url": "DEFAULT_PRODUCT_URL",
-    "sku": "DEFAULT_PRODUCT_SKU",
+    "name": "DEFAULT",
+    "url": "DEFAULT",
+    "sku": "DEFAULT",
     "addToCart": "DEFAULT",
     "addToCartConfirm": "DEFAULT"
   },
   "CART": {
-    "itemInfo": "DEFAULT",
-    "counterLabel": "DEFAULT"
+    "itemInfo": "DEFAULT"
   },
   "LOGIN": {
-    "userInput": "DEFAULT",
-    "passInput": "DEFAULT",
-    "loginButton": "DEFAULT",
-    "registerButton": "DEFAULT",
+    "userInput": "#email",
+    "passInput": "#pass",
+    "loginButton": "#send2>span",
     "accountSidebar": "DEFAULT"
   }
 }

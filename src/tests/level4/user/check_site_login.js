@@ -18,7 +18,7 @@ describe("User", function() {
 
     /* Log into front end and ensure that account is accessible */
     it("is able to log into store front end", function(done) {
-        
+
         browser
             .goto(site.loginUrl)
             .type(site.siteLoginInput.user, site.siteLogin.user)

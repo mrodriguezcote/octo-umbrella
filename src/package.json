@@ -1,5 +1,5 @@
 {
-  "name": "rds_harness",
+  "name": "test_harness",
   "version": "1.0.0",
   "description": "functional regression test harness",
   "author": "Marco A. Rodriguez Cote",

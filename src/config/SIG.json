@@ -11,6 +11,10 @@
     "user": "albert.nardone@blueacorn.com",
     "pass": "pass4albert"
   },
+  "HOMEPAGE": {
+    "expectedBody": "",
+    "minLinks": 100
+  },
   "CATEGORY": {
     "name": "Bathtubs",
     "url": "bathroom/bathtubs.html",
@@ -21,21 +25,16 @@
     "viewSelector": ".limiter"
   },
   "PRODUCT": {
-    "name": "",
-    "url": "boyce-freestanding-acrylic-tub-1.html",
-    "sku": "",
-    "addToCart": "",
-    "addToCartConfirm": ""
+    "name": "Cast Iron Painted Stag Doorstop",
+    "url": "cast-iron-painted-stag-doorstop.html",
+    "sku": "420866",
+    "addToCart": "#product_addtocart_form>div.add-to-box>div>button>span>span",
+    "addToCartConfirm": "#messages_product_view"
   },
   "CART": {
-    "itemInfo": "",
-    "counterLabel": ""
+    "itemInfo": ".product-name"
   },
   "LOGIN": {
-    "userInput": "",
-    "passInput": "",
-    "loginButton": "",
-    "registerButton": "",
-    "accountSidebar": ""
+    "accountSidebar": ".block-account"
   }
 }

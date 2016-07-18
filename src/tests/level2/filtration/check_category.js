@@ -22,9 +22,10 @@ describe("Category", function() {
         browser
             .goto(site.categoryUrl)
             .evaluate(function(itemsActualSelector) {
-                return parseInt(jQuery(itemsActualSelector)[0].innerText.split(" ").slice(-1)[0]);
+                return jQuery(itemsActualSelector)[0].innerText;
             },site.itemsActualSelector)
             .then(function (count) {
+                count = parseInt(count.split(" ").slice(-1)[0]);
                 expect(count).toBe(site.itemsExpected);
                 done();
             })          
@@ -36,9 +37,10 @@ describe("Category", function() {
 
         browser
             .evaluate(function(sortSelect) {
-                return jQuery(sortSelect+' :selected').val();
+                return jQuery(sortSelect+' :selected')[0].value;
             },site.sortSelect)
             .then(function (option) {
+                option = option.split("=").splice(-1)[0];
                 expect(option).toBe(site.expectedSorting);
                 done();
             })          

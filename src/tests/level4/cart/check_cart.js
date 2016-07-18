@@ -38,25 +38,10 @@ describe("Adding product to cart", function() {
 
         browser
             .evaluate(function(itemInfo) {
-                return jQuery(itemInfo).children()[0].children[0].href;
+                return jQuery(itemInfo).children()[0].href;
             },site.itemInfo)
             .then(function (info) {
                 expect(info).toBe(site.productUrl);
-                done();
-            })          
-
-    },specTime);
-
-    /* Ensure the mini cart badge count updates */
-    it("mini cart count updates", function(done) {
-
-        browser
-            .wait(1000)
-            .evaluate(function(counterLabel) {
-                return parseInt(jQuery(counterLabel).text().trim().charAt(0));
-            },site.counterLabel)
-            .then(function (count) {
-                expect(count).toBe(1);
                 done();
             })          
 

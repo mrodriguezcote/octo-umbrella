@@ -37,7 +37,7 @@ describe("Crawler", function() {
             })
             .then(function (hrefs) {
                 scrapedLinks = hrefs;
-                expect(scrapedLinks.length).toBeGreaterThan(400);
+                expect(scrapedLinks.length).toBeGreaterThan(site.minLinks);
                 done();
             })          
 
