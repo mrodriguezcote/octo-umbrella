@@ -50,6 +50,7 @@ describe("Loading", function() {
             }
         }).auth(site.htuser, site.htpass)
     },specTime);
+    
 });
 ```
 The test uses the `request` module to make an HTTP request to the homepage and check the response. *website.js* is a helper file that includes site specific information like the homepage URL. *website.js* reads this information from a sngle configuration file, which can be overriden by specific client configurations. This allows a single code base of tests to be executed against multiple clients, and multiple environments via [text configuration files](#client-configuration). The following is an example of a more complex test:
@@ -84,6 +85,7 @@ describe("Category", function() {
                 done();
             })          
     },specTime);
+    
 });
 ```
 
