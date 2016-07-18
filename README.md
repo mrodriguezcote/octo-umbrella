@@ -10,6 +10,7 @@ The two main modules leveraged here are [Jasmine](http://jasmine.github.io/) and
   * [Available Tests](#available-tests)
   * [Framework Layout](#framework-layout)
 * [Test Execution](#test-execution)
+  * [Client Configuration](#client-configuration)
   * [Setup and Teardown](#setup-and-teardown)
   * [Reporting](#reporting)
   * [Diagnosis](#diagnosis)
