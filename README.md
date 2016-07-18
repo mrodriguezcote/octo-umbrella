@@ -140,7 +140,7 @@ When developing/debugging new tests call `npm start [command] bypass` to bypass 
 
 ##### Client Configuration
 
-The required argument `client` is the client code for the client whose configuration file will override the default configuration file. Each client can have its own configuration file, this file can contain client specific information like URLs, selectors, catalog values, etc. By following a common syntax acrosss configuration files, only the configuration values defined in the client files will override the default configuration file. This way, configuration information shared by multiple clients can be defined in a single place. The `config/` space is reserved for the default configuration file and any other client configuration files.
+The required argument `client` is the client code for the client whose configuration file will override the default configuration. Each client can have its own configuration file, this file can contain client specific information like URLs, selectors, catalog values, etc. By following a common syntax acrosss configuration files, only the configuration values defined in the client files will override the default configuration file. This way, configuration information shared by multiple clients only has to be defined once. The `config/` space is reserved for the default configuration file and any other client configuration files.
 
 ##### Reporting
 
@@ -148,4 +148,4 @@ The results of each test run are both output to the command line and written to 
 
 ##### Optional Setup and Teardown
 
-The `utilities/scripts/` space holds scripts that can be executed before and after the actual call to the test runner occurs and completes. These spaces could hold scripts that prepare the Magento application for testing by inserting testable data and removing it after the tests have executed. This way, tests that rely on specific product/cateogory setup, CMS content configuration, or user accounts information can run effectively and consistently every time, and the data of the application under test is not affected by test execution.
+The `utilities/scripts/` space holds scripts that can be executed before and after the actual call to the test runner occurs and completes. These spaces could hold scripts that prepare the Magento application for testing by inserting testable data and removing it after the tests have executed, making it so tests that rely on specific product/cateogory setup, CMS content configuration, or user accounts information can run effectively and consistently every time, and the data of the application under test is not affected by test execution.
