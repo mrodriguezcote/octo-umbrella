@@ -1,13 +1,11 @@
 //RDS Override configuration file
 {
-  "ROOT_URLS": {
-    "qa1": "http://rds.qa-1.blueacorn.net/",
-    "staging": "http://staging.reeds.com/",
-    "production": "http://www.reeds.com/"
+  "ROOT": {
+    "URL": "http://staging.reeds.com/",
   },
   "HTACCESS": {
-    "user": "blueacorn",
-    "pass": "pass4blueacorn"
+    "user": "rds",
+    "pass": "pass4rds"
   },
   "USER_CREDS":{
     "user": "marco@blueacorn.com",
@@ -15,6 +13,7 @@
   },
   "CATEGORY": {
     "name": "Test Category",
+    "url": "test-category.html/",
     "itemsExpected": 8,
     "expectedSortingSelected": "position",
     "itemsActualSelector": ".toolbar-number",
@@ -23,6 +22,7 @@
   },
   "PRODUCT": {
     "name": "Test Simple 1",
+    "url": "batest.html",
     "sku": "TS1",
     "addToCart": "#product-addtocart-button",
     "addToCartConfirm": ".message-success"

@@ -1,10 +1,10 @@
 var _ = require('lodash');
 var fs = require('fs');
 
-/* Execute each of the scripts under the src/setup/scripts directory
-These scripts prepare the application for tests to run*/
+/* Execute each of the scripts under the src/utilities/scripts/setup/ 
+directory. */
 var executeSetupScripts = function() {
-	var dir = process.cwd()+'/setup/scripts/';
+	var dir = process.cwd()+'/utilities/scripts/setup/';
 	fileList = fs.readdirSync(dir);
 	_.filter(fileList, function(file) {
 		return file.name !== 'index.js';

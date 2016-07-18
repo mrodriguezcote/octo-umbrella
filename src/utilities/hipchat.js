@@ -1,3 +1,5 @@
+//WORK IN PROGRESS
+
 //HipChat reporting function
 module.exports.report = function(pass) {
 	var needle = require('needle');

@@ -27,7 +27,7 @@ var electronMobileOptions = {
 var htuser = config.get('HTACCESS.user');
 var htpass = config.get('HTACCESS.pass');
 //ROOT URL
-var homeUrl = config.get('ROOT_URLS.staging');
+var homeUrl = config.get('ROOT.URL');
 //General URLs
 var adminUrl = homeUrl+'admin/admin/';
 var adminCache = adminUrl+'cache/'
@@ -35,9 +35,9 @@ var checkoutUrl = homeUrl+'checkout/';
 var cartUrl = homeUrl+'checkout/cart/';
 var loginUrl = homeUrl+'customer/account/login/';
 var registerUrl = homeUrl+'customer/account/create/';
-var categoryUrl = homeUrl+'test-category.html/';
-var productUrl = homeUrl+'batest.html/';
 var searchUrl = homeUrl+'catalogsearch/result/?q=';
+var categoryUrl = homeUrl+config.get('CATEGORY.url');
+var productUrl = homeUrl+config.get('PRODUCT.url');
 //User Information
 var siteLogin = {
   user: config.get('USER_CREDS.user'),
@@ -82,9 +82,9 @@ exports.checkoutUrl = checkoutUrl;
 exports.cartUrl = cartUrl;
 exports.loginUrl = loginUrl;
 exports.registerUrl = registerUrl;
+exports.searchUrl = searchUrl;
 exports.categoryUrl = categoryUrl;
 exports.productUrl = productUrl;
-exports.searchUrl = searchUrl;
 exports.siteLogin = siteLogin;
 //CATEGORY PAGE
 exports.itemsExpected = itemsExpected;

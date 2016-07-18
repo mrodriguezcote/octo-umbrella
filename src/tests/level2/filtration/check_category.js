@@ -22,7 +22,7 @@ describe("Category", function() {
         browser
             .goto(site.categoryUrl)
             .evaluate(function(itemsActualSelector) {
-                return parseInt(jQuery(itemsActualSelector)[0].innerText);
+                return parseInt(jQuery(itemsActualSelector)[0].innerText.split(" ").slice(-1)[0]);
             },site.itemsActualSelector)
             .then(function (count) {
                 expect(count).toBe(site.itemsExpected);

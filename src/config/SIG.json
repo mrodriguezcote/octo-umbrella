@@ -1,28 +1,28 @@
 //SIG Override configuration file
 {
-  "ROOT_URLS": {
-    "qa1": "",
-    "staging": "",
-    "production": "https://www.signaturehardware.com/"
+  "ROOT": {
+    "URL": "http://ocean-sig-2.badevops.com/",
   },
   "HTACCESS": {
     "user": "",
     "pass": ""
   },
   "USER_CREDS":{
-    "user": "",
-    "pass": ""
+    "user": "albert.nardone@blueacorn.com",
+    "pass": "pass4albert"
   },
   "CATEGORY": {
-    "name": "",
-    "itemsExpected": "",
-    "expectedSortingSelected": "",
-    "itemsActualSelector": "",
-    "sortSelector": "",
-    "viewSelector": ""
+    "name": "Bathtubs",
+    "url": "bathroom/bathtubs.html",
+    "itemsExpected": 447,
+    "expectedSortingSelected": "position",
+    "itemsActualSelector": ".amount",
+    "sortSelector": ".select-wrap",
+    "viewSelector": ".limiter"
   },
   "PRODUCT": {
     "name": "",
+    "url": "boyce-freestanding-acrylic-tub-1.html",
     "sku": "",
     "addToCart": "",
     "addToCartConfirm": ""

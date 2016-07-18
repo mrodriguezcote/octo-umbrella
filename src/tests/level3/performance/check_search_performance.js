@@ -11,9 +11,8 @@ var options = {
 
 describe("Performing site search", function() {
 
-
     it("maintains performance", function(done) {
-
+        //TODO: Need to work around htaccess
         loadtest.loadTest(options, function(error, result) {
             if (error) {
                 return console.error('Got an error: %s', error);

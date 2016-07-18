@@ -38,7 +38,7 @@ describe("Adding product to cart", function() {
 
         browser
             .evaluate(function(itemInfo) {
-                return jQuery(itemInfo).children()[0].children[0].href+'/';
+                return jQuery(itemInfo).children()[0].children[0].href;
             },site.itemInfo)
             .then(function (info) {
                 expect(info).toBe(site.productUrl);

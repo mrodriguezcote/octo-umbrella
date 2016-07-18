@@ -1,13 +1,11 @@
 //Default configuration file
 {
-  "ROOT_URLS": {
-    "qa1": "DEFAULT_QA1_ROOT",
-    "staging": "DEFAULT_STAGING_ROOT",
-    "production": "DEFAULT_PRODUCTION_ROOT"
+  "ROOT": {
+    "URL": "DEFAULT__ROOT",
   },
   "HTACCESS": {
-    "user": "DEFAULT_HTUSER",
-    "pass": "DEFAULT_HTPASS"
+    "user": "blueacorn",
+    "pass": "pass4blueacorn"
   },
   "USER_CREDS":{
     "user": "DEFUALT_SITEUSER",
@@ -15,6 +13,7 @@
   },
   "CATEGORY": {
     "name": "DEFAULT_CATEGORY_NAME",
+    "urlKey": "DEFAULT_CATEGORY_URL",
     "itemsExpected": "DEFAULT_ITEMS_EXPECTED",
     "expectedSortingSelected": "DEFAULT",
     "itemsActualSelector": "DEFAULT",
@@ -23,6 +22,7 @@
   },
   "PRODUCT": {
     "name": "DEFAULT_PRODUCT_NAME",
+    "url": "DEFAULT_PRODUCT_URL",
     "sku": "DEFAULT_PRODUCT_SKU",
     "addToCart": "DEFAULT",
     "addToCartConfirm": "DEFAULT"
