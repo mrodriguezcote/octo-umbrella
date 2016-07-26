@@ -17,6 +17,7 @@
     "mysql": "^2.10.2",
     "needle": "^1.0.0",
     "nightmare": "^2.3.0",
+    "nightwatch": "^0.9.5",
     "path": "*",
     "randomstring": "^1.1.4",
     "request": "^2.70.0",
